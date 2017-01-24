@@ -10,9 +10,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
     {
         bool Create(T entity);
 
-        bool Update(T entity);
-
-        bool Delete(T entity);
+        bool Delete(string id);
 
         T Get(string id);
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{1A682A54-1547-4548-9CE6-028C2F859A06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StarterTemplate</RootNamespace>
-    <AssemblyName>Mvc</AssemblyName>
+    <RootNamespace>Cleverest.Mvc</RootNamespace>
+    <AssemblyName>Cleverest.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

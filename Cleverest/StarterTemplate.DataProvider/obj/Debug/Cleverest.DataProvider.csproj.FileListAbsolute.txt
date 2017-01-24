@@ -5,3 +5,14 @@ C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-mast
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.DataProvider\obj\Debug\Cleverest.DataProvider.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.DataProvider\obj\Debug\StarterTemplate.DataProvider.dll
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.DataProvider\obj\Debug\StarterTemplate.DataProvider.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Iesi.Collections.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\NHibernate.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Iesi.Collections.xml
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\NHibernate.xml
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\obj\Debug\Cleverest.DataProvider.csprojResolveAssemblyReference.cache
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Cleverest.DataProvider.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Cleverest.DataProvider.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Cleverest.Business.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\bin\Debug\Cleverest.Business.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\obj\Debug\Cleverest.DataProvider.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate.DataProvider\obj\Debug\Cleverest.DataProvider.pdb

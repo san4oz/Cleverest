@@ -7,8 +7,8 @@
     <ProjectGuid>{C8D76B99-B3BE-4A3F-ABF5-D2BF4B99377F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StarterTemplate.Business</RootNamespace>
-    <AssemblyName>StarterTemplate.Business</AssemblyName>
+    <RootNamespace>Cleverest.Business</RootNamespace>
+    <AssemblyName>Cleverest.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Test.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
     <Compile Include="Managers\BaseManager.cs" />

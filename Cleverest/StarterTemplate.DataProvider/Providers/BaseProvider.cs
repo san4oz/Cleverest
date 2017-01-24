@@ -4,34 +4,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate;
+using Cleverest.DataProvider;
+using Cleverest.Business.Entities;
 
 namespace Cleverest.DataProvider.Providers
 {
     public class BaseProvider<T> : IBaseProvider<T>
+        where T : Entity
     {
         public bool Create(T entity)
         {
-            throw new NotImplementedException();
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(entity);
+                    transaction.Commit();
+                }
+            });
+
+            return true;
         }
 
-        public bool Update(T entity)
+        public bool Delete(string id)
         {
-            throw new NotImplementedException();
-        }
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var valueToBeRemoved = session.Get<T>(id);
+                    if (valueToBeRemoved != null)
+                    {
+                        session.Delete(valueToBeRemoved);
+                        transaction.Commit();
+                    }
+                }
+            });
 
-        public bool Delete(T entity)
-        {
-            throw new NotImplementedException();
+            return true;
         }
 
         public T Get(string id)
         {
-            throw new NotImplementedException();
+            return Execute<T>(session =>
+            {
+                return session.Get<T>(id);
+            });
         }
 
         public IList<T> All()
         {
-            throw new NotImplementedException();
+            return Execute(session =>
+            {
+                var criteria = session.CreateCriteria<T>();
+
+                return criteria.List<T>();
+            });
         }
+
+        #region helpers
+        protected T Execute<T>(Func<ISession, T> expression)
+        {
+            using (var session = NhibernateSessionHelper.OpenSession())
+            {
+                return expression(session);
+            }
+        }
+
+        protected bool Execute(Func<ISession, bool> expression)
+        {
+            using (var session = NhibernateSessionHelper.OpenSession())
+            {
+                return expression(session);
+            }
+        }
+
+        protected void Execute(Action<ISession> expression)
+        {
+            using (var session = NhibernateSessionHelper.OpenSession())
+            {
+                expression(session);
+            }
+        }
+
+
+        #endregion
     }
 }

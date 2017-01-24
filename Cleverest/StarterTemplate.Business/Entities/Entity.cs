@@ -8,7 +8,7 @@ namespace Cleverest.Business.Entities
 {
     public class Entity
     {
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
         public Entity()
         {

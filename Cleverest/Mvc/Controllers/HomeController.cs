@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Cleverest.DataProvider.Providers;
 
 namespace Cleverest.Controllers
 {
@@ -15,7 +16,7 @@ namespace Cleverest.Controllers
     {
       
         public ActionResult Index()
-        {           
+        {
             return View();
         }
     }
