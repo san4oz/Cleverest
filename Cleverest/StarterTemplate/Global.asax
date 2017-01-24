@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Application.cs" Inherits="Cleverest.Mvc.Application" Language="C#" %>

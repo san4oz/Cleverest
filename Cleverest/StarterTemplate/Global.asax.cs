@@ -1,0 +1,1 @@
+﻿//dummy - global.asax was removed to Cleverest.Mvc assembly. See Application.cs

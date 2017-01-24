@@ -1,0 +1,4 @@
+C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.Business\bin\Debug\StarterTemplate.Business.dll
+C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.Business\bin\Debug\StarterTemplate.Business.pdb
+C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.Business\obj\Debug\StarterTemplate.Business.dll
+C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate.Business\obj\Debug\StarterTemplate.Business.pdb
