@@ -12,7 +12,14 @@ namespace Cleverest.App_Start
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-         
+            AreaRegistration.RegisterAllAreas();
+
+            routes.MapRoute(
+              name: "Home",
+              url: "home",
+              defaults: new { controller = "Home", action = "Index" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "",

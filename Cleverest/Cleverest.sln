@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverest.Business", "Start
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverest.DataProvider", "StarterTemplate.DataProvider\Cleverest.DataProvider.csproj", "{49C087EB-CBF2-49EE-B638-4339E8B4F14C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverest.Core", "Cleverest.Core\Cleverest.Core.csproj", "{297BD8A9-0106-48B1-877D-189A934A5D2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{49C087EB-CBF2-49EE-B638-4339E8B4F14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C087EB-CBF2-49EE-B638-4339E8B4F14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C087EB-CBF2-49EE-B638-4339E8B4F14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297BD8A9-0106-48B1-877D-189A934A5D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297BD8A9-0106-48B1-877D-189A934A5D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297BD8A9-0106-48B1-877D-189A934A5D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297BD8A9-0106-48B1-877D-189A934A5D2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
