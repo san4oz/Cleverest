@@ -9,7 +9,7 @@ namespace Cleverest.Business.Entities
     public class Entity
     {
         public virtual string Id { get; set; }
-
+        
         public Entity()
         {
             Id = Guid.NewGuid().ToString();

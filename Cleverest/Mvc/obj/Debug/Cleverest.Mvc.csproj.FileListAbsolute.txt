@@ -30,9 +30,15 @@ C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-mast
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\Mvc\obj\Debug\Cleverest.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\Mvc\obj\Debug\Mvc.dll
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\Mvc\obj\Debug\Mvc.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\obj\Debug\Cleverest.Mvc.csprojResolveAssemblyReference.cache
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Mvc.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Mvc.pdb
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Autofac.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Autofac.Integration.Mvc.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\AutoMapper.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Business.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Core.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.DataProvider.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Web.Helpers.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Web.Http.dll
@@ -44,6 +50,9 @@ C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Web.WebPa
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\NHibernate.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Iesi.Collections.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Core.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Business.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.DataProvider.pdb
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Autofac.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Autofac.Integration.Mvc.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\AutoMapper.xml
@@ -57,12 +66,5 @@ C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Web.WebPa
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\NHibernate.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Iesi.Collections.xml
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\obj\Debug\Cleverest.Mvc.csprojResolveAssemblyReference.cache
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Mvc.dll
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Mvc.pdb
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Business.dll
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.DataProvider.dll
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.Business.pdb
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\bin\Debug\Cleverest.DataProvider.pdb
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\obj\Debug\Cleverest.Mvc.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Mvc\obj\Debug\Cleverest.Mvc.pdb

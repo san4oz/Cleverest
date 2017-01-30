@@ -25,8 +25,14 @@ C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-mast
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate\obj\Debug\Cleverest.Web.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate\obj\Debug\StarterTemplate.dll
 C:\Users\o.kotvytskyi\Documents\Visual Studio 2015\Projects\StarterTemplate-master\StarterTemplate\StarterTemplate\obj\Debug\StarterTemplate.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\obj\Debug\Cleverest.Web.csprojResolveAssemblyReference.cache
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.dll.config
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.pdb
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Autofac.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Autofac.Integration.Mvc.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Business.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Mvc.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Helpers.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Mvc.dll
@@ -35,6 +41,12 @@ C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Webpages.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Webpages.Razor.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\AutoMapper.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.DataProvider.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Core.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\NHibernate.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Iesi.Collections.dll
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Mvc.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Business.pdb
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Autofac.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Autofac.Integration.Mvc.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Razor.xml
@@ -44,11 +56,9 @@ C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Helpers.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\System.Web.Mvc.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\AutoMapper.xml
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\obj\Debug\Cleverest.Web.csprojResolveAssemblyReference.cache
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.dll.config
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.dll
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Web.pdb
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Mvc.dll
-C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Mvc.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.DataProvider.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Cleverest.Core.pdb
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\NHibernate.xml
+C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\bin\Iesi.Collections.xml
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\obj\Debug\Cleverest.Web.dll
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\StarterTemplate\obj\Debug\Cleverest.Web.pdb

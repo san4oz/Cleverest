@@ -89,9 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Design\bootstrap-responsive.css" />
+    <Content Include="Content\Design\bootstrap.css" />
+    <Content Include="Content\Design\custom-styles.css" />
+    <Content Include="Content\Design\flexslider.css" />
+    <Content Include="Content\Design\prettyPhoto.css" />
+    <Content Include="Content\Design\style-ie.css" />
+    <Content Include="Content\Scripts\bootstrap.js" />
+    <Content Include="Content\Scripts\jquery.custom.js" />
+    <Content Include="Content\Scripts\jquery.easing.1.3.js" />
+    <Content Include="Content\Scripts\jquery.flexslider.js" />
+    <Content Include="Content\Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Content\Scripts\jquery.quicksand.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -100,11 +109,17 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Game\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Game\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Game\Create.cshtml" />
+    <Content Include="Content\Scripts\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -115,13 +130,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Views\Game\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -139,6 +157,10 @@
     <ProjectReference Include="..\Mvc\Cleverest.Mvc.csproj">
       <Project>{1a682a54-1547-4548-9ce6-028c2f859a06}</Project>
       <Name>Cleverest.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StarterTemplate.Business\Cleverest.Business.csproj">
+      <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
+      <Name>Cleverest.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Game.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
+    <Compile Include="InterfaceDefinitions\Managers\IGameManager.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
     <Compile Include="Managers\BaseManager.cs" />
+    <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

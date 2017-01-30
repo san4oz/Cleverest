@@ -51,6 +51,7 @@
     <Compile Include="NhibernateSessionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
+    <Compile Include="Providers\GameProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StarterTemplate.Business\Cleverest.Business.csproj">
@@ -63,9 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Entities.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Nhibernate.cfg.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,11 +8,9 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
     public interface IBaseManager<T>
     {
-        bool Create(T entity);
+        void Create(T entity);
 
-        bool Update(T entity);
-
-        bool Delete(T entity);
+        void Delete(string id);
 
         T Get(string id);
 

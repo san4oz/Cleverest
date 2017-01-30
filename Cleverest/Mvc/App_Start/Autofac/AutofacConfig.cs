@@ -10,6 +10,11 @@ using Autofac.Integration.Mvc;
 using Cleverest.Mvc;
 using Cleverest.Business.InterfaceDefinitions;
 using Cleverest.DataProvider;
+using Cleverest.Business.Managers;
+using Cleverest.Business.InterfaceDefinitions.Managers;
+using Cleverest.DataProvider.Providers;
+using Cleverest.Business.InterfaceDefinitions.Providers;
+using AutoMapper;
 
 namespace Cleverest.App_Start.Autofac
 {
@@ -28,7 +33,19 @@ namespace Cleverest.App_Start.Autofac
 
         private static void RegisterTypes(ContainerBuilder builder)
         {
-            
+            builder.RegisterType<MapperConfiguration>().SingleInstance();
+            RegisterProviders(builder);
+            RegisterManagers(builder);
+        }
+
+        private static void RegisterProviders(ContainerBuilder builder)
+        {
+            builder.RegisterType<GameProvider>().As<IGameProvider>();
+        }
+
+        private static void RegisterManagers(ContainerBuilder builder)
+        {
+            builder.RegisterType<GameManager>().As<IGameManager>();
         }
     }
 }

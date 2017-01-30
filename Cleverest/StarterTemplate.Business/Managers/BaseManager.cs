@@ -5,34 +5,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cleverest.Business.InterfaceDefinitions.Providers;
+using System.Web.Http.Dependencies;
+using System.Web.Mvc;
 
 namespace Cleverest.Business.Managers
 {
-    public abstract class BaseManager<T> : IBaseManager<T>
+    public abstract class BaseManager<T, TProvider> : IBaseManager<T>
+        where TProvider : IBaseProvider<T>
     {
-        public bool Create(T entity)
+        public virtual TProvider Provider
         {
-            throw new NotImplementedException();
+            get { return DependencyResolver.Current.GetService<TProvider>(); }
         }
 
-        public bool Update(T entity)
+        public virtual T Get(string id)
         {
-            throw new NotImplementedException();
+            return Provider.Get(id);
         }
 
-        public bool Delete(T entity)
+        public virtual IList<T> All()
         {
-            throw new NotImplementedException();
+            return Provider.All();
         }
 
-        public T Get(string id)
+        public virtual void Create(T entity)
         {
-            throw new NotImplementedException();
+            Provider.Create(entity);
         }
 
-        public IList<T> All()
+        public virtual void Delete(string id)
         {
-            throw new NotImplementedException();
+            Provider.Delete(id);
         }
     }
 }
