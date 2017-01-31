@@ -1,0 +1,21 @@
+﻿@model Cleverest.Mvc.ViewModels.Shared.PopupModel
+<div class="popup-cnt @(Model.CssClass.IsEmpty() ? "yesNoPopup" : Model.CssClass)">
+    <div class="cnt-column">
+        <h2>@Model.TitleKey</h2>
+        <div>@Model.DescriptionKey</div>
+    </div>
+    <div class="ftr-column">
+        @Model.ExtraButtons
+        @Html.ActionLink("Yes", Model.Url, null, htmlAttributes: new { rel = "nofollow", @class = "btn no-icon btn-small btn-close-dialog btn-yes" })
+        @Html.ActionLink("No", Model.Url, null, htmlAttributes: new { rel = "nofollow", @class = "btn no-icon btn-small btn-close-dialog btn-no" })
+    </div>
+</div>
+
+@if (Model.AutoOpen)
+{
+    <script type="text/javascript">
+    $(function () {
+        Popup.open('.yesNoPopup');
+    });
+    </script>
+}

@@ -120,6 +120,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PopupModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

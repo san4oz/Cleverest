@@ -2,19 +2,29 @@
 
 
 Game.List = (function () {
-
     var gameListPage = $("#GameListPage");
     if (!gameListPage)
         return;
 
+    var itemToDelete, deletionUrl;
+
     $(".delete-btn").on("click", function (e) {
         e.preventDefault();
 
-        var $target = $(e.target);
+        var link = $(e.target);
 
-        $.post($target.attr("data-url"), { id: $target.attr("data-id") }, function (result) {
+        deletionUrl = link.attr("data-url");
+        itemToDelete = link.attr("data-id");
+
+        Popup.open($("#delete-game"));       
+    });
+
+    $("#delete-game .btn-yes").on('click', function (e) {
+        e.preventDefault();
+
+        $.post(deletionUrl, { id: itemToDelete }, function (result) {
             if (result)
-                alert("Successfully deleted")
+                window.location.reload();
         });
     });
 })();

@@ -97,9 +97,13 @@
     <Content Include="Content\Design\normalize.css" />
     <Content Include="Content\Design\prettyPhoto.css" />
     <Content Include="Content\Design\style-ie.css" />
+    <Content Include="Content\Images\Home Banner.jpg" />
     <Content Include="Content\Images\Icons\arrow.png" />
     <Content Include="Content\Scripts\Admin\page.game.create.js" />
     <Content Include="Content\Scripts\Admin\page.game.list.js" />
+    <Content Include="Content\Scripts\Libs\jquery.carousel.js" />
+    <Content Include="Content\Scripts\Libs\jquery-3.1.1.js" />
+    <Content Include="Content\Scripts\Popup.js" />
     <Content Include="Content\Scripts\Site.js" />
     <Content Include="Content\Scripts\Libs\bootstrap.js" />
     <Content Include="Content\Scripts\Libs\jquery-ui.js" />
@@ -108,10 +112,7 @@
     <Content Include="Content\Scripts\Libs\jquery.flexslider.js" />
     <Content Include="Content\Scripts\Libs\jquery.prettyPhoto.js" />
     <Content Include="Content\Scripts\Libs\jquery.quicksand.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -122,14 +123,9 @@
     <Content Include="Content\Scripts\.DS_Store" />
     <Content Include="Areas\Admin\Views\Shared\_ConfirmationDialog.cshtml" />
     <Content Include="App_Code\Shared.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -145,11 +141,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Game\List.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_YesNoPopup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,8 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Fonts\" />
-    <Folder Include="Css\" />
-    <Folder Include="Script\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mvc\Cleverest.Mvc.csproj">

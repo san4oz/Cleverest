@@ -774,7 +774,167 @@ a.accordion-toggle{background: #f5f5f5;}
 
 
 
+.ui-dialog{
+    max-width: 1140px;
+}
 
-/*.home{
-    background-color: #339700;
-}*/
+
+.popup-cnt h2{
+    margin: 14px 0 24px 0;
+}
+
+.popup-cnt .strong-header{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.popup-cnt .cnt-column{
+    display: table;
+    margin: 0 auto;
+}
+.product .volume-prices.popup-cnt .cnt-column{
+    min-width:inherit;
+    width:100%;
+}
+
+.popup-cnt .ftr-column{
+    text-align: center;
+    margin-top: 17px;
+    padding: 20px 0;
+}
+
+.popup-cnt .ftr-column .btn{
+    margin: 0 30px;
+}
+
+.popup-ftr{
+    text-align: right;
+}
+
+.popup-cnt .cnt-column{
+    display: table;
+    margin: 0 auto;
+}
+
+.popup-cnt{
+    background-color: darkgray;
+}
+
+
+
+.carousel-image{
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+.carousel-image .no-image{
+    max-width: 100%;
+}
+
+.carousel-content{
+	position: absolute;
+	top: 0;
+	margin-left: 0;
+	width: 33440px;
+	z-index: 1;
+}
+
+.carousel-item{
+	float: left;
+    margin-right: 137px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.carousel-item img{
+	margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.carousel-legend{
+    padding: 10px 0;
+	text-align: center;
+}
+
+.carousel-image-slider{
+    margin: 30px 0;
+}
+
+.carousel-content{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.carousel-centering{
+	margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    height: 600px;
+}
+
+.carousel-positioning{
+    position: relative;
+}
+
+.carousel-cutter{
+	overflow: hidden;
+    height: 100%;
+}
+
+li{
+    text-decoration: none;
+    list-style: none;
+}
+
+
+.btn-prev-img,
+.btn-next-img{
+    background-image: url(../Images/Icons/arrows-thumbnail.png);
+    background-repeat: no-repeat;
+    background-size: 31px auto;
+    cursor: pointer;
+	height: 28px;
+	position: absolute;
+    margin-top: -13px;
+	top: 50%;
+	width: 15px;
+    /*display: none;*/
+}
+
+.btn-prev-img{
+    background-position: 0 -54px;
+    left: 0;
+}
+
+.btn-next-img{
+    background-position: -16px -54px;
+    right: 0;
+}
+
+.btn-prev-img:hover{
+    background-position: 0 -27px;
+}
+
+.btn-prev-img.disabled{
+    background-position: 0 -54px;
+}
+
+.btn-next-img:hover{
+    background-position: -16px -27px;
+}
+
+.btn-next-img.disabled{
+    background-position: -16px -54px;
+}

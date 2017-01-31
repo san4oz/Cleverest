@@ -12,7 +12,7 @@ namespace Cleverest.Mvc.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/scripts")
-                .Include("~/Scripts/jquery-1.10.2.min.js")
+                .Include("~/Content/Scripts/Libs/jquery-3.1.1.js")
                 .Include("~/Content/Scripts/Libs/bootstrap.js")
                 .Include("~/Content/Scripts/Libs/jquery.custom.js")
                 .Include("~/Content/Scripts/Libs/jquery.easing.1.3.js")
@@ -20,9 +20,10 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Libs/jquery.prettyPhoto.js")
                 .Include("~/Content/Scripts/Libs/jquery.quicksand.js")
                 .Include("~/Content/Scripts/Libs/jquery-ui.js")
+                .Include("~/Content/Scripts/Libs/jquery.carousel.js")
                 .Include("~/Content/Scripts/Site.js")
+                .Include("~/Content/Scripts/Popup.js")
                 );
-
 
             bundles.Add(new ScriptBundle("~/bundles/admin-scripts")
                 .Include("~/Content/Scripts/Admin/page.game.create.js")

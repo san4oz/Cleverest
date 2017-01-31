@@ -6,18 +6,27 @@ Site.UI = (function () {
 
     ui.Init = function () {
         ui.Datepickers.init();
+        ui.Carousel.init();
     };
 
     ui.Datepickers = {
         init: function () {
-            debugger;
             $(".datepicker").each(function () {
                 var self = $(this);
 
-                self.datepicker({ showOtherMonths: true,
+                self.datepicker({
+                    showOtherMonths: true,
                     selectOtherMonths: true,
-                    showButtonPanel: true});
+                    showButtonPanel: true,
+                    defaultDate: new Date()
+                });
             });
+        }
+    };
+
+    ui.Carousel = {
+        init: function () {
+            $(".carousel").scCarousel({ visibleCount: 1 });
         }
     };
 

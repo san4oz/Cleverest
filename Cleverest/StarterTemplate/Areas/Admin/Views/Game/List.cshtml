@@ -44,3 +44,13 @@
 
     </table>
 </div>
+
+
+<div id="delete-game" style="display: none;">
+    @Html.Partial("_YesNoPopup",
+        new Cleverest.Mvc.ViewModels.Shared.PopupModel()
+        {
+            TitleKey = "Delete game",
+            DescriptionKey = "Are you sure you want to delete the game ?"
+        })
+</div>

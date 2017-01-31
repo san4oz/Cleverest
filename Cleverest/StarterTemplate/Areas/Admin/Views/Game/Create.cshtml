@@ -19,7 +19,8 @@
 
                     <div class="form-row">
                         @Html.LabelFor(x => x.GameDate)
-                        @Html.TextBoxFor(x => x.GameDate, htmlAttributes: new { @class = "datepicker" })
+                        <input type="text" class="datepicker" name="GameDate" id="GameDate" />
+                        @*@Html.TextBoxFor(x => x.GameDate, htmlAttributes: new { @class = "datepicker" })*@
                         @Html.ValidationMessageFor(x => x.GameDate)
                     </div>
                     <div class="form-row">
