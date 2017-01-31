@@ -92,15 +92,22 @@
     <Content Include="Content\Design\bootstrap-responsive.css" />
     <Content Include="Content\Design\bootstrap.css" />
     <Content Include="Content\Design\custom-styles.css" />
+    <Content Include="Content\Design\datepicker.css" />
     <Content Include="Content\Design\flexslider.css" />
+    <Content Include="Content\Design\normalize.css" />
     <Content Include="Content\Design\prettyPhoto.css" />
     <Content Include="Content\Design\style-ie.css" />
-    <Content Include="Content\Scripts\bootstrap.js" />
-    <Content Include="Content\Scripts\jquery.custom.js" />
-    <Content Include="Content\Scripts\jquery.easing.1.3.js" />
-    <Content Include="Content\Scripts\jquery.flexslider.js" />
-    <Content Include="Content\Scripts\jquery.prettyPhoto.js" />
-    <Content Include="Content\Scripts\jquery.quicksand.js" />
+    <Content Include="Content\Images\Icons\arrow.png" />
+    <Content Include="Content\Scripts\Admin\page.game.create.js" />
+    <Content Include="Content\Scripts\Admin\page.game.list.js" />
+    <Content Include="Content\Scripts\Site.js" />
+    <Content Include="Content\Scripts\Libs\bootstrap.js" />
+    <Content Include="Content\Scripts\Libs\jquery-ui.js" />
+    <Content Include="Content\Scripts\Libs\jquery.custom.js" />
+    <Content Include="Content\Scripts\Libs\jquery.easing.1.3.js" />
+    <Content Include="Content\Scripts\Libs\jquery.flexslider.js" />
+    <Content Include="Content\Scripts\Libs\jquery.prettyPhoto.js" />
+    <Content Include="Content\Scripts\Libs\jquery.quicksand.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -113,6 +120,8 @@
     <Content Include="Areas\Admin\Views\Game\List.cshtml" />
     <Content Include="Areas\Admin\Views\Game\Create.cshtml" />
     <Content Include="Content\Scripts\.DS_Store" />
+    <Content Include="Areas\Admin\Views\Shared\_ConfirmationDialog.cshtml" />
+    <Content Include="App_Code\Shared.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -140,6 +149,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Game\List.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Fonts\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Css\" />
     <Folder Include="Script\" />
   </ItemGroup>

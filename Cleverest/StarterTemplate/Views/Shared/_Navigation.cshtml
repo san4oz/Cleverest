@@ -1,0 +1,17 @@
+﻿<!-- Main Navigation
+================================================== -->
+<div class="span7 navigation">
+    <div class="navbar hidden-phone">
+        <ul class="nav">        
+            @NavigationNode("Home", "Home")
+            @NavigationNode("Games", "Games")   
+        </ul>
+    </div>  
+</div>
+
+@helper NavigationNode(string routeName, string nodeTitle)
+{
+    var url = Url.RouteUrl(routeName);
+    bool isActive = HttpContext.Current.Request.Url.AbsolutePath.Equals(url, StringComparison.InvariantCultureIgnoreCase);
+    <li class="@(isActive ? "active" : string.Empty)"><a href="@Url.RouteUrl(routeName)">@nodeTitle</a></li>
+}

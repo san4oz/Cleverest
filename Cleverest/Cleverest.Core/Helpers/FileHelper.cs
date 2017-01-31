@@ -24,7 +24,7 @@ namespace Cleverest.Core.Helpers
 
         public static string GetFileRelativePath(HttpPostedFileBase file, string relativePathTosave)
         {
-            return string.Format("{0}/{1}", relativePathTosave, file.FileName);
+            return Path.Combine(relativePathTosave, file.FileName);
         }
    
         public static void Save(HttpPostedFileBase file, string path)

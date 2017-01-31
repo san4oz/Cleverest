@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Cleverest.Mvc.App_Start;
+using System.Web.Optimization;
 
 namespace Cleverest.Mvc
 {
@@ -19,6 +21,7 @@ namespace Cleverest.Mvc
             ControllerBuilder.Current.DefaultNamespaces.Add("Cleverest.Mvc.Controllers");
             //AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterDependencies();
             AutoMapperConfig.Configure();
         }

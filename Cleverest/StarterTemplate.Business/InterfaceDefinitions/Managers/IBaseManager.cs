@@ -10,6 +10,8 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
     {
         void Create(T entity);
 
+        void Update(T entity);
+
         void Delete(string id);
 
         T Get(string id);

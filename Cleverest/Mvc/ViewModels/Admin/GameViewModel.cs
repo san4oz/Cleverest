@@ -25,6 +25,7 @@ namespace Cleverest.Mvc.ViewModels.Admin
         [Required]
         public string Location { get; set; }
 
+        [Required]
         public HttpPostedFileBase Image { get; set; }
     }
 }

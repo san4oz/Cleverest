@@ -13,7 +13,7 @@ namespace Cleverest.DataProvider.Providers
     public class BaseProvider<T> : IBaseProvider<T>
         where T : Entity
     {
-        public bool Create(T entity)
+        public virtual bool Create(T entity)
         {
             Execute(session =>
             {
@@ -27,7 +27,27 @@ namespace Cleverest.DataProvider.Providers
             return true;
         }
 
-        public bool Delete(string id)
+        public virtual bool Update(string id, Action<T> updateAction)
+        {
+            Execute(session =>
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var entityToUpdate = session.Get<T>(id);
+
+                    updateAction(entityToUpdate);
+                    
+                    session.Update(entityToUpdate);
+
+                    transaction.Commit();
+                }
+            });
+
+            return true;
+        }
+
+
+        public virtual bool Delete(string id)
         {
             Execute(session =>
             {
@@ -45,7 +65,7 @@ namespace Cleverest.DataProvider.Providers
             return true;
         }
 
-        public T Get(string id)
+        public virtual T Get(string id)
         {
             return Execute<T>(session =>
             {
@@ -53,7 +73,7 @@ namespace Cleverest.DataProvider.Providers
             });
         }
 
-        public IList<T> All()
+        public virtual IList<T> All()
         {
             return Execute(session =>
             {
@@ -87,8 +107,6 @@ namespace Cleverest.DataProvider.Providers
                 expression(session);
             }
         }
-
-
         #endregion
     }
 }

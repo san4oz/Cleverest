@@ -13,6 +13,7 @@ namespace Cleverest.Business.Managers
 {
     public abstract class BaseManager<T, TProvider> : IBaseManager<T>
         where TProvider : IBaseProvider<T>
+        where T : Entity
     {
         public virtual TProvider Provider
         {
@@ -38,5 +39,7 @@ namespace Cleverest.Business.Managers
         {
             Provider.Delete(id);
         }
+
+        public abstract void Update(T entity);
     }
 }

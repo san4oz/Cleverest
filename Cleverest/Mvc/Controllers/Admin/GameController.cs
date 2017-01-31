@@ -33,15 +33,14 @@ namespace Cleverest.Mvc.Controllers.Admin
         [HttpPost]
         public ActionResult Create(GameViewModel gameModel)
         {
+            if (!ModelState.IsValid)
+                return View(gameModel);
+
+            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath));
+
             var game = Mapper.Map<GameViewModel, Game>(gameModel);
-            {
-                var imageFolderPath = ConfigurationManager.AppSettings[SiteConstants.AppSettings.ImageFolderPath];
-                game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, imageFolderPath);
-                Site.Managers.Game.Create(game);
-                {
-                    FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, imageFolderPath));
-                }
-            }
+            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath);
+            Site.Managers.Game.Create(game);
 
             return RedirectToAction("List", "Game");
         }
@@ -61,15 +60,30 @@ namespace Cleverest.Mvc.Controllers.Admin
             return View(gameModel);
         }
 
+        [HttpPost]
         public ActionResult Edit(GameViewModel gameModel)
         {
             if (!ModelState.IsValid)
                 return View(gameModel);
+    
+            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath));
 
-            var model = Mapper.Map<GameViewModel, Game>(gameModel);
-            Site.Managers.Game.Create(model);
+            var game = Mapper.Map<GameViewModel, Game>(gameModel);
+            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath);
+            Site.Managers.Game.Update(game);
 
             return RedirectToAction("List", "Game");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return HttpNotFound();
+
+            Site.Managers.Game.Delete(id);
+
+            return Json(true);
         }
     }
 }

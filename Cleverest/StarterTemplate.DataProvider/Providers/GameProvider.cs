@@ -9,6 +9,7 @@ using Cleverest.Business.InterfaceDefinitions.Providers;
 namespace Cleverest.DataProvider.Providers
 {
     public class GameProvider : BaseProvider<Game>, IGameProvider
-    {        
+    {
+       
     }
 }

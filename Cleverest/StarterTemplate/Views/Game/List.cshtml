@@ -9,14 +9,13 @@
     <div class="span12">
         <div class="row clearfix no-margin">
             <ul class="gallery-post-grid holder">
-
                 @foreach (var game in Model.Games)
                 {
                     <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="@game.ImageUrl" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
+                                @*<a href="@game.ImageUrl" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>*@
+                                @*<a href="gallery-single.htm" class="item-details-link"></a>*@
                             </span>
                         </span>
                         <a href="gallery-single.htm"><img src="@game.ImageUrl" alt="Gallery"></a>
