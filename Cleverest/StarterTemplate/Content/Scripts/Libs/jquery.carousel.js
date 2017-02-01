@@ -11,7 +11,7 @@
                 slider = $this.find('.carousel-image-slider'),
                 thumbList = slider.find('ul'),
                 count = thumbList.children().length,
-                thumbWidth = thumbList.children().eq(0).width(),
+                thumbWidth = thumbList.children().eq(0).width() + 10,
                 current,
                 previewCnt = $this.find('.carousel-image'),
                 previewList = previewCnt.find('ul'),
@@ -38,7 +38,7 @@
                 previewList.children().removeClass('selected').eq(current).addClass('selected');
 
                 //Zoom.disableAll(previewList.children());
-                previewList.animate({ left: -shift + 'px' }, 500, function () {
+                previewList.animate({ left: -(shift) + 'px' }, 500, function () {
                     //Zoom.init(getCurrentMediumImage());
                 });
             };
@@ -49,6 +49,7 @@
             };
 
             var select = function () {
+                debugger;
                 if ($(previewList).is(':animated')) $(previewList).stop(true);
                 $this.scCarousel('setCurrentId', current);
 
