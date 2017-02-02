@@ -54,16 +54,16 @@
     <Compile Include="Providers\GameProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StarterTemplate.Business\Cleverest.Business.csproj">
-      <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
-      <Name>Cleverest.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Entities.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
+      <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
+      <Name>Cleverest.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

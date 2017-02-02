@@ -126,22 +126,22 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
+      <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
+      <Name>Cleverest.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cleverest.Core\Cleverest.Core.csproj">
       <Project>{297bd8a9-0106-48b1-877d-189a934a5d2e}</Project>
       <Name>Cleverest.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StarterTemplate.Business\Cleverest.Business.csproj">
-      <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
-      <Name>Cleverest.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StarterTemplate.DataProvider\Cleverest.DataProvider.csproj">
+    <ProjectReference Include="..\Cleverest.DataProvider\Cleverest.DataProvider.csproj">
       <Project>{49c087eb-cbf2-49ee-b638-4339e8b4f14c}</Project>
       <Name>Cleverest.DataProvider</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

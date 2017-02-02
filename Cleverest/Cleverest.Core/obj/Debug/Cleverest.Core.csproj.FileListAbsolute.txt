@@ -5,6 +5,5 @@ C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleve
 C:\Users\o.kotvytskyi\Desktop\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.dll
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pdb
-C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb

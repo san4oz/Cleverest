@@ -170,13 +170,13 @@
     <Folder Include="Content\Fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mvc\Cleverest.Mvc.csproj">
-      <Project>{1a682a54-1547-4548-9ce6-028c2f859a06}</Project>
-      <Name>Cleverest.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StarterTemplate.Business\Cleverest.Business.csproj">
+    <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
       <Name>Cleverest.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cleverest.Mvc\Cleverest.Mvc.csproj">
+      <Project>{1a682a54-1547-4548-9ce6-028c2f859a06}</Project>
+      <Name>Cleverest.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
