@@ -30,6 +30,12 @@ Site.UI = (function () {
         }
     };
 
+    ui.FileUpload = {
+        init: function () {
+            $("#fileUpload").fileUpload();
+        }
+    };
+
     return ui;
 })();
 

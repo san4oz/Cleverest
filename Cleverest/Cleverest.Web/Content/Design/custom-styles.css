@@ -3,7 +3,6 @@ html, body {
 	line-height:18px;
 	height: 100%;
  }
-body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 
 .main-container {
 	height:auto; 
@@ -997,4 +996,9 @@ li{
     height: 500px;
     width: 1024px;
     margin: 0 20px;
+}
+
+
+.photo-selected{
+    border: 1px solid red;
 }

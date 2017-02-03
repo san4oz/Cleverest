@@ -25,9 +25,24 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Popup.js")
                 );
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery.fileupload")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.ui.widget.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/load-image.all.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/tmpl.min.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/canvas-to-blob.min.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.blueimp-gallery.min.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.fileupload.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.fileupload-process.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.fileupload-image.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.fileupload-validate.js")
+                    .Include("~/Content/Scripts/Libs/FileUpload/jquery.fileupload-ui.js")
+                );
+
+
             bundles.Add(new ScriptBundle("~/bundles/admin-scripts")
                 .Include("~/Content/Scripts/Admin/page.game.create.js")
                 .Include("~/Content/Scripts/Admin/page.game.list.js")
+                .Include("~/Content/Scripts/Admin/page.gallery.list.js")
                 );
 
 
@@ -39,6 +54,8 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Design/custom-styles.css")
                 .Include("~/Content/Design/datepicker.css")
                 .Include("~/Content/Design/normalize.css")
+                .Include("~/Content/Design/jquery.fileupload-ui.css")
+                .Include("~/Content/Design/jquery.fileupload.css")
                 );
         }
     }

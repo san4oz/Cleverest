@@ -1,0 +1,33 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.GalleryViewModel
+
+
+<div id="gameGalleryPage">
+    
+    @Html.DropDownListFor(model => model.SelectedGameId, Model.GamesIds, htmlAttributes: new { id = "gameSelector" })
+
+    <button class="btn btn-danger right" data-url="@Url.Action("Delete", "Gallery")" id="deletePhotosBtn" disabled>Видалити</button>
+
+    <div class="game-photos">
+        @Html.Partial("_Photos", Model)
+    </div>
+</div>
+
+@section SecondWell
+{
+    @Html.Partial("_PhotoUpload")
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery.fileupload");
+}
+
+<div id="delete-photos-popup" style="display: none;">
+    @Html.Partial("_YesNoPopup",
+        new Cleverest.Mvc.ViewModels.Shared.PopupModel()
+        {
+            TitleKey = "Delete photos",
+            DescriptionKey = "Are you sure you want to delete these photos ?"
+        })
+</div>
+

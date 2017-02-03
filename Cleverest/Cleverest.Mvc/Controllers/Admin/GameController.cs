@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
@@ -36,10 +38,10 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(gameModel);
 
-            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath));
+            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id)));
 
             var game = Mapper.Map<GameViewModel, Game>(gameModel);
-            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath);
+            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id));
             Site.Managers.Game.Create(game);
 
             return RedirectToAction("List", "Game");
@@ -66,10 +68,10 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(gameModel);
     
-            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath));
+            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id)));
 
             var game = Mapper.Map<GameViewModel, Game>(gameModel);
-            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, SiteConstants.AppSettings.ImageFolderPath);
+            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id));
             Site.Managers.Game.Update(game);
 
             return RedirectToAction("List", "Game");

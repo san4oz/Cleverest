@@ -13,13 +13,48 @@
         </div>
 
         <div class="">
-            @RenderBody()
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <ul class="nav nav-pills nav-stacked">
+                            @NavigationNode("Index", "Головна")
+                            @NavigationNode("GameList", "Ігри")
+                            @NavigationNode("GaleryIndex", "Фото")
+                            @NavigationNode("Home", "На сайт")
+                        </ul>
+                    </div>
+                    <div class="col-md-10 well">
+                        @RenderBody()
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+
+                    </div>
+                    @if (IsSectionDefined("SecondWell"))
+                    {
+                        <div class="col-md-10 well">
+                            @RenderSection("SecondWell", required: false)
+                        </div>
+                    }                  
+                </div>
+            </div>
+           
         </div>
     </div>
 
     @Scripts.Render("~/bundles/scripts")
     @Scripts.Render("~/bundles/admin-scripts")
     @RenderSection("Scripts", required: false)
-    @Html.Partial("_ConfirmationDialog")
 </body>
 </html>
+
+
+@helper NavigationNode(string routeName, string nodeTitle)
+{
+var url = Url.RouteUrl(routeName);
+bool isActive = HttpContext.Current.Request.Url.AbsolutePath.Equals(url, StringComparison.InvariantCultureIgnoreCase);
+    <li class="@(isActive ? "active" : string.Empty)"><a href="@Url.RouteUrl(routeName)">@nodeTitle</a></li>
+}
+
+

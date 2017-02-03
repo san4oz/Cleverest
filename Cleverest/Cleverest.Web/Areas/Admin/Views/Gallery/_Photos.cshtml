@@ -1,0 +1,12 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.GalleryViewModel
+
+<div class="container">
+    <div class="row">
+        @foreach(var photo in Model.Photos)
+        {
+            <div class="col-md-4 selectable" style="padding-bottom: 10px;">
+                <img src="@photo" style="height:100%;width:100%; max-height: 220px;"/>
+            </div>
+        }
+    </div>
+</div>
