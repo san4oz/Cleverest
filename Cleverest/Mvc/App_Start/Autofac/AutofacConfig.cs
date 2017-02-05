@@ -41,11 +41,13 @@ namespace Cleverest.App_Start.Autofac
         private static void RegisterProviders(ContainerBuilder builder)
         {
             builder.RegisterType<GameProvider>().As<IGameProvider>();
+            builder.RegisterType<QuestionProvider>().As<IQuestionProvider>();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)
         {
             builder.RegisterType<GameManager>().As<IGameManager>();
+            builder.RegisterType<QuestionManager>().As<IQuestionManager>();
         }
     }
 }

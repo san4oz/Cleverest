@@ -26,6 +26,12 @@ namespace Cleverest.Mvc.App_Start.Routes
             base.RegisterArea(registrationContext);
 
             MapRoute(
+           name: "AddQuestion",
+           url: "question/Add",
+           defaults: new { controller = "Question", action = "Add" }
+       );
+
+            MapRoute(
            name: "CreateGame",
            url: "game/create",
            defaults: new { controller = "Game", action = "Create" }

@@ -159,6 +159,9 @@
     <Content Include="Views\Shared\_Carousel.cshtml" />
     <Content Include="Views\Home\Rules.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

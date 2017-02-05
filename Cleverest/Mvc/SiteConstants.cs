@@ -15,6 +15,11 @@ namespace Cleverest.Mvc
             {
                 get { return ConfigurationManager.AppSettings["ImageFolderPath"]; }
             }
+
+            public static string SongFolderPath
+            {
+                get { return ConfigurationManager.AppSettings["SongFolderPath"]; }
+            }
         }
 
     }

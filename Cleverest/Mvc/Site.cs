@@ -18,6 +18,11 @@ namespace Cleverest
             {
                 get { return Get<IGameManager>(); }
             }
+
+            public static IQuestionManager Question
+            {
+                get { return Get<IQuestionManager>(); }
+            }
         }
 
         #region private

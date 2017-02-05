@@ -7,4 +7,13 @@
     <property name="Location" type="string"/>
     <property name="ImageUrl" type="string"/>
   </class>
+  <class name="Questions" table="Questions">
+    <id name="Id" type="string"></id>
+    <property name="Question" type="string"/>
+    <property name="Answer" type="string"/>
+    <property name="GameId" type="string"/>
+    <property name="RoundNo" type="int"/>
+    <property name="ImageUrl" type="string"/>
+    <property name="SongUrl" type="string"/>
+  </class>
 </hibernate-mapping>

@@ -1,0 +1,68 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.QuestionViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div id="editQuestionPage">
+    @Shared.PageHeader("Edit", "You are editing a question")
+
+    @using (Html.BeginForm("Edit", "Question", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="span12">
+                @using (Html.BeginForm("Edit", "Question", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x => x.Id)
+                    @RenderField(x => x.Question)
+                    @RenderField(x => x.Answer)
+
+                    <div class="form-row">
+                        @Html.LabelFor(x => x.GameId)
+                        <input type="text" name="GameId" id="GameId" />
+                        @Html.ValidationMessageFor(x => x.GameId)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(x => x.RoundNo)
+                        <input type="number" name="RoundNo" id="RoundNo" />
+                        @Html.ValidationMessageFor(x => x.RoundNo)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(x => x.Image)
+                        <input type="file" name="Image" id="Image" />
+                        @Html.ValidationMessageFor(x => x.Image)
+                    </div>
+                    <div class="form-row">
+                        @Html.LabelFor(x => x.Song)
+                        <input type="file" name="Song" id="Song" />
+                        @Html.ValidationMessageFor(x => x.Song)
+                    </div>
+                    <input type="submit" value="Submit" />
+                }
+            </div>
+
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back", "List")
+    </div>
+</div>
+
+@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.QuestionViewModel, string>> expression, bool required = false)
+{
+    <div class="form-row">
+        @if (required)
+        {
+            @Html.LabelFor(expression, new { @class = "required-field" })
+        }
+        else
+        {
+            @Html.LabelFor(expression)
+        }
+        @Html.EditorFor(expression)
+        @Html.ValidationMessageFor(expression)
+    </div>
+}

@@ -8,3 +8,7 @@ C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cle
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
 C:\Users\o.kotvytskyi\Desktop\1\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb
+C:\Users\Lyra\Documents\GitHub\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.dll
+C:\Users\Lyra\Documents\GitHub\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pdb
+C:\Users\Lyra\Documents\GitHub\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
+C:\Users\Lyra\Documents\GitHub\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb

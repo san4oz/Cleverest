@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Cleverest.Mvc.ViewModels.Admin.QuestionViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="questionListPage">
+    @Shared.PageHeader("View", "You are viewing the list of question")
+    <p>
+        @Html.ActionLink("Create new game", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoundNo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoundNo)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
+                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<div id="delete-game" style="display: none;">
+    @Html.Partial("_YesNoPopup",
+        new Cleverest.Mvc.ViewModels.Shared.PopupModel()
+        {
+            TitleKey = "Delete question",
+            DescriptionKey = "Are you sure you want to delete the question ?"
+        })
+</div>
