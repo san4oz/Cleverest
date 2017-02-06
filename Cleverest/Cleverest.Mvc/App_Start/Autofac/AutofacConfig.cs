@@ -42,12 +42,14 @@ namespace Cleverest.App_Start.Autofac
         {
             builder.RegisterType<GameProvider>().As<IGameProvider>();
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
+            builder.RegisterType<AccountProvider>().As<IAccountProvider>();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)
         {
             builder.RegisterType<GameManager>().As<IGameManager>();
             builder.RegisterType<TeamManager>().As<ITeamManager>();
+            builder.RegisterType<AccountManager>().As<IAccountManager>();
         }
     }
 }

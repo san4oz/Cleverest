@@ -1,0 +1,49 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.AccountViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="createTeamPage">
+    @Shared.PageHeader("Create", "You are creating an account")
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="span12">
+            @using (Html.BeginForm("Create", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @RenderField(x => x.Name)
+                
+                <div class="form-row">
+                    @Html.LabelFor(x => x.TeamId)
+                    @Html.DropDownListFor(x => x.TeamId, Model.TeamsIds)
+                </div>
+
+                <input type="submit" value="Submit" />
+            }
+        </div>
+
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Назад", "Index")
+    </div>
+</div>
+
+@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.AccountViewModel, string>> expression, bool required = false)
+{
+    <div class="form-row">
+        @if (required)
+        {
+            @Html.LabelFor(expression, new { @class = "required-field" })
+        }
+        else
+        {
+            @Html.LabelFor(expression)
+        }
+        @Html.EditorFor(expression)
+        @Html.ValidationMessageFor(expression)
+    </div>
+}
+

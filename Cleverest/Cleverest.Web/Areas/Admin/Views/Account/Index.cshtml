@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Cleverest.Mvc.ViewModels.Admin.AccountViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="gameListPage">
+    @Shared.PageHeader("View", "You are viewing the list of accounts")
+    <p>
+        @Html.ActionLink("Create new account", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamId)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
+                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<div id="delete-account" style="display: none;">
+    @Html.Partial("_YesNoPopup",
+        new Cleverest.Mvc.ViewModels.Shared.PopupModel()
+        {
+            TitleKey = "Delete account",
+            DescriptionKey = "Are you sure you want to delete the account ?"
+        })
+</div>

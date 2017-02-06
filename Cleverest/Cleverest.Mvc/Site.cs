@@ -23,6 +23,11 @@ namespace Cleverest
             {
                 get { return Get<ITeamManager>(); }
             }
+
+            public static IAccountManager Account
+            {
+                get { return Get<IAccountManager>(); }
+            }
         }
 
         #region private

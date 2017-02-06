@@ -110,6 +110,7 @@
     <Compile Include="App_Start\Routes\AdminAreaRegistration.cs" />
     <Compile Include="App_Start\Routes\BaseAreaRegistrator.cs" />
     <Compile Include="App_Start\Routes\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\GalleryController.cs" />
     <Compile Include="Controllers\Admin\GameController.cs" />
     <Compile Include="Controllers\Admin\HomeController.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.cs" />
     <Compile Include="SiteConstants.cs" />
+    <Compile Include="ViewModels\Admin\AccountViewModel.cs" />
     <Compile Include="ViewModels\Admin\GalleryViewModel.cs" />
     <Compile Include="ViewModels\Admin\GameViewModel.cs" />
     <Compile Include="ViewModels\Admin\TeamViewModel.cs" />

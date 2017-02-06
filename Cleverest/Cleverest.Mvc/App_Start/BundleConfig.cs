@@ -44,6 +44,7 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Admin/page.game.list.js")
                 .Include("~/Content/Scripts/Admin/page.gallery.list.js")
                 .Include("~/Content/Scripts/Admin/page.team.list.js")
+                .Include("~/Content/Scripts/Admin/page.account.list.js")
                 );
 
 

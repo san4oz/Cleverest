@@ -118,6 +118,7 @@
     <Content Include="Content\Images\OuhZ9jvBlyI.jpg" />
     <Content Include="Content\Images\snmeU413L_U.jpg" />
     <Content Include="Content\Images\YdOtCdjKr0E.jpg" />
+    <Content Include="Content\Scripts\Admin\page.account.list.js" />
     <Content Include="Content\Scripts\Admin\page.game.create.js" />
     <Content Include="Content\Scripts\Admin\page.game.list.js" />
     <Content Include="Content\Scripts\Admin\page.team.list.js" />
@@ -183,6 +184,9 @@
     <Content Include="Areas\Admin\Views\Team\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Team\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Team\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
