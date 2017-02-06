@@ -113,6 +113,7 @@
     <Compile Include="Controllers\Admin\GalleryController.cs" />
     <Compile Include="Controllers\Admin\GameController.cs" />
     <Compile Include="Controllers\Admin\HomeController.cs" />
+    <Compile Include="Controllers\Admin\TeamController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Helpers\GameImageHelper.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="SiteConstants.cs" />
     <Compile Include="ViewModels\Admin\GalleryViewModel.cs" />
     <Compile Include="ViewModels\Admin\GameViewModel.cs" />
+    <Compile Include="ViewModels\Admin\TeamViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />

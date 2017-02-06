@@ -1,0 +1,46 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.TeamViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="createTeamPage">
+    @Shared.PageHeader("Create", "You are creating a team")
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="span12">
+            @using (Html.BeginForm("Create", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @RenderField(x => x.Name)
+                @RenderField(x => x.PhoneNumber)
+                @RenderField(x => x.SocialNetworkLink)
+
+                <input type="submit" value="Submit" />
+            }
+        </div>
+
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Назад", "Index")
+    </div>
+</div>
+
+@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.TeamViewModel, string>> expression, bool required = false)
+{
+    <div class="form-row">
+        @if (required)
+        {
+            @Html.LabelFor(expression, new { @class = "required-field" })
+        }
+        else
+        {
+            @Html.LabelFor(expression)
+        }
+        @Html.EditorFor(expression)
+        @Html.ValidationMessageFor(expression)
+    </div>
+}
+

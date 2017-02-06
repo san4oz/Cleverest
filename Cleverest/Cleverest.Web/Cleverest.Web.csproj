@@ -120,6 +120,7 @@
     <Content Include="Content\Images\YdOtCdjKr0E.jpg" />
     <Content Include="Content\Scripts\Admin\page.game.create.js" />
     <Content Include="Content\Scripts\Admin\page.game.list.js" />
+    <Content Include="Content\Scripts\Admin\page.team.list.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\canvas-to-blob.min.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.blueimp-gallery.min.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.fileupload-image.js" />
@@ -179,6 +180,9 @@
     <Content Include="Content\Scripts\Admin\page.gallery.list.js" />
     <Content Include="Areas\Admin\Views\Gallery\_Photos.cshtml" />
     <Content Include="Areas\Admin\Views\Gallery\_PhotoUpload.cshtml" />
+    <Content Include="Areas\Admin\Views\Team\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Team\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Team\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

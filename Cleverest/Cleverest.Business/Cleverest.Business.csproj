@@ -43,12 +43,16 @@
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\Team.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IGameManager.cs" />
+    <Compile Include="InterfaceDefinitions\Managers\ITeamManager.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Providers\ITeamProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
     <Compile Include="Managers\BaseManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
+    <Compile Include="Managers\TeamManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

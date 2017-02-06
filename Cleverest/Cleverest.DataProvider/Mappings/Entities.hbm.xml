@@ -7,4 +7,11 @@
     <property name="Location" type="string"/>
     <property name="ImageUrl" type="string"/>
   </class>
+
+  <class name="Team" table="Teams">
+    <id name="Id" type="string"></id>
+    <property name="Name" type="string"/>
+    <property name="PhoneNumber" type="string"/>
+    <property name="SocialNetworkLink" type="string"/>
+  </class>
 </hibernate-mapping>

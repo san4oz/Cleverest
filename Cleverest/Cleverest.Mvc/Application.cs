@@ -19,7 +19,6 @@ namespace Cleverest.Mvc
         protected void Application_Start()
         {
             ControllerBuilder.Current.DefaultNamespaces.Add("Cleverest.Mvc.Controllers");
-            //AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterDependencies();

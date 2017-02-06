@@ -1,0 +1,47 @@
+﻿@model Cleverest.Mvc.ViewModels.Admin.TeamViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div id="editGamePage">
+    @Shared.PageHeader("Edit", "You are editing a team")
+
+
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="span12">
+            @using (Html.BeginForm("Edit", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x => x.Id)
+                @RenderField(x => x.Name)
+                @RenderField(x => x.PhoneNumber)
+                @RenderField(x => x.SocialNetworkLink)
+
+                <input type="submit" value="Submit" />
+            }
+        </div>
+
+    </div>
+
+    <div>
+        @Html.ActionLink("Назад", "Index")
+    </div>
+</div>
+
+@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.TeamViewModel, string>> expression, bool required = false)
+{
+    <div class="form-row">
+        @if (required)
+        {
+            @Html.LabelFor(expression, new { @class = "required-field" })
+        }
+        else
+        {
+            @Html.LabelFor(expression)
+        }
+        @Html.EditorFor(expression)
+        @Html.ValidationMessageFor(expression)
+    </div>
+}
