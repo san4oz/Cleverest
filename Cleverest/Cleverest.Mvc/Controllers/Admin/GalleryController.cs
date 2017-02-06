@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Cleverest.Core.Helpers;
+using Cleverest.Mvc.Helpers;
 using Cleverest.Mvc.ViewModels.Admin;
 using static Cleverest.Mvc.SiteConstants;
 
@@ -45,14 +45,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
         private List<string> GetPhotos(string gameId)
         {
-            var gamePhotosPath = HostingEnvironment.MapPath(Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameId));
-
-            if (!Directory.Exists(gamePhotosPath))
-                Directory.CreateDirectory(gamePhotosPath);
-
-            var files = new DirectoryInfo(gamePhotosPath).GetFiles().Select(f => GetImageRelativePath(gameId, f.Name)).ToList();
-
-            return files;
+            return GameGalleryHelper.GetGalleryFiles(gameId).Select(f => GetImageRelativePath(gameId, f.Name)).ToList();
         }
 
         [HttpPost]
@@ -64,34 +57,12 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             foreach(var file in files)
             {
-                var path = FileHelper.GetFilePath(file, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameId));
-                FileHelper.Save(file, path);
+                GameGalleryHelper.SavePhoto(gameId, file);
             }
 
             var names = files.Select(file => file.FileName).ToList();
 
-            return Upload(gameId, names);
-        }
-
-        [HttpGet]
-        public ActionResult Upload(string gameId, List<string> names = null)
-        {
-            if (string.IsNullOrEmpty(gameId) || names == null)
-                return Json(0);
-
-            var path = HostingEnvironment.MapPath(Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameId));
-
-            var files = new DirectoryInfo(path).GetFiles()
-                .Where(file => names == null || names.Contains(file.Name, StringComparer.OrdinalIgnoreCase))
-                .Select(x => new
-                    {
-                    deleteType = "POST",
-                    name = x.Name,
-                    size = x.Length,
-                    //url, thumbnail, delete
-                });
-
-            return Json(new { files }, JsonRequestBehavior.AllowGet);
+            return Json(true);
         }
 
         [HttpPost]

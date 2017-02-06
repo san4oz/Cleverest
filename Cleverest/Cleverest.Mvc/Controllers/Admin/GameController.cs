@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.Core.Helpers;
+using Cleverest.Mvc.Helpers;
 using Cleverest.Mvc.ViewModels.Admin;
 
 namespace Cleverest.Mvc.Controllers.Admin
@@ -38,10 +38,9 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(gameModel);
 
-            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id)));
+            GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
 
             var game = Mapper.Map<GameViewModel, Game>(gameModel);
-            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id));
             Site.Managers.Game.Create(game);
 
             return RedirectToAction("List", "Game");
@@ -67,11 +66,10 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             if (!ModelState.IsValid)
                 return View(gameModel);
-    
-            FileHelper.Save(gameModel.Image, FileHelper.GetFilePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id)));
+
+            GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
 
             var game = Mapper.Map<GameViewModel, Game>(gameModel);
-            game.ImageUrl = FileHelper.GetFileRelativePath(gameModel.Image, Path.Combine(SiteConstants.AppSettings.GameImageFolderPath, gameModel.Id));
             Site.Managers.Game.Update(game);
 
             return RedirectToAction("List", "Game");

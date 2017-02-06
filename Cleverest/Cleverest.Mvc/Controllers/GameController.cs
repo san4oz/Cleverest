@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
+using Cleverest.Mvc.Helpers;
 using Cleverest.Mvc.ViewModels;
 
 namespace Cleverest.Mvc.Controllers
@@ -24,6 +25,11 @@ namespace Cleverest.Mvc.Controllers
                 Page = page,
                 PageSize = PageSize
             };
+
+            viewModel.Games.ToList().ForEach(game =>
+            {
+                game.ImageUrl = GameGalleryHelper.GetLogoFrontendPath(game.Id);
+            });
                 
             return View(viewModel);
         }       

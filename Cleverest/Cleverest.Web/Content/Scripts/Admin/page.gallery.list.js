@@ -2,79 +2,103 @@
 
 
 Gallery.List = (function () {
-	$(function () {
+    $(function () {
 
-		var setFileUploadGameId = function () {
-			$("#fileupload").fileupload({ formData: { gameId: $("#gameSelector").val() } });
-		};
+        var $gameGalleryPage = $("#gameGalleryPage");
+        if (!$gameGalleryPage)
+            return;
 
-		var $gameGalleryPage = $("#gameGalleryPage");
-		if (!$gameGalleryPage)
-			return;
-	
-		$('#fileupload').fileupload
-			({
-				url: "upload",
-				downloadTemplateId: null
-			});
+        var $gameSelector = $("#gameSelector");
+        var $photosSection = $(".game-photos");
+        var $fileUpload = $("#fileupload");
 
-		setFileUploadGameId();
+        var enablePhotoSelection = function ()
+        {
+            $(".selectable").unbind("click");
 
-		$gameGalleryPage.find("#gameSelector").on('change', function () {
+            $(".selectable").on("click", function () {
+                $(this).toggleClass("photo-selected");
 
-			setFileUploadGameId();
+                if ($(".photo-selected").length > 0) {
+                    $("#deletePhotosBtn").removeAttr("disabled");
+                }
+                else {
+                    $("#deletePhotosBtn").attr("disabled", "disabled");
+                }
+            });
+        };
 
-			$.post("", { gameId: $(this).val() }, function (result) {
-				$(".game-photos").html(result);
-			});
-		});
+        var reloadPhotoSection = function () {
+            $.post("", { gameId: $gameSelector.val() }, function (result) {
+                $photosSection.html(result);
+                enablePhotoSelection();
+            });
+        };
 
-		$(".selectable").on("click", function () {
-			$(this).toggleClass("photo-selected");
+        var configureFileUpload = function () {
 
-			if($(".photo-selected").length > 0)
-			{
-				$("#deletePhotosBtn").removeAttr("disabled");
-			}
-			else
-			{
-				$("#deletePhotosBtn").attr("disabled", "disabled");
-			}
-		});
+            $fileUpload.fileupload
+             ({
+                 url: "upload",
+                 downloadTemplateId: null
+             });
 
-		$("#deletePhotosBtn").on("click", function (e) {
-			e.preventDefault();
-			Popup.open($("#delete-photos-popup"));
+            $fileUpload.bind("fileuploadsubmit", function (e, data) {
+                debugger;
+                reloadPhotoSection();
+            });
+        };
 
-		});
+        var setFileUploadGameId = function () {
+            $fileUpload.fileupload({ formData: { gameId: $gameSelector.val() } });
+        };
 
-		$("#delete-photos-popup .btn-yes").on("click", function (e) {
-			e.preventDefault();
+        var bindUIEvents = function () {
+            enablePhotoSelection();
+            configureFileUpload();
+            setFileUploadGameId();
 
-			var url = $("#deletePhotosBtn").attr("data-url");
+            $gameSelector.on('change', function () {
+                setFileUploadGameId();
+                reloadPhotoSection();
+            });
 
-			var selectedPhotos = $(".photo-selected");
+            $("#deletePhotosBtn").on("click", function (e) {
+                e.preventDefault();
+                Popup.open($("#delete-photos-popup"));
 
-			var urlsToDelete = [];
+            });
 
-			$.each(selectedPhotos, function (index, value) {
-				var url = $(value).find("img").attr("src");
+            $("#delete-photos-popup .btn-yes").on("click", function (e) {
+                e.preventDefault();
 
-				urlsToDelete.push(url);
+                var url = $("#deletePhotosBtn").attr("data-url");
 
-			});
+                var selectedPhotos = $(".photo-selected");
 
-			var selectedPhotosToDelete = selectedPhotos.find("img").attr("src");
+                var urlsToDelete = [];
 
-			$.post(url, { files: urlsToDelete }, function (result) {
-				if (!result)
-					return;
+                $.each(selectedPhotos, function (index, value) {
+                    var url = $(value).find("img").attr("src");
 
-				selectedPhotos.remove();
-				$("#deletePhotosBtn").attr("disabled", "disabled");
-				Popup.close($("#delete-photos-popup"));
-			});
-		});
-		
+                    urlsToDelete.push(url);
+
+                });
+
+                var selectedPhotosToDelete = selectedPhotos.find("img").attr("src");
+
+                $.post(url, { files: urlsToDelete }, function (result) {
+                    if (!result)
+                        return;
+
+                    selectedPhotos.remove();
+                    $("#deletePhotosBtn").attr("disabled", "disabled");
+                    Popup.close($("#delete-photos-popup"));
+                });
+            });
+
+        };
+
+        bindUIEvents();
 	});
 })();

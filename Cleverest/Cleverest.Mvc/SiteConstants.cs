@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,22 @@ namespace Cleverest.Mvc
             {
                 get { return ConfigurationManager.AppSettings["ImageFolderPath"]; }
             }
-        }      
+        }    
+        
+        public static class Game
+        {
+            public static class Image
+            {
+                public const string Logo = "Logo";
+            }
+        }
+        
+        public static class Website
+        {
+            public static class Pathes
+            {
+                public static string Content = "/Content/";
+            }
+        }  
     }
 }
