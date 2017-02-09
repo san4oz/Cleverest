@@ -1,0 +1,132 @@
+﻿@model Cleverest.Mvc.ViewModels.GameDetailsViewModel
+@{
+    ViewBag.Title = "Games";
+}
+
+
+@Shared.HeroBlock(string.Format("Гра: {0}", Model.Title), css: "is-success")
+
+<div class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="@Model.ImageUrl"/>
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image" style="height: 40px; width: 40px;">
+                                    <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Команда переможець</p>
+                                <p class="subtitle is-6">дивіз команди(с)</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Найсмішнішу відповідь з гри будемо залишати тут.
+                            <a>#ойлолкаксмішно</a> <a>#пацталом</a>
+                            <a>#аффтаржжот</a>
+                            <br>                           
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer-item">
+                            Місце проведення:  <b> @Model.Location</b>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer-item">
+                            Дата проведення:  <b> @Model.GameDate.ToString("dd:MM:yyyy")</b>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer-item">
+                            Час проведення:  <b> 20:00</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Команда</th>
+                            <th>Тур 1</th>
+                            <th>Тур 2</th>
+                            <th>Тур 3</th>
+                            <th>Тур 4</th>
+                            <th>Тур 5</th>
+                            <th>Тур 6</th>
+                            <th>Тур 7</th>
+                            <th>Всього</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @for (int i = 0; i < 5; i++)
+                       {
+                        <tr>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@i</td>
+                            <td>@(i*7)</td>
+                        </tr>
+                       }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Команда</th>
+                            <th>Тур 1</th>
+                            <th>Тур 2</th>
+                            <th>Тур 3</th>
+                            <th>Тур 4</th>
+                            <th>Тур 5</th>
+                            <th>Тур 6</th>
+                            <th>Тур 7</th>
+                            <th>Всього</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>        
+        </div>
+
+        <section class="hero is-info">
+            <div class="hero-body">
+                <div class="container" style="margin-left: 20%">
+                    <h1 class="title">
+                        Фото з гри
+                    </h1>
+                    <h2 class="subtitle">
+                        fuck yeah
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <div class="columns is-multiline">           
+                @foreach (var photo in Model.GalleryPhotos)
+                {
+                    <div class="column is-4 ">
+                        <div class="card">
+                        <div class="card-image">
+                            <figure class="is-4by3">
+                                <img src="@photo" />
+                            </figure>
+                        </div>                                
+                        </div>
+                    </div>
+                }             
+        </div>
+    </div>
+</div>

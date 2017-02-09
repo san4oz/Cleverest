@@ -32,6 +32,29 @@ namespace Cleverest.Mvc.Controllers
             });
                 
             return View(viewModel);
+        }
+        
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return HttpNotFound();
+
+            var game = Site.Managers.Game.Get(id);
+            if (game == null)
+                return HttpNotFound();
+
+            var viewModel = new GameDetailsViewModel()
+            {
+                Title = game.Title,
+                Location = game.Location,
+                ImageUrl = GameGalleryHelper.GetLogoFrontendPath(game.Id),
+                GameDate = game.GameDate               
+            };
+
+            viewModel.GalleryPhotos = GameGalleryHelper.GetGalleryPhotoPathes(id);
+                       
+            return View(viewModel);
         }       
     }
 }

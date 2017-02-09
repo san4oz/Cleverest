@@ -130,6 +130,7 @@
     <Compile Include="ViewModels\Admin\GameViewModel.cs" />
     <Compile Include="ViewModels\Admin\TeamViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\GameDetailsViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

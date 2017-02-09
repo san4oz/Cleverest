@@ -14,11 +14,13 @@
             {
                 <div class="column is-quarter">
                     <div class="card">
-                        <div class="card-image">
-                            <figure class="is-4by3">
-                                <img src="@game.ImageUrl"/>
-                            </figure>
-                        </div>
+                        <a href="@Url.Action("Details", "Game", new { id = game.Id })">
+                            <div class="card-image">
+                                <figure class="is-4by3">
+                                    <img src="@game.ImageUrl" />
+                                </figure>
+                            </div>
+                        </a>
                         <div class="card-content">
                             <div class="content">
                                 <span class="tag is-medium is-info">@game.Title</span>

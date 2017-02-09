@@ -28,8 +28,8 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             if (Request.IsAjaxRequest())
             {
-                if(!string.IsNullOrEmpty(gameId))
-                  viewModel.Photos =  GetPhotos(gameId);
+                if (!string.IsNullOrEmpty(gameId))
+                    viewModel.Photos = GameGalleryHelper.GetGalleryPhotoPathes(gameId);
 
                 return PartialView("_Photos", viewModel);
             }
@@ -37,15 +37,10 @@ namespace Cleverest.Mvc.Controllers.Admin
             var defaultGame = games.FirstOrDefault();
             if(defaultGame != null)
             {
-                viewModel.Photos = GetPhotos(defaultGame.Id);
+                viewModel.Photos = GameGalleryHelper.GetGalleryPhotoPathes(defaultGame.Id);
             }
 
             return View(viewModel);
-        }
-
-        private List<string> GetPhotos(string gameId)
-        {
-            return GameGalleryHelper.GetGalleryFiles(gameId).Select(f => GetImageRelativePath(gameId, f.Name)).ToList();
         }
 
         [HttpPost]
@@ -59,8 +54,6 @@ namespace Cleverest.Mvc.Controllers.Admin
             {
                 GameGalleryHelper.SavePhoto(gameId, file);
             }
-
-            var names = files.Select(file => file.FileName).ToList();
 
             return Json(true);
         }
@@ -82,11 +75,6 @@ namespace Cleverest.Mvc.Controllers.Admin
             }
 
             return Json(files.Count());
-        }
-
-        private string GetImageRelativePath(string gameId, string imageName)
-        {
-            return Path.Combine("/", SiteConstants.AppSettings.GameImageFolderPath, gameId, imageName);
         }
     }
 }
