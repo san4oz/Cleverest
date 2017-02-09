@@ -59,7 +59,12 @@
     <Compile Include="Managers\TeamManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Cleverest.Core\Cleverest.Core.csproj">
+      <Project>{297BD8A9-0106-48B1-877D-189A934A5D2E}</Project>
+      <Name>Cleverest.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

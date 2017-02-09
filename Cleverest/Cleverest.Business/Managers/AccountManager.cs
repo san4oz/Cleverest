@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Cleverest.Business.Entities;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Business.InterfaceDefinitions.Providers;
+using Cleverest.Core.Security;
 
 namespace Cleverest.Business.Managers
 {
@@ -16,6 +17,7 @@ namespace Cleverest.Business.Managers
         {
             Provider.Update(entity.Id, entityToUpdate =>
             {
+                entityToUpdate.Email = entity.Email;
                 entityToUpdate.Name = entity.Name;
                 entityToUpdate.TeamId = entity.TeamId;
                 entityToUpdate.Password = entity.Password;
@@ -25,38 +27,19 @@ namespace Cleverest.Business.Managers
             });
         }
 
-        public override void Create(Account entity)
+        public Account GetByEmail(string email)
         {
-            TryUpdatePassword(entity);
-            base.Create(entity);
+            return Provider.GetByEmail(email);
         }
 
-        //protected string GenerateHash(string password = null)
-        //{
-        //    using (var sha256 = new SHA256Managed())
-        //    {
-        //        var saltBytes = GenerateSalt(5);
-        //        var plainTextBytes = Encoding.UTF8.GetBytes(password);
-        //        var plainTextWithSaltBytes = AppendByteArray(plainTextBytes, saltBytes);
-
-        //        byte[] hashBytes = sha256.ComputeHash(plainTextWithSaltBytes);
-
-        //        var result = AppendByteArray(hashBytes, saltBytes);
-
-        //        return Convert.ToString(result);
-        //    }
-        //}
-
-#warning implement hashing with salt. 
-
-        protected byte[] GenerateSalt(int saltSize)
+        public override void Create(Account entity)
         {
-            using (var generator = new RNGCryptoServiceProvider())
-            {
-                var buff = new byte[saltSize];
-                generator.GetBytes(buff);
-                return buff;
-            }
+            var crypto = new CryptoHelper();
+
+            entity.PasswordSalt = crypto.GenerateSalt();
+            entity.Password = crypto.GenerateHash(entity.Password, entity.PasswordSalt);
+
+            base.Create(entity);
         }
 
         protected bool TryUpdatePassword(Account accountToUpdate)
@@ -72,19 +55,6 @@ namespace Cleverest.Business.Managers
             accountToUpdate.PasswordSalt = oldAccount.PasswordSalt;
 
             return true;
-        }
-
-        protected byte[] AppendByteArray(byte[] byteArray1, byte[] byteArray2)
-        {
-            var byteArrayResult =
-                    new byte[byteArray1.Length + byteArray2.Length];
-
-            for (var i = 0; i < byteArray1.Length; i++)
-                byteArrayResult[i] = byteArray1[i];
-            for (var i = 0; i < byteArray2.Length; i++)
-                byteArrayResult[byteArray1.Length + i] = byteArray2[i];
-
-            return byteArrayResult;
-        }
+        }       
     }
 }

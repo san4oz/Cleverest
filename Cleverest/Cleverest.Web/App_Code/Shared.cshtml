@@ -9,3 +9,15 @@
     </div>
     <hr />
 }
+
+@helper HeroBlock(string title, string subtitle = null, string css = null)
+{
+    <section class="hero @css">
+        <div class="hero-body">
+            <div class="container">
+                <p class="title">@title</p>
+                <p class="subtitle">@subtitle</p>
+            </div>
+        </div>
+    </section>
+}

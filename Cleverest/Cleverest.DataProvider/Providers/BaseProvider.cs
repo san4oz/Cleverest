@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 using NHibernate;
 using Cleverest.DataProvider;
 using Cleverest.Business.Entities;
+using NHibernate.Criterion;
 
 namespace Cleverest.DataProvider.Providers
 {
     public class BaseProvider<T> : IBaseProvider<T>
         where T : Entity
     {
+
+        public virtual List<T> GetByIdList(List<string> ids)
+        {
+            return Execute(session =>
+            {
+                var criteria = session.CreateCriteria<T>();
+
+                criteria.Add(Expression.In("Id", ids.ToArray()));
+
+                return criteria.List<T>().ToList();
+            });
+        }
+
         public virtual bool Create(T entity)
         {
             Execute(session =>

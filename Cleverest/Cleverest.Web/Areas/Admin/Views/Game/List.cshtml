@@ -5,20 +5,20 @@
 }
 
 <div id="gameListPage">
-    @Shared.PageHeader("View", "You are viewing the list of games")
+
     <p>
-        @Html.ActionLink("Create new game", "Create")
+        @Html.ActionLink("Створити нову гру", "Create")
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+               Назва
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GameDate)
+                Дата
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+               Місце проведення
             </th>
             <th></th>
         </tr>
@@ -36,8 +36,8 @@
                     @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
-                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
+                    <a href="@Url.Action("Edit", new { id = item.Id })">Редагувати</a> |
+                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Видалити</a>
                 </td>
             </tr>
         }

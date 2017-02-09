@@ -1,0 +1,23 @@
+﻿@model Cleverest.Mvc.ViewModels.LoginViewModel
+
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <p class="control">
+        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input", placeholder = "Електронна почта", type = "Email" })
+    </p>
+    <div class="control is-grouped">
+        <p class="control is-expanded">
+            @Html.TextBoxFor(x => x.Password, htmlAttributes: new { @class = "input", placeholder = "Пароль", type = "password" })
+        </p>
+        <p class="control">
+            <button class="button is-success">Увійти</button>
+        </p>
+    </div>
+    <div class="control">
+        <label class="checkbox">
+            @Html.CheckBoxFor(x => x.RememberMe)
+            <span>Запам'ятати мене</span>
+        </label>
+    </div>            
+}

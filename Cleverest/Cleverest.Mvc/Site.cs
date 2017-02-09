@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using AutoMapper;
+using Cleverest.Mvc.Api;
 
 namespace Cleverest
 {
@@ -27,6 +28,14 @@ namespace Cleverest
             public static IAccountManager Account
             {
                 get { return Get<IAccountManager>(); }
+            }
+        }
+
+        public static class Api
+        {
+            public static AccountApi Account
+            {
+                get { return Get<AccountApi>(); }
             }
         }
 

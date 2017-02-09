@@ -17,9 +17,22 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             var accounts = Site.Managers.Account.All().ToList();
 
-            var viewModel = Mapper.Map<List<Account>, List<AccountViewModel>>(accounts);
+            var teamIds = accounts.Select(ac => ac.TeamId).ToList();
 
-            return View(viewModel);
+            var teams = Site.Managers.Team.GetByIdList(teamIds);
+
+            var viewModelList = accounts.Select(account =>
+            {
+                return new AccountListViewModel()
+                {
+                    Id = account.Id,
+                    Email = account.Email,
+                    Name = account.Name,
+                    TeamName = teams.FirstOrDefault(t => t.Id.Equals(account.TeamId)) != null ? teams.FirstOrDefault(t => t.Id.Equals(account.TeamId)).Name : string.Empty
+                };
+            }).ToList();
+
+            return View(viewModelList);
         }
 
         [HttpGet]

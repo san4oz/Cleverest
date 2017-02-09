@@ -14,6 +14,8 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
 
         bool Delete(string id);
 
+        List<T> GetByIdList(List<string> ids);
+
         T Get(string id);
 
         IList<T> All();        

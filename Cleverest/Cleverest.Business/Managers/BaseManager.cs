@@ -40,6 +40,11 @@ namespace Cleverest.Business.Managers
             Provider.Delete(id);
         }
 
+        public virtual IList<T> GetByIdList(List<string> ids)
+        {
+            return Provider.GetByIdList(ids);
+        }
+
         public abstract void Update(T entity);
     }
 }

@@ -49,7 +49,6 @@
             };
 
             var select = function () {
-                debugger;
                 if ($(previewList).is(':animated')) $(previewList).stop(true);
                 $this.scCarousel('setCurrentId', current);
 
@@ -59,7 +58,6 @@
             };
 
             var bindEvents = function () {
-                debugger;
                 if (data) {
                     return;
                 };

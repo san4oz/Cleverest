@@ -89,16 +89,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Design\bootstrap-responsive.css" />
-    <Content Include="Content\Design\bootstrap.css" />
-    <Content Include="Content\Design\custom-styles.css" />
+    <Content Include="Content\Design\bulma.css" />
     <Content Include="Content\Design\datepicker.css" />
-    <Content Include="Content\Design\flexslider.css" />
+    <Content Include="Content\Design\font-awesome.css" />
     <Content Include="Content\Design\jquery.fileupload-ui.css" />
     <Content Include="Content\Design\jquery.fileupload.css" />
-    <Content Include="Content\Design\normalize.css" />
-    <Content Include="Content\Design\prettyPhoto.css" />
-    <Content Include="Content\Design\style-ie.css" />
+    <Content Include="Content\Design\site.css" />
+    <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\15175405_1776177392647535_1684540929_n.jpg" />
     <Content Include="Content\Images\15175551_1776053099326631_1791712384_n.jpg" />
     <Content Include="Content\Images\15349688_767192613418846_4901910049828579405_n.jpg" />
@@ -187,6 +184,15 @@
     <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\_Register.cshtml" />
+    <Content Include="Content\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Fonts\FontAwesome.otf" />
+    <Content Include="Views\Account\_Login.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,9 +200,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>

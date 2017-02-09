@@ -9,5 +9,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
     public interface IAccountManager : IBaseManager<Account>
     {
+        Account GetByEmail(string email);       
     }
 }

@@ -6,15 +6,15 @@
 
 
 <div id="editGamePage">
-    @Shared.PageHeader("Edit", "You are editing an account")
-
-
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="span12">
             @using (Html.BeginForm("Edit", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.HiddenFor(x => x.Id)
+                @RenderField(x => x.Name)
+                @RenderField(x => x.Email)
+                @RenderField(x => x.Password)
 
                 <div class="form-row">
                     @Html.LabelFor(x => x.TeamId)

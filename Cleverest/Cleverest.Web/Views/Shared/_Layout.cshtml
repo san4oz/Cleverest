@@ -7,42 +7,15 @@
     @Styles.Render("~/bundles/styles")
 
 </head>
-<body class="home">
+<body>
     <div class="container">
-        <div class="row header">
-            @Html.Partial("_Navigation")
-        </div>
-
-        <div class="">
-            @RenderBody()
-        </div>
+        @Html.Partial("_Navigation")
     </div>
+
+    @RenderBody()
+    
     @Scripts.Render("~/bundles/scripts")
     
     @RenderSection("Scripts", required: false)
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            $("#btn-blog-next").click(function () {
-                $('#blogCarousel').carousel('next')
-            });
-            $("#btn-blog-prev").click(function () {
-                $('#blogCarousel').carousel('prev')
-            });
-
-            $("#btn-client-next").click(function () {
-                $('#clientCarousel').carousel('next')
-            });
-            $("#btn-client-prev").click(function () {
-                $('#clientCarousel').carousel('prev')
-            });
-
-            $('#myCarousel').carousel({
-                interval: 4000
-            });
-            $('#myCarousel').carousel('cycle');
-        });
-    </script>
 </body>
 </html>

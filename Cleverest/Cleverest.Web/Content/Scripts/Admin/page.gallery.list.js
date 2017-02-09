@@ -44,7 +44,6 @@ Gallery.List = (function () {
              });
 
             $fileUpload.bind("fileuploadsubmit", function (e, data) {
-                debugger;
                 reloadPhotoSection();
             });
         };

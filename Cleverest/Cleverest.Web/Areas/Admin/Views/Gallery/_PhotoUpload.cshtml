@@ -2,19 +2,18 @@
     <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
     <div class="row fileupload-buttonbar">
         <div class="col-lg-8">
-            <span class="btn btn-success fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
-                <span>Додати файли...</span>
-                <input type="file" name="files[]" multiple>
-            </span>
-            <button type="submit" class="btn btn-primary start">
-                <i class="glyphicon glyphicon-upload"></i>
-                <span>Почати завантаження</span>
-            </button>
-            <button type="reset" class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Відмініти завантаження</span>
-            </button>
+            <div class="control is-grouped">
+                <span class="button is-success fileinput-button">
+                    <input type="file" name="files[]" multiple />
+                    <span>Додати файли...</span>
+                </span>
+                <button type="submit" class="button is-primary start">
+                    <span>Почати завантаження</span>
+                </button>
+                <button type="reset" class="button is-danger cancel">
+                    <span>Відмініти завантаження</span>
+                </button>
+            </div>          
             <span class="fileupload-process"></span>
         </div>
     </div>
@@ -40,15 +39,14 @@
         </td>
         <td>
             {% if (!i && !o.options.autoUpload) { %}
-            <button class="btn btn-primary start" disabled>
-                <i class="glyphicon glyphicon-upload"></i>
-                <span>Start</span>
+            <button class="button is-success start" disabled>
+                <span>Почати</span>
             </button>
             {% } %}
             {% if (!i) { %}
-            <button class="btn btn-warning cancel">
+            <button class="button is-warning cancel">
                 <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Cancel</span>
+                <span>Відмінити</span>
             </button>
             {% } %}
         </td>

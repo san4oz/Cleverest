@@ -1,19 +1,27 @@
-﻿<!-- Main Navigation
-================================================== -->
-<div class="span7 navigation">
-    <div class="navbar hidden-phone">
-        <ul class="nav">        
+﻿<nav class="nav has-shadow">
+    <div class="container">
+        <div class="nav-left">
             @NavigationNode("Home", "Головна")
-            @NavigationNode("Games", "Ігри")  
+            @NavigationNode("Games", "Ігри")
             @NavigationNode("About", "Інфо")
-            @NavigationNode("Rules", "Правила") 
-        </ul>
-    </div>  
-</div>
+            @NavigationNode("Rules", "Правила")           
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="nav-center">
+                <span class="nav-item">Привіт, @User.Identity.Name  :)</span>
+            </div>
+            <div class="nav-right">
+                @NavigationNode("Logout", "Вихід")
+            </div>
+        }           
+    </div>    
+</nav>
+               
 
 @helper NavigationNode(string routeName, string nodeTitle)
 {
     var url = Url.RouteUrl(routeName);
     bool isActive = HttpContext.Current.Request.Url.AbsolutePath.Equals(url, StringComparison.InvariantCultureIgnoreCase);
-    <li class="@(isActive ? "active" : string.Empty)"><a href="@Url.RouteUrl(routeName)">@nodeTitle</a></li>
+    <a class="nav-item is-tab @(isActive ? "is-active" : "")" href="@Url.RouteUrl(routeName)">@nodeTitle</a>
 }

@@ -1,0 +1,20 @@
+﻿@model Cleverest.Mvc.ViewModels.AccountRegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    <p class="control">
+        @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input", placeholder = "Ім'я" })
+    </p>
+    <p class="control">
+        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input", placeholder = "Електронна адреса" })
+    </p>
+    <p class="control">
+        @Html.TextBoxFor(x => x.Password, htmlAttributes: new { @class = "input", placeholder = "Пароль" })
+    </p>
+    <p class="control is-pulled-right">
+        <button class="button is-success">Зареєструватись</button>
+    </p>
+}
+
+
+

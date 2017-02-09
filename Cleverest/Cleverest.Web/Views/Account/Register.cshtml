@@ -1,0 +1,29 @@
+﻿@model Cleverest.Mvc.ViewModels.AccountRegisterViewModel
+
+<div class="columns" style="margin-top: 100px;">
+    <div class="column is-4 is-offset-4">
+        <div class="content">
+            <h1 >Приєднуйся до CleverRest сьогодні.</h1>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+            {
+                <p class="control">
+                    @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input is-medium", placeholder = "Ім'я" })
+                </p>
+                <p class="control">
+                    @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input is-medium", placeholder = "Електронна адреса" })
+                </p>
+                <p class="control">
+                    @Html.TextBoxFor(x => x.Password, htmlAttributes: new { @class = "input is-medium", placeholder = "Пароль" })
+                </p>
+                <p class="control">
+                    <button class="button is-info is-medium is-fullwidth">Зареєструватись</button>
+                </p>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+

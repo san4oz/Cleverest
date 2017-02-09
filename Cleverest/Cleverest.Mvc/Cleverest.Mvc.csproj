@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AccountApi.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="App_Start\Autofac\AutofacConfig.cs" />
     <Compile Include="App_Start\AutoMapper\AutoMapperConfig.cs" />
@@ -110,7 +111,10 @@
     <Compile Include="App_Start\Routes\AdminAreaRegistration.cs" />
     <Compile Include="App_Start\Routes\BaseAreaRegistrator.cs" />
     <Compile Include="App_Start\Routes\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AccountController.cs" />
+    <Compile Include="ViewModels\AccountRegisterViewModel.cs" />
+    <Compile Include="ViewModels\Admin\AccountListViewModel.cs" />
     <Compile Include="Controllers\Admin\GalleryController.cs" />
     <Compile Include="Controllers\Admin\GameController.cs" />
     <Compile Include="Controllers\Admin\HomeController.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopupModel.cs" />
   </ItemGroup>
   <ItemGroup>

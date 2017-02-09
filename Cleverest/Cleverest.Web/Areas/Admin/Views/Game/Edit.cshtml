@@ -6,8 +6,6 @@
 
 
 <div id="editGamePage">
-    @Shared.PageHeader("Edit", "You are editing a game")
-
     @using (Html.BeginForm("Edit", "Game", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

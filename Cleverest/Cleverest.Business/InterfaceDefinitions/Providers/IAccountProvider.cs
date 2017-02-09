@@ -9,5 +9,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
 {
     public interface IAccountProvider : IBaseProvider<Account>
     {
+        Account GetByEmail(string email);
     }
 }

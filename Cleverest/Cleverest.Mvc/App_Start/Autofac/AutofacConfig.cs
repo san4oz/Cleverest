@@ -15,6 +15,7 @@ using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.DataProvider.Providers;
 using Cleverest.Business.InterfaceDefinitions.Providers;
 using AutoMapper;
+using Cleverest.Mvc.Api;
 
 namespace Cleverest.App_Start.Autofac
 {
@@ -36,6 +37,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<MapperConfiguration>().SingleInstance();
             RegisterProviders(builder);
             RegisterManagers(builder);
+            RegisterApis(builder);
         }
 
         private static void RegisterProviders(ContainerBuilder builder)
@@ -43,6 +45,11 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<GameProvider>().As<IGameProvider>();
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();
+        }
+
+        private static void RegisterApis(ContainerBuilder builder)
+        {
+            builder.RegisterType<AccountApi>().SingleInstance();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)

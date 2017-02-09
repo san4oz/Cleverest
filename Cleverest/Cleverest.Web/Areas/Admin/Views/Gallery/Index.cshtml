@@ -1,21 +1,27 @@
 ﻿@model Cleverest.Mvc.ViewModels.Admin.GalleryViewModel
 
 
-<div id="gameGalleryPage">
-    
-    @Html.DropDownListFor(model => model.SelectedGameId, Model.GamesIds, htmlAttributes: new { id = "gameSelector" })
+<div id="gameGalleryPage">   
+    <div class="control is-grouped">
+        <p class="control">
+            <span class="select">
+                @Html.DropDownListFor(model => model.SelectedGameId, Model.GamesIds, htmlAttributes: new { id = "gameSelector" })
+            </span>
+        </p>
 
-    <button class="btn btn-danger right" data-url="@Url.Action("Delete", "Gallery")" id="deletePhotosBtn" disabled>Видалити</button>
+        <p class="control">
+            <button class="button is-danger" data-url="@Url.Action("Delete", "Gallery")" id="deletePhotosBtn" disabled>Видалити</button>
+        </p>
+    </div>
 
     <div class="game-photos">
         @Html.Partial("_Photos", Model)
     </div>
 </div>
 
-@section SecondWell
-{
-    @Html.Partial("_PhotoUpload")
-}
+
+@Html.Partial("_PhotoUpload")
+
 
 @section Scripts
 {

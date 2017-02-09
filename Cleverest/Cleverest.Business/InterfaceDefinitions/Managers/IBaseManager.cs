@@ -17,5 +17,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
         T Get(string id);
 
         IList<T> All();
+
+        IList<T> GetByIdList(List<string> ids);
     }
 }

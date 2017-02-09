@@ -8,6 +8,8 @@ namespace Cleverest.Business.Entities
 {
     public class Account : Entity
     {
+        public virtual string Email { get; set; }
+
         public virtual string Name { get; set; }
 
         public virtual string TeamId { get; set; }
