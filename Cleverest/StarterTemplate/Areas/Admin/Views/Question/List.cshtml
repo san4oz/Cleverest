@@ -42,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.RoundNo)
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
+                    <a href="@Url.Action("Edit", new { id = item.Id, GameId = item.GameId, RoundNo = item.RoundNo })">Edit</a> |
                     <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
                 </td>
             </tr>

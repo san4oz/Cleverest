@@ -36,6 +36,7 @@
                     @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 <td>
+                    <a href="@Url.Action("Create", "Question", new { GameId = item.Id })">Create questions</a> |
                     <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
                     <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
                 </td>

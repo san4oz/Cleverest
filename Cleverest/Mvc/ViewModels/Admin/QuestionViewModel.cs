@@ -13,13 +13,17 @@ namespace Cleverest.Mvc.ViewModels.Admin
 {
     public class QuestionViewModel : BaseViewModel, IMapFrom<Questions>
     {
+        
+        [MaxLength(1000)]
         [Required]
         public string Question { get; set; }
 
+        [MaxLength(1000)]
+        [Required]
         public string Answer { get; set; }
 
         [Required]
-        public int GameId { get; set; }
+        public string GameId { get; set; }
 
         [Required]
         public int RoundNo { get; set; }
@@ -27,5 +31,6 @@ namespace Cleverest.Mvc.ViewModels.Admin
         public HttpPostedFileBase Image { get; set; }
 
         public HttpPostedFileBase Song { get; set; }
+
     }
 }

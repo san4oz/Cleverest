@@ -1,9 +1,7 @@
-create table Questions(
-	Id varchar(100) not null primary key,
-	Question varchar(1000) not null,
-	Answer varchar(1000) null,
-	GameId nvarchar(100) not null,
-	RoundNo int not null,
-	ImageUrl varchar(300) null,
-	SongUrl varchar(300) null
+create table Games(
+	Id nvarchar(100) not null primary key,
+	Title nvarchar(250) not null,
+	GameDate datetime null,
+	Location nvarchar(150) null,
+	ImageUrl nvarchar(300) null
 )

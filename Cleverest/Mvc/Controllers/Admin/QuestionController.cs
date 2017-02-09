@@ -16,39 +16,45 @@ namespace Cleverest.Mvc.Controllers.Admin
     {
         public ActionResult List()
         {
-            var question = Site.Managers.Question.All();
+            var questions = Site.Managers.Question.All();
 
-            var list = Mapper.Map<IList<Questions>, IList<QuestionViewModel>>(question);
+            var list = Mapper.Map<IList<Questions>, IList<QuestionViewModel>>(questions);
 
             return View(list);
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create(string GameId, int RoundNo = 1)
         {
-            var viewModel = new QuestionViewModel();
+            if (RoundNo == 8)
+                return RedirectToAction("List", "Question");
+            var viewModel = new List<QuestionViewModel>();
+            var model = new QuestionViewModel();
+            var questionCount = (RoundNo == 7) ? 10 : 7;
+            for (int i = 0; i < questionCount; i++)
+            {
+                model.RoundNo = RoundNo;
+                model.GameId = GameId;
+                viewModel.Add(model);
+            }
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Add(QuestionViewModel questionModel)
+        public ActionResult Create(List<QuestionViewModel> questionViewModel)
         {
             if (!ModelState.IsValid)
-                return View(questionModel);
-
-            FileHelper.Save(questionModel.Image, FileHelper.GetFilePath(questionModel.Image, SiteConstants.AppSettings.ImageFolderPath));
-            FileHelper.Save(questionModel.Song, FileHelper.GetFilePath(questionModel.Song, SiteConstants.AppSettings.SongFolderPath));
-
-            var question = Mapper.Map<QuestionViewModel, Questions>(questionModel);
-            question.ImageUrl = FileHelper.GetFileRelativePath(questionModel.Image, SiteConstants.AppSettings.ImageFolderPath);
-            question.SongUrl = FileHelper.GetFileRelativePath(questionModel.Song, SiteConstants.AppSettings.SongFolderPath);
-            Site.Managers.Question.Create(question);
-
-            return RedirectToAction("List", "Question");
+                return View(questionViewModel);
+            foreach (var model in questionViewModel)
+            {
+                var question = Mapper.Map<QuestionViewModel, Questions>(model);
+                Site.Managers.Question.Create(question);
+            }
+            return RedirectToAction("Create", "Question", new { GameID = questionViewModel[0].GameId, RoundNo = questionViewModel[0].RoundNo + 1 });
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id, string GameId, int RoundNo)
         {
             if (string.IsNullOrEmpty(id))
                 return HttpNotFound();
@@ -58,7 +64,6 @@ namespace Cleverest.Mvc.Controllers.Admin
                 return HttpNotFound();
 
             var questionModel = Mapper.Map<Questions, QuestionViewModel>(question);
-
             return View(questionModel);
         }
 
@@ -67,11 +72,8 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             if (!ModelState.IsValid)
                 return View(questionModel);
-    
-            FileHelper.Save(questionModel.Image, FileHelper.GetFilePath(questionModel.Image, SiteConstants.AppSettings.ImageFolderPath));
 
             var question = Mapper.Map<QuestionViewModel, Questions>(questionModel);
-            question.ImageUrl = FileHelper.GetFileRelativePath(questionModel.Image, SiteConstants.AppSettings.ImageFolderPath);
             Site.Managers.Question.Update(question);
 
             return RedirectToAction("List", "Question");

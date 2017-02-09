@@ -16,29 +16,10 @@
                 @using (Html.BeginForm("Edit", "Question", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
                 {
                     @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.GameId)
+                    @Html.HiddenFor(x => x.RoundNo)
                     @RenderField(x => x.Question)
                     @RenderField(x => x.Answer)
-
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.GameId)
-                        <input type="text" name="GameId" id="GameId" />
-                        @Html.ValidationMessageFor(x => x.GameId)
-                    </div>
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.RoundNo)
-                        <input type="number" name="RoundNo" id="RoundNo" />
-                        @Html.ValidationMessageFor(x => x.RoundNo)
-                    </div>
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.Image)
-                        <input type="file" name="Image" id="Image" />
-                        @Html.ValidationMessageFor(x => x.Image)
-                    </div>
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.Song)
-                        <input type="file" name="Song" id="Song" />
-                        @Html.ValidationMessageFor(x => x.Song)
-                    </div>
                     <input type="submit" value="Submit" />
                 }
             </div>

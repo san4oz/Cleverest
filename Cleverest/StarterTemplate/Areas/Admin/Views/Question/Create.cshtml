@@ -1,0 +1,47 @@
+﻿@model List<Cleverest.Mvc.ViewModels.Admin.QuestionViewModel>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="createQuestionPage">
+    @Shared.PageHeader("Create", "You are creating a question")
+
+    @using (Html.BeginForm("Create", "Question", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="span12">
+
+                @using (Html.BeginForm("Create", "Question", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {                    
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div>
+                            <span>@(i + 1)</span>
+                            <div class="form-row">
+                                @Html.LabelFor(x => x[i].Question)
+                                @Html.TextAreaFor(x => x[i].Question)
+                                @Html.ValidationMessageFor(x => x[i].Question)
+                            </div>
+                            <div class="form-row">
+                                @Html.LabelFor(x => x[i].Answer)
+                                @Html.TextAreaFor(x => x[i].Answer)
+                                @Html.ValidationMessageFor(x => x[i].Answer)
+                            </div>
+                            @Html.HiddenFor(x => x[i].RoundNo)
+                            @Html.HiddenFor(x => x[i].GameId)
+                        </div>
+                    }
+
+                    <input type="submit" value="Submit" />
+                }
+            </div>
+
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back", "List")
+    </div>
+</div>

@@ -15,7 +15,7 @@ namespace Cleverest.Business.Managers
         {
             Provider.Update(entity.Id, entityToUpdate =>
             {
-                entityToUpdate.Question = entityToUpdate.Question;
+                entityToUpdate.Question = entity.Question;
                 entityToUpdate.Answer = entity.Answer;
                 entityToUpdate.GameId = entity.GameId;
                 entityToUpdate.RoundNo = entity.RoundNo;
