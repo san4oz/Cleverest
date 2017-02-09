@@ -48,6 +48,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,6 +135,7 @@
     <Content Include="Content\Scripts\Libs\jquery.carousel.js" />
     <Content Include="Content\Scripts\Libs\jquery-3.1.1.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.fileupload.js" />
+    <Content Include="Content\Scripts\Libs\jquery.validate.unobstrusive.js" />
     <Content Include="Content\Scripts\Popup.js" />
     <Content Include="Content\Scripts\Site.js" />
     <Content Include="Content\Scripts\Libs\bootstrap.js" />
@@ -150,6 +155,9 @@
     <Content Include="Areas\Admin\Views\Game\Create.cshtml" />
     <Content Include="Content\Scripts\.DS_Store" />
     <Content Include="App_Code\Shared.cshtml" />
+    <None Include="Content\Scripts\Libs\jquery.validate-vsdoc.js" />
+    <Content Include="Content\Scripts\Libs\jquery.validate.js" />
+    <Content Include="Content\Scripts\Libs\jquery.validate.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -200,7 +208,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>

@@ -16,6 +16,8 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Libs/bootstrap.js")
                 .Include("~/Content/Scripts/Libs/jquery-ui.js")
                 .Include("~/Content/Scripts/Libs/jquery.carousel.js")
+                .Include("~/Content/Scripts/Libs/jquery.validate.js")
+                .Include("~/Content/Scripts/Libs/jquery.validate.unobstrusive.js")
                 .Include("~/Content/Scripts/Site.js")
                 .Include("~/Content/Scripts/Popup.js"));
 

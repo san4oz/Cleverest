@@ -4,11 +4,13 @@
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     <p class="control">
-        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input", placeholder = "Електронна почта", type = "Email" })
+        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input", placeholder = "Електронна почта", type = "email" })
+        @Html.ValidationMessageFor(x => x.Email)
     </p>
     <div class="control is-grouped">
         <p class="control is-expanded">
             @Html.TextBoxFor(x => x.Password, htmlAttributes: new { @class = "input", placeholder = "Пароль", type = "password" })
+            @Html.ValidationMessageFor(x => x.Password)
         </p>
         <p class="control">
             <button class="button is-success">Увійти</button>
@@ -17,6 +19,7 @@
     <div class="control">
         <label class="checkbox">
             @Html.CheckBoxFor(x => x.RememberMe)
+            @Html.ValidationMessageFor(x => x.RememberMe)
             <span>Запам'ятати мене</span>
         </label>
     </div>            
