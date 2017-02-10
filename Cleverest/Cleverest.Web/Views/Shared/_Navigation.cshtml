@@ -12,6 +12,7 @@
                 <span class="nav-item">Привіт, @User.Identity.Name  :)</span>
             </div>
             <div class="nav-right">
+                @NavigationNode("MyProfile", "Мій профіль")
                 @NavigationNode("Logout", "Вихід")
             </div>
         }           
@@ -23,5 +24,5 @@
 {
     var url = Url.RouteUrl(routeName);
     bool isActive = HttpContext.Current.Request.Url.AbsolutePath.Equals(url, StringComparison.InvariantCultureIgnoreCase);
-    <a class="nav-item is-tab @(isActive ? "is-active" : "")" href="@Url.RouteUrl(routeName)">@nodeTitle</a>
+        <a class="nav-item is-tab @(isActive ? "is-active" : "")" href="@Url.RouteUrl(routeName)">@nodeTitle</a>
 }

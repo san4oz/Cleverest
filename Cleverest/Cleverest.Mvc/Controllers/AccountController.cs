@@ -15,6 +15,13 @@ namespace Cleverest.Mvc.Controllers
     public class AccountController : Controller
     {
         [HttpGet]
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()
         {

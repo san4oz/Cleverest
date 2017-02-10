@@ -21,7 +21,7 @@ namespace Cleverest.Mvc.Controllers
 
             var viewModel = new GamesListViewModel()
             {
-                Games = Mapper.Map<IList<Game>, IList<GameViewModel>>(games),
+                Games = Mapper.Map<IList<Game>, IList<GameViewModel>>(games).OrderBy(m => m.GameDate).ToList(),
                 Page = page,
                 PageSize = PageSize
             };
@@ -30,7 +30,7 @@ namespace Cleverest.Mvc.Controllers
             {
                 game.ImageUrl = GameGalleryHelper.GetLogoFrontendPath(game.Id);
             });
-                
+                            
             return View(viewModel);
         }
         

@@ -1,6 +1,6 @@
 ﻿@model Cleverest.Mvc.ViewModels.GameDetailsViewModel
 @{
-    ViewBag.Title = "Games";
+    bool isFutureGame = Model.GameDate >= DateTime.Now;
 }
 
 
@@ -43,7 +43,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Дата проведення:  <b> @Model.GameDate.ToString("dd:MM:yyyy")</b>
+                            Дата проведення:  <b> @Model.GameDate.ToString("dd/MM/yyyy")</b>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -51,6 +51,14 @@
                             Час проведення:  <b> 20:00</b>
                         </div>
                     </div>
+                    @if (isFutureGame)
+                    {
+                        <div class="card-footer">
+                            <a href="" class="is-fullwidth button is-success">
+                                Зареєструватись
+                            </a>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="column">
@@ -69,7 +77,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @for (int i = 0; i < 5; i++)
+                       @for (int i = 0; i < 25; i++)
                        {
                         <tr>
                             <td>@i</td>

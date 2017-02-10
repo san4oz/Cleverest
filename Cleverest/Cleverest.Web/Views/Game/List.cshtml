@@ -1,6 +1,12 @@
-﻿@model Cleverest.Mvc.ViewModels.GamesListViewModel
+﻿@using Cleverest.Mvc.ViewModels
+@model GamesListViewModel
 @{
     ViewBag.Title = "Games";
+}
+
+@{ 
+    var pastGames = Model.Games.Where(g => g.GameDate <= DateTime.Now).OrderBy(g => g.GameDate);
+    var futureGames = Model.Games.Except(pastGames).OrderBy(g => g.GameDate).Take(2);
 }
 
 
@@ -9,31 +15,48 @@
 
 <section class="section">
     <div class="container">
+        <h1 class="title">Заплановані ігри</h1>          
         <div class="columns is-multiline">
-            @foreach (var game in Model.Games)
+           
+            @if (futureGames.Any())
             {
-                <div class="column is-quarter">
-                    <div class="card">
-                        <a href="@Url.Action("Details", "Game", new { id = game.Id })">
-                            <div class="card-image">
-                                <figure class="is-4by3">
-                                    <img src="@game.ImageUrl" />
-                                </figure>
-                            </div>
-                        </a>
-                        <div class="card-content">
-                            <div class="content">
-                                <span class="tag is-medium is-info">@game.Title</span>
-                                <span class="tag is-medium is-success">@game.Location</span>
-                            </div>
-                        </div>
-                    </div>               
-                </div>
+                foreach(var game in futureGames)
+                {
+                    @GameCard(game)
+                }
+            }
+        </div>
+        <h1 class="title">Минулі ігри</h1>        
+        <div class="columns is-multiline">
+            @foreach (var game in pastGames)
+            {
+               @GameCard(game)
             }
         </div>
     </div>
 </section>
 
+@helper GameCard(GameViewModel game)
+{
+    <div class="column is-quarter">
+        <div class="card">
+            <a href="@Url.Action("Details", "Game", new { id = game.Id })">
+                <div class="card-image">
+                    <figure class="is-4by3">
+                        <img src="@game.ImageUrl" />
+                    </figure>
+                </div>
+            </a>
+            <div class="card-content">
+                <div class="content">
+                    <span class="tag is-small is-info">@game.Title</span>
+                    <span class="tag is-small is-success">@game.Location</span>
+                    <span class="tag is-small is-warning">@game.GameDate.ToString("dd/MM/yyyy")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 
  

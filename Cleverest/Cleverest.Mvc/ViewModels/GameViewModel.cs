@@ -17,5 +17,7 @@ namespace Cleverest.Mvc.ViewModels
         public string Location { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public DateTime GameDate { get; set; }
     }
 }

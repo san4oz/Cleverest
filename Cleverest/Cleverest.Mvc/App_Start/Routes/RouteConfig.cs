@@ -15,6 +15,12 @@ namespace Cleverest.App_Start
             AreaRegistration.RegisterAllAreas();
 
             routes.MapRoute(
+name: "MyProfile",
+url: "account/profile",
+defaults: new { controller = "Account", action = "MyProfile" }
+);
+
+            routes.MapRoute(
     name: "GameDetails",
     url: "game/details/{id}",
     defaults: new { controller = "Game", action = "Details" }
