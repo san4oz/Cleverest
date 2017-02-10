@@ -1,50 +1,66 @@
 ﻿@model Cleverest.Mvc.ViewModels.Admin.GameViewModel
 
-<div id="createGamePage">
+<p class="content">
+    <h1 class="title has-text-centered">Створення гри</h1>
+</p>
 
-        <div class="row">
-            <div class="span12">
-                @using (Html.BeginForm("Create", "Game", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-                {
-                    @RenderField(x => x.Title)
-                    @RenderField(x => x.Location)
+<section class="section" id="createGamePage">
 
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.GameDate)
-                        <input type="text" class="datepicker" name="GameDate" id="GameDate" />
-                        @*@Html.TextBoxFor(x => x.GameDate, htmlAttributes: new { @class = "datepicker" })*@
-                        @Html.ValidationMessageFor(x => x.GameDate)
+    <div class="container">
+        @using (Html.BeginForm("Create", "Game", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal form", enctype = "multipart/form-data" }))
+            {
+            <div class="columns">
+                <div class="column is-10">
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Title, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Title, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.Title)
+                        </div>
                     </div>
-                    <div class="form-row">
-                        @Html.LabelFor(x => x.Image)
-                        <input type="file" name="Image" id="Image" />
-                        @Html.ValidationMessageFor(x => x.Image)
+
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Location, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Location, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.Location)
+                        </div>
                     </div>
 
-                    <input type="submit" value="Submit" />
-                }
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.GameDate, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.GameDate, htmlAttributes: new { @class = "input datepicker", @type = "text" })
+                            @Html.ValidationMessageFor(x => x.GameDate)
+                        </div>
+                    </div>
+
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Image, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Image, htmlAttributes: new { @type = "file" })
+                            @Html.ValidationMessageFor(x => x.Image)
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2">
+                    <p class="control">
+                        <button class="button is-success is-large" type="submit">Створити</button>
+                    </p>
+                    <p class="control">
+                        <a href="@Url.Action("List")" class="button is-warning is-large">Відмініти</a>
+                    </p>
+                </div>
             </div>
-
-        </div>
-
-    <div>
-        @Html.ActionLink("Back", "List")
-    </div>
-</div>
-
-@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.GameViewModel, string>> expression, bool required = false)
-{
-    <div class="form-row">
-        @if (required)
-        {
-            @Html.LabelFor(expression, new { @class = "required-field" })
         }
-        else
-        {
-            @Html.LabelFor(expression)
-        }
-        @Html.EditorFor(expression)
-        @Html.ValidationMessageFor(expression)
     </div>
-}
 
+</section>

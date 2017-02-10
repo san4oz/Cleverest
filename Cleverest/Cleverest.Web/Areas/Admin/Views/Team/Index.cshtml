@@ -6,7 +6,7 @@
 
 <div id="gameListPage">
     <p>
-        @Html.ActionLink("Create new team", "Create")
+        <a href="@Url.Action("Create")" class="button is-success">Створити нову команду</a>
     </p>
     <table class="table">
         <tr>
@@ -35,8 +35,8 @@
                     @Html.DisplayFor(modelItem => item.SocialNetworkLink)
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id })">Edit</a> |
-                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Delete</a>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="button is-info">Редагувати</a> |
+                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn button is-danger">Видалити</a>
                 </td>
             </tr>
         }

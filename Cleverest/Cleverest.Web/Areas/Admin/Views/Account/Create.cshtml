@@ -4,46 +4,67 @@
     ViewBag.Title = "Create";
 }
 
-<div id="createTeamPage">
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="span12">
-            @using (Html.BeginForm("Create", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-            {
-                @RenderField(x => x.Name)
-                @RenderField(x => x.Email)
-                @RenderField(x => x.Password)
-                
-                <div class="form-row">
-                    @Html.LabelFor(x => x.TeamId)
-                    @Html.DropDownListFor(x => x.TeamId, Model.TeamsIds)
+
+<p class="content">
+    <h1 class="title has-text-centered">Створення аккаунту</h1>
+</p>
+
+<section class="section" id="createAccountPage">
+    <div class="container">
+        @using (Html.BeginForm("Create", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            <div class="columns">
+                <div class="column is-10">
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                    </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </div>
+                    </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "label", @type = "email" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Password, htmlAttributes: new { @class = "input", @type = "password" })
+                            @Html.ValidationMessageFor(x => x.Password)
+                        </div>
+                    </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.TeamId, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            <span class="select">
+                                @Html.DropDownListFor(x => x.TeamId, Model.TeamsIds)
+                            </span>
+                            @Html.ValidationMessageFor(x => x.TeamId)
+                        </div>
+                    </div>
                 </div>
-
-                <input type="submit" value="Submit" />
-            }
-        </div>
-
-    </div>
-
-
-    <div>
-        @Html.ActionLink("Назад", "Index")
-    </div>
-</div>
-
-@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.AccountViewModel, string>> expression, bool required = false)
-{
-    <div class="form-row">
-        @if (required)
-        {
-            @Html.LabelFor(expression, new { @class = "required-field" })
+                <div class="column">
+                    <p class="control">
+                        <button class="button is-success is-large" type="submit">Створити</button>
+                    </p>
+                    <p class="control">
+                        <a href="@Url.Action("Index")" class="button is-warning is-large">Відмініти</a>
+                    </p>
+                </div>
+            </div>
         }
-        else
-        {
-            @Html.LabelFor(expression)
-        }
-        @Html.EditorFor(expression)
-        @Html.ValidationMessageFor(expression)
     </div>
-}
+</section>
+
 

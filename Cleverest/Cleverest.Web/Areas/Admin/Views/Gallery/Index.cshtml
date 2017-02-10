@@ -2,17 +2,23 @@
 
 
 <div id="gameGalleryPage">   
+
     <div class="control is-grouped">
-        <p class="control">
+        <p class="control is-horizontal">
+            <div class="control-label">
+                @Html.LabelFor(x => x.SelectedGameId, htmlAttributes: new { @class = "label" })
+            </div>
             <span class="select">
                 @Html.DropDownListFor(model => model.SelectedGameId, Model.GamesIds, htmlAttributes: new { id = "gameSelector" })
             </span>
         </p>
 
         <p class="control">
-            <button class="button is-danger" data-url="@Url.Action("Delete", "Gallery")" id="deletePhotosBtn" disabled>Видалити</button>
+            <button class="button is-danger" data-url="@Url.Action("Delete", "Gallery")" id="deletePhotosBtn" disabled>Видалити фото</button>
         </p>
     </div>
+
+
 
     <div class="game-photos">
         @Html.Partial("_Photos", Model)

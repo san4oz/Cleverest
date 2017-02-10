@@ -1,44 +1,52 @@
 ﻿@model Cleverest.Mvc.ViewModels.Admin.TeamViewModel
 
-@{
-    ViewBag.Title = "Edit";
-}
+<p class="content">
+    <h1 class="title has-text-centered">Редагування команди</h1>
+</p>
 
-
-<div id="editGamePage">
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="span12">
-            @using (Html.BeginForm("Edit", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-            {
-                @Html.HiddenFor(x => x.Id)
-                @RenderField(x => x.Name)
-                @RenderField(x => x.PhoneNumber)
-                @RenderField(x => x.SocialNetworkLink)
-
-                <input type="submit" value="Submit" />
-            }
-        </div>
-
-    </div>
-
-    <div>
-        @Html.ActionLink("Назад", "Index")
-    </div>
-</div>
-
-@helper RenderField(System.Linq.Expressions.Expression<Func<Cleverest.Mvc.ViewModels.Admin.TeamViewModel, string>> expression, bool required = false)
-{
-    <div class="form-row">
-        @if (required)
+<section class="section" id="editTeamPage">
+    <div class="container">
+        @using (Html.BeginForm("Edit", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
         {
-            @Html.LabelFor(expression, new { @class = "required-field" })
+            <div class="columns">
+                <div class="column is-10">
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                    </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.PhoneNumber, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.PhoneNumber, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.PhoneNumber)
+                        </div>
+                    </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.SocialNetworkLink)
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <p class="control">
+                        <button class="button is-success is-large" type="submit">Зберегти</button>
+                    </p>
+                    <p class="control">
+                        <a href="@Url.Action("Index")" class="button is-warning is-large">Відмініти</a>
+                    </p>
+                </div>
+            </div>
         }
-        else
-        {
-            @Html.LabelFor(expression)
-        }
-        @Html.EditorFor(expression)
-        @Html.ValidationMessageFor(expression)
     </div>
-}
+</section>

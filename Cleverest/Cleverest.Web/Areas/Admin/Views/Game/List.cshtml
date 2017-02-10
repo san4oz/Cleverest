@@ -6,9 +6,10 @@
 
 <div id="gameListPage">
 
-    <p>
-        @Html.ActionLink("Створити нову гру", "Create")
+    <p class="control">
+        <a class="button is-success" href="@Url.Action("Create")">Створити нову гру</a>
     </p>
+
     <table class="table">
         <tr>
             <th>
@@ -36,8 +37,8 @@
                     @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id })">Редагувати</a> |
-                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn">Видалити</a>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="button is-info">Редагувати</a> |
+                    <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn button is-danger">Видалити</a>
                 </td>
             </tr>
         }

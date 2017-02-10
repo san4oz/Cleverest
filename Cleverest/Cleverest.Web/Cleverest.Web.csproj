@@ -145,6 +145,7 @@
     <Content Include="Content\Scripts\Libs\jquery.flexslider.js" />
     <Content Include="Content\Scripts\Libs\jquery.prettyPhoto.js" />
     <Content Include="Content\Scripts\Libs\jquery.quicksand.js" />
+    <Content Include="Content\Scripts\Validation.js" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -209,9 +210,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Cleverest.Business\Cleverest.Business.csproj">
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>

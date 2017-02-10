@@ -33,7 +33,7 @@ namespace Cleverest.Mvc.App_Start.Routes
 
             MapRoute(
               name: "EditAccount",
-              url: "account/edit",
+              url: "account/edit/{id}",
               defaults: new { controller = "Account", action = "Edit" }
               );
 
@@ -51,7 +51,7 @@ namespace Cleverest.Mvc.App_Start.Routes
 
             MapRoute(
               name: "EditTeam",
-              url: "team/edit",
+              url: "team/edit/id",
               defaults: new { controller = "Team", action = "Edit" }
               );
 
@@ -79,6 +79,11 @@ namespace Cleverest.Mvc.App_Start.Routes
           defaults: new { controller = "Gallery", action = "Index" }
       );
 
+            MapRoute(
+          name: "EditGame",
+          url: "game/edit/{id}",
+          defaults: new { controller = "Game", action = "Edit" }
+      );
 
             MapRoute(
            name: "CreateGame",

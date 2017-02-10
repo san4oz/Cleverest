@@ -51,8 +51,17 @@ namespace Cleverest.Business.Managers
             if (oldAccount == null)
                 return false;
 
-            accountToUpdate.Password = oldAccount.Password;
-            accountToUpdate.PasswordSalt = oldAccount.PasswordSalt;
+            if(string.IsNullOrEmpty(accountToUpdate.Password))
+            {
+                accountToUpdate.Password = oldAccount.Password;
+                accountToUpdate.PasswordSalt = oldAccount.PasswordSalt;
+            }
+            else if(!accountToUpdate.Password.Equals(oldAccount.Password))
+            {
+                var crypto = new CryptoHelper();
+                accountToUpdate.PasswordSalt = crypto.GenerateSalt();
+                accountToUpdate.Password = crypto.GenerateHash(accountToUpdate.Password, accountToUpdate.PasswordSalt);
+            }
 
             return true;
         }       

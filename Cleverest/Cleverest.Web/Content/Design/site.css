@@ -10,3 +10,7 @@ body > .container{
 .field-validation-error span{
     color: red;
 }
+
+.ui-dialog-titlebar{
+    display: none;
+}

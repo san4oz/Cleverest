@@ -2,6 +2,8 @@
 
 <section class="section">
     <div class="container">
+        @if(Model.Photos.Any())
+        { 
         <div class="columns is-multiline">
             @foreach (var photo in Model.Photos)
             {
@@ -16,6 +18,16 @@
                 </div>
             }
         </div>
+        }
+        else
+        {
+            <div class="notification is-info">
+                <h1 class="title">
+                    Фото відсутні. Будь ласка, додайте їх куристуючись кнопками знизу.
+                </h1>
+            </div>
+        }
+     
     </div>
 </section>
 

@@ -19,6 +19,7 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Libs/jquery.validate.js")
                 .Include("~/Content/Scripts/Libs/jquery.validate.unobstrusive.js")
                 .Include("~/Content/Scripts/Site.js")
+                .Include("~/Content/Scripts/Validation.js")
                 .Include("~/Content/Scripts/Popup.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery.fileupload")

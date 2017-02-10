@@ -18,7 +18,7 @@ Site.UI = (function () {
                     showOtherMonths: true,
                     selectOtherMonths: true,
                     showButtonPanel: true,
-                    defaultDate: new Date()
+                    defaultDate: new Date(),
                 });
             });
         }
@@ -36,9 +36,11 @@ Site.UI = (function () {
         }
     };
 
+
     return ui;
 })();
 
 $(function () {
+    Site.Validation.Extensions.BindExtensions();
     Site.UI.Init();
 });

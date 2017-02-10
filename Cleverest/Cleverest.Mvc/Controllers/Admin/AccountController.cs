@@ -56,6 +56,12 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(viewModel);
 
+            if (Site.Api.Account.AccountExists(viewModel.Email))
+            {
+                ModelState.AddModelError("Email", "Користувач з такою поштою вже існує.");
+                return View(viewModel);
+            }
+
             var model = Mapper.Map<AccountViewModel, Account>(viewModel);
            
             Site.Managers.Account.Create(model);

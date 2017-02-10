@@ -14,13 +14,16 @@ namespace Cleverest.Mvc.ViewModels.Admin
     {
         [Required]
         [MaxLength(250)]
+        [Display(Name = "Назва")]
         public string Name { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Номер телефону")]
         public string PhoneNumber { get; set; }
 
         [Required]
+        [Display(Name = "Посилання на соц. мережу")]
         public string SocialNetworkLink { get; set; }
     }
 }
