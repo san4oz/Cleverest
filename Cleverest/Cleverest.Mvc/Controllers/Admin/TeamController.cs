@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
+using Cleverest.Mvc.Helpers;
 using Cleverest.Mvc.ViewModels.Admin;
 
 namespace Cleverest.Mvc.Controllers.Admin
@@ -35,6 +36,9 @@ namespace Cleverest.Mvc.Controllers.Admin
                 return View(viewModel);
 
             var model = Mapper.Map<TeamViewModel, Team>(viewModel);
+
+#warning danger. I'm not sure this functionality is the right choise
+            model.OwnerId = WebSecurity.User.Id;
 
             Site.Managers.Team.Create(model);
 

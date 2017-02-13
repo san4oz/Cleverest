@@ -42,18 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\AccountTeamPermission.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountManager.cs" />
+    <Compile Include="InterfaceDefinitions\Managers\IAccountTeamPermissionManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IGameManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\ITeamManager.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IAccountProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Providers\IAccountTeamPermissionProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\ITeamProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
     <Compile Include="Managers\AccountManager.cs" />
+    <Compile Include="Managers\AccountTeamPermissionManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\TeamManager.cs" />

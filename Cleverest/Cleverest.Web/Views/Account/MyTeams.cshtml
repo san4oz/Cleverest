@@ -1,0 +1,30 @@
+﻿@model List<Cleverest.Mvc.ViewModels.TeamViewModel>
+
+@{ 
+    Layout = "../Shared/_ProfileLayout.cshtml";
+}
+
+<div class="columns">
+    <div class="column is-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Кількість гравців</th>
+                </tr>
+            </thead>
+            @foreach (var team in Model)
+            {
+                <tr>
+                    <td>@team.Name</td>
+                    <td>@team.ParticipantsCount</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="column is-4">
+        <p class="control">
+            <a class="button is-success is-medium" href="@Url.Action("CreateTeam", "Account")">Створити команду</a>
+        </p>
+    </div>
+</div>

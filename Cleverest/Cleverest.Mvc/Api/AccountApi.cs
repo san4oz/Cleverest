@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Security;
 using Cleverest.Business.Entities;
 using Cleverest.Core.Security;
+using Cleverest.Mvc.Security;
 
 namespace Cleverest.Mvc.Api
 {
     public class AccountApi
-    {      
+    {
         public Account Authenticate(string email, string password)
         {
             var account = Site.Managers.Account.GetByEmail(email);
@@ -27,6 +31,65 @@ namespace Cleverest.Mvc.Api
         public bool AccountExists(string email)
         {
             return Site.Managers.Account.GetByEmail(email) != null;
+        }
+
+        public bool SetAuthenticationCookie(string email, bool isPersisted)
+        {
+            if (string.IsNullOrEmpty(email))
+                return false;
+
+            var account = Site.Managers.Account.GetByEmail(email);
+            if (account == null)
+                return false;
+
+            try
+            {
+                var serializedModel = new ExtendedPrincipalSerializedModel()
+                {
+                    Name = account.Name,
+                    Email = account.Email,
+                    Id = account.Id
+                };
+                var serializer = new JavaScriptSerializer();
+                var serializedUserData = serializer.Serialize(serializedModel);
+
+                var ticket = new FormsAuthenticationTicket(1, account.Email, DateTime.Now, DateTime.Now.AddHours(8), isPersisted, serializedUserData);
+                var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+
+                HttpContext.Current.Response.Cookies.Add(cookie);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public void ProcessPostAuthenticateRequest()
+        {
+            var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie == null)
+                return;
+
+            try
+            {
+                var ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                var customPrincipalSerializedModel = new JavaScriptSerializer().Deserialize<ExtendedPrincipalSerializedModel>(ticket.UserData);
+                var userToSet = new ExtendedPrincipal(customPrincipalSerializedModel.Email)
+                {
+                    Email = customPrincipalSerializedModel.Email,
+                    Name = customPrincipalSerializedModel.Name,
+                    Id = customPrincipalSerializedModel.Id
+                };
+
+                HttpContext.Current.User = userToSet;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

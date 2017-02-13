@@ -45,11 +45,13 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<GameProvider>().As<IGameProvider>();
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();
+            builder.RegisterType<AccountTeamPermissionProvider>().As<IAccountTeamPermissionProvider>();
         }
 
         private static void RegisterApis(ContainerBuilder builder)
         {
             builder.RegisterType<AccountApi>().SingleInstance();
+            builder.RegisterType<TeamApi>().SingleInstance();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)
@@ -57,6 +59,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<GameManager>().As<IGameManager>();
             builder.RegisterType<TeamManager>().As<ITeamManager>();
             builder.RegisterType<AccountManager>().As<IAccountManager>();
+            builder.RegisterType<AccountTeamPermissionManager>().As<IAccountTeamPermissionManager>();
         }
     }
 }

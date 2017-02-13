@@ -8,6 +8,7 @@ using AutoMapper;
 using Cleverest.Mvc.ViewModels;
 using Cleverest.Business.Entities;
 using System.Web.Security;
+using Cleverest.Mvc.Helpers;
 
 namespace Cleverest.Mvc.Controllers
 {
@@ -17,7 +18,78 @@ namespace Cleverest.Mvc.Controllers
         [HttpGet]
         public ActionResult MyProfile()
         {
-            return View();
+            var account = Site.Managers.Account.GetByEmail(WebSecurity.User.Email);
+            if (account == null)
+                return HttpNotFound();
+
+
+            var viewModel = Mapper.Map<Account, ProfileViewModel>(account);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MyProfile(ProfileViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+
+            if(!viewModel.Email.Equals(WebSecurity.User.Email) && Site.Api.Account.AccountExists(viewModel.Email))
+            {
+                ModelState.AddModelError("Email", "Пробачте. Користувач з такою поштою вже існує.");
+                return View(viewModel);
+            }
+
+            var account = Mapper.Map<ProfileViewModel, Account>(viewModel);
+
+            Site.Managers.Account.Update(account);
+
+            return RedirectToAction("MyProfile");
+        }
+
+        [HttpGet]
+        public ActionResult MyTeams()
+        {
+            var teams = Site.Managers.Team.GetTeamsByAccountId(WebSecurity.User.Id).ToList();
+
+            var teamViewModels = new List<TeamViewModel>();
+
+#warning refactor this piece of shit(write something like object[] GetTeamLookups(string teamId))
+            teams.ForEach(t =>
+            {
+                teamViewModels.Add(new TeamViewModel() { Name = t.Name, ParticipantsCount = Site.Managers.Account.GetAccountsByTeamId(t.Id).Count() });
+            });
+
+            return View(teamViewModels);
+        }
+
+        [HttpGet]
+        public ActionResult CreateTeam()
+        {
+            var viewModel = new TeamViewModel();
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult CreateTeam(TeamViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            if(Site.Api.Team.TeamExists(viewModel.Name))
+            {
+                ModelState.AddModelError("Name", "Пробачте. Команда з такою назвою вже існує.");
+                return View(viewModel);
+            }
+
+            var team = new Team() { Name = viewModel.Name, OwnerId = WebSecurity.User.Id};
+
+            Site.Managers.Team.Create(team);
+
+            return RedirectToAction("MyTeams");
         }
 
 
@@ -47,6 +119,7 @@ namespace Cleverest.Mvc.Controllers
             var model = Mapper.Map<AccountRegisterViewModel, Account>(viewModel);
 
             Site.Managers.Account.Create(model);
+            Site.Api.Account.SetAuthenticationCookie(model.Email, false);
 
             return RedirectToAction("List", "Game");
         }
@@ -73,7 +146,7 @@ namespace Cleverest.Mvc.Controllers
                 return View(viewModel);
             }
 
-            FormsAuthentication.SetAuthCookie(account.Name, viewModel.RememberMe);
+            Site.Api.Account.SetAuthenticationCookie(account.Email, viewModel.RememberMe);
 
             return RedirectToAction("List", "Game");
         }

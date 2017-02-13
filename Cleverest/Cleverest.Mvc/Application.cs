@@ -24,5 +24,10 @@ namespace Cleverest.Mvc
             AutofacConfig.RegisterDependencies();
             AutoMapperConfig.Configure();
         }
+
+        protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            Cleverest.Site.Api.Account.ProcessPostAuthenticateRequest();
+        }
     }
 }

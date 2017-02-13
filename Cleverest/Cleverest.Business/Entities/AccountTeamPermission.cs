@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cleverest.Business.Entities
 {
-    public class Team : Entity
+    public class AccountTeamPermission : Entity
     {
-        public virtual string Name { get; set; }
+        public virtual string AccountId { get; set; }
 
-        public virtual string OwnerId { get; set; }
+        public virtual string TeamId { get; set; }
     }
 }

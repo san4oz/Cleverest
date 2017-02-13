@@ -20,5 +20,21 @@ namespace Cleverest.DataProvider.Providers
                 return criteria.UniqueResult<Account>();
             });
         }
+
+        public IList<Account> GetAccountsByTeamId(string teamId)
+        {
+            return Execute(session =>
+            {
+                Account accountAlias = null;
+
+                return session.QueryOver<Account>(() => accountAlias)
+                    .WithSubquery.WhereAll(ac => ac.Id ==
+                        QueryOver.Of<AccountTeamPermission>()
+                        .Where(atp => atp.TeamId == teamId)
+                        .Select(atp => atp.AccountId)
+                        .As<string>())
+                        .List<Account>().ToList();               
+            });
+        }
     }
 }

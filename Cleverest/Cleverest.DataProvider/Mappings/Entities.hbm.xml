@@ -11,8 +11,7 @@
   <class name="Team" table="Teams">
     <id name="Id" type="string"></id>
     <property name="Name" type="string"/>
-    <property name="PhoneNumber" type="string"/>
-    <property name="SocialNetworkLink" type="string"/>
+    <property name="OwnerId" type="string"/>
   </class>
 
   <class name="Account" table="Accounts">
@@ -20,7 +19,15 @@
     <property name="TeamId" type="string"/>
     <property name="Email" type="string"/>
     <property name="Name" type="string"/>
+    <property name="PhoneNumber" type="string"/>
+    <property name="SocialNetworkLink" type="string"/>
     <property name="Password" type="string"/>
     <property name="PasswordSalt" type="string"/>
+  </class>
+
+  <class name="AccountTeamPermission" table="AccountTeamPermissions">
+    <id name="Id" type="string"></id>
+    <property name="TeamId" type="string"/>
+    <property name="AccountId" type="string"/>
   </class>
 </hibernate-mapping>

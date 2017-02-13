@@ -9,5 +9,8 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
 {
     public interface ITeamProvider : IBaseProvider<Team>
     {
+        IList<Team> GetTeamsByAccountId(string accountId);
+
+        Team GetTeamByName(string teamName);
     }
 }

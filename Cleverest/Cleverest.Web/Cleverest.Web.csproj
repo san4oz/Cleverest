@@ -205,6 +205,8 @@
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
+    <Content Include="Views\Account\MyTeams.cshtml" />
+    <Content Include="Views\Account\CreateTeam.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

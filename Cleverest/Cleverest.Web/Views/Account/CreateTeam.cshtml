@@ -1,0 +1,27 @@
+﻿@model Cleverest.Mvc.ViewModels.TeamViewModel
+
+@{ 
+    Layout = "../Shared/_ProfileLayout.cshtml";
+}
+
+@using (Html.BeginForm("CreateTeam", "Team", FormMethod.Post))
+{
+    <div class="columns">
+        <div class="column is-10">
+            <div class="control is-horizontal">
+                <div class="control-label">
+                    @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "label" })
+                </div>
+                <div class="control">
+                    @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </div>
+        </div>
+        <div class="column is-2">
+            <p class="control">
+                <button class="button is-success is-large" type="submit">Зберегти</button>
+            </p>     
+        </div>
+    </div>
+}

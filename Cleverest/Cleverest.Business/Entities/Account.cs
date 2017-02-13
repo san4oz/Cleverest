@@ -12,6 +12,10 @@ namespace Cleverest.Business.Entities
 
         public virtual string Name { get; set; }
 
+        public virtual string PhoneNumber { get; set; }
+
+        public virtual string SocialNetworkLink { get; set; }
+
         public virtual string TeamId { get; set; }
 
         public virtual string Password { get; set; }

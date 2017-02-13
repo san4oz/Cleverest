@@ -7,10 +7,7 @@ using Cleverest.Business.Entities;
 
 namespace Cleverest.Business.InterfaceDefinitions.Providers
 {
-    public interface IAccountProvider : IBaseProvider<Account>
+    public interface IAccountTeamPermissionProvider : IBaseProvider<AccountTeamPermission>
     {
-        Account GetByEmail(string email);
-
-        IList<Account> GetAccountsByTeamId(string teamId);
     }
 }

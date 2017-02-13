@@ -1,7 +1,58 @@
-﻿@model Cleverest.Mvc.ViewModels.LoginViewModel
+﻿@model Cleverest.Mvc.ViewModels.ProfileViewModel
 
 @{ 
     Layout = "../Shared/_ProfileLayout.cshtml";
 }
 
-123
+<div>
+    @using (Html.BeginForm("MyProfile", "Account", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+        @Html.AntiForgeryToken()
+        <div class="columns">
+            <div class="column is-10">
+                <div class="control is-horizontal">
+                    <div class="control-label">
+                        @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="control">
+                        @Html.TextBoxFor(x => x.Name, htmlAttributes: new { @class = "input" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                </div>
+                <div class="control is-horizontal">
+                    <div class="control-label">
+                        @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="control">
+                        @Html.TextBoxFor(x => x.Email, htmlAttributes: new { @class = "input" })
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                </div>
+                <div class="control is-horizontal">
+                    <div class="control-label">
+                        @Html.LabelFor(x => x.PhoneNumber, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="control">
+                        @Html.TextBoxFor(x => x.PhoneNumber, htmlAttributes: new { @class = "input" })
+                        @Html.ValidationMessageFor(x => x.PhoneNumber)
+                    </div>
+                </div>
+                <div class="control is-horizontal">
+                    <div class="control-label">
+                        @Html.LabelFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="control">
+                        @Html.TextBoxFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "input" })
+                        @Html.ValidationMessageFor(x => x.SocialNetworkLink)
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2">
+                <p class="control">
+                    <button class="button is-success is-large" type="submit">Зберегти</button>
+                </p>             
+            </div>
+        </div>
+    }
+</div>

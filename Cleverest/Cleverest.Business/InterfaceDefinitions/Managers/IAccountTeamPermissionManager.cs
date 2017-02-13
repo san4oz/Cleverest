@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.Entities;
 
-namespace Cleverest.Business.InterfaceDefinitions.Providers
+namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
-    public interface IGameProvider : IBaseProvider<Game>
+    public interface IAccountTeamPermissionManager : IBaseManager<AccountTeamPermission>
     {
-        
     }
 }

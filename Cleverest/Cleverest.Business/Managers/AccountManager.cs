@@ -22,9 +22,16 @@ namespace Cleverest.Business.Managers
                 entityToUpdate.TeamId = entity.TeamId;
                 entityToUpdate.Password = entity.Password;
                 entityToUpdate.PasswordSalt = entityToUpdate.PasswordSalt;
+                entityToUpdate.PhoneNumber = entity.PhoneNumber;
+                entityToUpdate.SocialNetworkLink = entity.SocialNetworkLink;
 
                 TryUpdatePassword(entityToUpdate);
             });
+        }
+
+        public IList<Account> GetAccountsByTeamId(string teamId)
+        {
+            return Provider.GetAccountsByTeamId(teamId);
         }
 
         public Account GetByEmail(string email)

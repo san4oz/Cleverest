@@ -7,9 +7,9 @@
             @NavigationNode("Rules", "Правила")           
         </div>
         @if (User.Identity.IsAuthenticated)
-        {
+        {           
             <div class="nav-center">
-                <span class="nav-item">Привіт, @User.Identity.Name  :)</span>
+                <span class="nav-item">Привіт, @WebSecurity.User.Name  :)</span>
             </div>
             <div class="nav-right">
                 @NavigationNode("MyProfile", "Мій профіль")

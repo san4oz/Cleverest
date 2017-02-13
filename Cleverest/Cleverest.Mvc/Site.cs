@@ -29,6 +29,11 @@ namespace Cleverest
             {
                 get { return Get<IAccountManager>(); }
             }
+
+            public static IAccountTeamPermissionManager AccountTeamPermission
+            {
+                get { return Get<IAccountTeamPermissionManager>(); }
+            }
         }
 
         public static class Api
@@ -36,6 +41,11 @@ namespace Cleverest
             public static AccountApi Account
             {
                 get { return Get<AccountApi>(); }
+            }
+
+            public static TeamApi Team
+            {
+                get { return Get<TeamApi>(); }
             }
         }
 
