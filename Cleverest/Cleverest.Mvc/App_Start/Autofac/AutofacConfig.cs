@@ -16,6 +16,9 @@ using Cleverest.DataProvider.Providers;
 using Cleverest.Business.InterfaceDefinitions.Providers;
 using AutoMapper;
 using Cleverest.Mvc.Api;
+using Cleverest.Search;
+using Cleverest.Business.InterfaceDefinitions.Search;
+using Cleverest.Business.Tasks;
 
 namespace Cleverest.App_Start.Autofac
 {
@@ -38,6 +41,13 @@ namespace Cleverest.App_Start.Autofac
             RegisterProviders(builder);
             RegisterManagers(builder);
             RegisterApis(builder);
+            RegisterSearchManagers(builder);
+            RegisterTasks(builder);
+        }
+
+        private static void RegisterTasks(ContainerBuilder builder)
+        {
+            builder.RegisterType<TeamIndexTask>().As<ITask>();
         }
 
         private static void RegisterProviders(ContainerBuilder builder)
@@ -60,6 +70,11 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<TeamManager>().As<ITeamManager>();
             builder.RegisterType<AccountManager>().As<IAccountManager>();
             builder.RegisterType<AccountTeamPermissionManager>().As<IAccountTeamPermissionManager>();
+        }
+
+        private static void RegisterSearchManagers(ContainerBuilder builder)
+        {
+            builder.RegisterType<TeamSearchManager>().As<ITeamSearchManager>();
         }
     }
 }

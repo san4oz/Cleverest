@@ -92,6 +92,11 @@ namespace Cleverest.Mvc.Controllers
             return RedirectToAction("MyTeams");
         }
 
+        [HttpGet]
+        public ActionResult MyInvitations()
+        {
+            return View();
+        }
 
         [HttpGet]
         [AllowAnonymous]
@@ -157,6 +162,14 @@ namespace Cleverest.Mvc.Controllers
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Search(string query)
+        {
+            var teams = Site.Managers.Team.Search(query);
+
+            return Json(teams);
         }
     }
 }

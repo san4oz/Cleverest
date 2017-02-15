@@ -7,14 +7,20 @@ using System.Web.Mvc;
 using Cleverest.Business.Entities;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Business.InterfaceDefinitions.Providers;
+using Cleverest.Business.InterfaceDefinitions.Search;
 
 namespace Cleverest.Business.Managers
 {
     public class TeamManager : BaseManager<Team, ITeamProvider>, ITeamManager
     {
-        public AccountTeamPermissionManager AccountTeamPermissionManager
+        protected IAccountTeamPermissionManager AccountTeamPermissionManager { get; set; }
+
+        protected ITeamSearchManager TeamSearchManager { get; set; }
+
+        public TeamManager(IAccountTeamPermissionManager permissionsManager, ITeamSearchManager searchManager)
         {
-            get { return new AccountTeamPermissionManager(); }
+            this.AccountTeamPermissionManager = permissionsManager;
+            this.TeamSearchManager = searchManager;
         }
 
         public override void Update(Team entity)
@@ -41,6 +47,11 @@ namespace Cleverest.Business.Managers
             base.Create(entity);
 
             AccountTeamPermissionManager.Create(new AccountTeamPermission() { AccountId = entity.OwnerId, TeamId = entity.Id });
+        }
+
+        public IList<Team> Search(string query)
+        {
+            return TeamSearchManager.Search(query);    
         }
     }
 }

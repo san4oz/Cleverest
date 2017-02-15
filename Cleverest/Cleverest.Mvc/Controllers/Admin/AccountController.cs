@@ -110,7 +110,6 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (string.IsNullOrEmpty(id))
                 return Json(false);
 
-
             var account = Site.Managers.Account.Get(id);
             if (account == null)
                 return Json(false);
@@ -119,5 +118,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             return Json(true);
         }
+
+
     }
 }

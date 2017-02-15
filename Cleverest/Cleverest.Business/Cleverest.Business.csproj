@@ -56,12 +56,16 @@
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\ITeamProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Search\IBaseSearchManager.cs" />
+    <Compile Include="InterfaceDefinitions\Search\ITeamSearchManager.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\AccountTeamPermissionManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\TeamManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\TeamIndexTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cleverest.Core\Cleverest.Core.csproj">
@@ -69,6 +73,7 @@
       <Name>Cleverest.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

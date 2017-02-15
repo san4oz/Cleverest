@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Cleverest.Mvc.ViewModels.Admin.TaskViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="taskListPage">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(x => x.Name)
+        </th>
+        <th>
+          
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href="@Url.Action("Run")">Run</a>
+            </td>
+        </tr>
+    }
+
+</table>
+</div>

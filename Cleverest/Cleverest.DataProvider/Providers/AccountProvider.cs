@@ -28,12 +28,11 @@ namespace Cleverest.DataProvider.Providers
                 Account accountAlias = null;
 
                 return session.QueryOver<Account>(() => accountAlias)
-                    .WithSubquery.WhereAll(ac => ac.Id ==
-                        QueryOver.Of<AccountTeamPermission>()
-                        .Where(atp => atp.TeamId == teamId)
-                        .Select(atp => atp.AccountId)
-                        .As<string>())
-                        .List<Account>().ToList();               
+                    .WithSubquery.WhereProperty(ac => ac.Id)
+                    .In(QueryOver.Of<AccountTeamPermission>()
+                    .Where(atp => atp.TeamId == teamId)
+                    .Select(atp => atp.AccountId))
+                    .List();             
             });
         }
     }

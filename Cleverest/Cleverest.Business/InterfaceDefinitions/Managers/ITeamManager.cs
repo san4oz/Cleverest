@@ -12,5 +12,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
         IList<Team> GetTeamsByAccountId(string accountId);
 
         Team GetTeamByName(string teamName);
+
+        IList<Team> Search(string query);
     }
 }

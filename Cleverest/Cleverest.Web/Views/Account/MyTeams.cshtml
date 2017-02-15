@@ -4,27 +4,42 @@
     Layout = "../Shared/_ProfileLayout.cshtml";
 }
 
-<div class="columns">
-    <div class="column is-8">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Назва</th>
-                    <th>Кількість гравців</th>
-                </tr>
-            </thead>
-            @foreach (var team in Model)
-            {
-                <tr>
-                    <td>@team.Name</td>
-                    <td>@team.ParticipantsCount</td>
-                </tr>
-            }
-        </table>
+<div id="myTeamsPage">
+    <div class="columns">
+        <div class="column">
+            <div class="control">
+                <input type="text" id="search" data-url="@Url.Action("Search", "Account")" class="input is-large" placeholder="Почніть писати назву команду..." />
+            </div>
+
+            <div id="searchSuggestions">
+
+            </div>
+        </div>
     </div>
-    <div class="column is-4">
-        <p class="control">
-            <a class="button is-success is-medium" href="@Url.Action("CreateTeam", "Account")">Створити команду</a>
-        </p>
+
+    <div class="columns">
+        <div class="column is-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Кількість гравців</th>
+                    </tr>
+                </thead>
+                @foreach (var team in Model)
+            {
+                    <tr>
+                        <td>@team.Name</td>
+                        <td>@team.ParticipantsCount</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="column is-4">
+            <p class="control">
+                <a class="button is-success is-medium" href="@Url.Action("CreateTeam", "Account")">Створити команду</a>
+            </p>
+        </div>
     </div>
 </div>
+
