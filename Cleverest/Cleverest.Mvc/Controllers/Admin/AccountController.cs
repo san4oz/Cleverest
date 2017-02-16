@@ -62,7 +62,7 @@ namespace Cleverest.Mvc.Controllers.Admin
                 return View(viewModel);
             }
 
-            var model = Mapper.Map<AccountViewModel, Account>(viewModel);
+            var model = Site.Services.Mapper.Map<AccountViewModel, Account>(viewModel);
            
             Site.Managers.Account.Create(model);
 
@@ -79,7 +79,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (account == null)
                 return HttpNotFound();
 
-            var viewModel = Mapper.Map<Account, AccountViewModel>(account);
+            var viewModel = Site.Services.Mapper.Map<Account, AccountViewModel>(account);
 
             var teams = Site.Managers.Team.All().ToList();
 
@@ -97,7 +97,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            var model = Mapper.Map<AccountViewModel, Account>(viewModel);
+            var model = Site.Services.Mapper.Map<AccountViewModel, Account>(viewModel);
 
             Site.Managers.Account.Update(model);
 

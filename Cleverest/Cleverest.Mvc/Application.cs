@@ -22,7 +22,6 @@ namespace Cleverest.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterDependencies();
-            AutoMapperConfig.Configure();
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)

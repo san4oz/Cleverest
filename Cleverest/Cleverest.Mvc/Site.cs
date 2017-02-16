@@ -49,6 +49,14 @@ namespace Cleverest
             }
         }
 
+        public static class Services
+        {
+            public static IMapper Mapper
+            {
+                get { return DependencyResolver.Current.GetService<IMapper>(); }
+            }
+        }
+
         #region private
         private static T Get<T>()
         {

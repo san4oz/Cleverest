@@ -23,7 +23,7 @@ namespace Cleverest.Mvc.Controllers
                 return HttpNotFound();
 
 
-            var viewModel = Mapper.Map<Account, ProfileViewModel>(account);
+            var viewModel = Site.Services.Mapper.Map<Account, ProfileViewModel>(account);
 
             return View(viewModel);
         }
@@ -42,7 +42,7 @@ namespace Cleverest.Mvc.Controllers
                 return View(viewModel);
             }
 
-            var account = Mapper.Map<ProfileViewModel, Account>(viewModel);
+            var account = Site.Services.Mapper.Map<ProfileViewModel, Account>(viewModel);
 
             Site.Managers.Account.Update(account);
 
@@ -121,7 +121,7 @@ namespace Cleverest.Mvc.Controllers
                 return View(viewModel);
             }
 
-            var model = Mapper.Map<AccountRegisterViewModel, Account>(viewModel);
+            var model = Site.Services.Mapper.Map<AccountRegisterViewModel, Account>(viewModel);
 
             Site.Managers.Account.Create(model);
             Site.Api.Account.SetAuthenticationCookie(model.Email, false);

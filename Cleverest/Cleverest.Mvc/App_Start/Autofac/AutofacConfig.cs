@@ -30,9 +30,16 @@ namespace Cleverest.App_Start.Autofac
 
             builder.RegisterControllers(typeof(Application).Assembly);
 
+            RegisterInstances(builder);
+
             RegisterTypes(builder);
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
+        }
+
+        private static void RegisterInstances(ContainerBuilder builder)
+        {
+            RegisterMapperInstance(builder);
         }
 
         private static void RegisterTypes(ContainerBuilder builder)
@@ -43,6 +50,11 @@ namespace Cleverest.App_Start.Autofac
             RegisterApis(builder);
             RegisterSearchManagers(builder);
             RegisterTasks(builder);
+        }
+
+        private static void RegisterMapperInstance(ContainerBuilder builder)
+        {
+            builder.RegisterInstance<IMapper>(AutoMapper.AutoMapperConfig.GetMapper());
         }
 
         private static void RegisterTasks(ContainerBuilder builder)

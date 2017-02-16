@@ -21,7 +21,7 @@ namespace Cleverest.Mvc.Controllers
 
             var viewModel = new GamesListViewModel()
             {
-                Games = Mapper.Map<IList<Game>, IList<GameViewModel>>(games).OrderBy(m => m.GameDate).ToList(),
+                Games = Site.Services.Mapper.Map<IList<Game>, IList<GameViewModel>>(games).OrderBy(m => m.GameDate).ToList(),
                 Page = page,
                 PageSize = PageSize
             };

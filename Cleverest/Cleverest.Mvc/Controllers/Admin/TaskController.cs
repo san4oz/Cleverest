@@ -16,7 +16,7 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             var tasks = DependencyResolver.Current.GetServices<ITask>().ToList();
 
-            var viewModels = Mapper.Map<IList<ITask>, IList<TaskViewModel>>(tasks);
+            var viewModels = Site.Services.Mapper.Map<IList<ITask>, IList<TaskViewModel>>(tasks);
 
             return View(viewModels);
         }

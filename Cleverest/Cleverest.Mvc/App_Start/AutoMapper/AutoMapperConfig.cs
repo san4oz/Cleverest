@@ -12,18 +12,27 @@ namespace Cleverest.App_Start.AutoMapper
 {
     public static class AutoMapperConfig
     {
-        public static void Configure()
+        public static IMapper GetMapper()
+        {
+            return new MapperConfiguration(x => 
+            {
+                Configure(x);
+            })
+            .CreateMapper();
+        }
+
+        public static void Configure(IMapperConfiguration mapperConfiguration)
         {
             var types = Assembly.GetExecutingAssembly().GetExportedTypes();
 
-            LoadStandartMappings(types);
+            LoadStandartMappings(mapperConfiguration, types);
 
-            LoadCustomMappings(types);
+            LoadCustomMappings(mapperConfiguration, types);
         }
 
         #region private
 
-        private static void LoadStandartMappings(IEnumerable<Type> types)
+        private static void LoadStandartMappings(IMapperConfiguration mapperConfiguration, IEnumerable<Type> types)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -39,12 +48,12 @@ namespace Cleverest.App_Start.AutoMapper
 
             foreach(var map in maps)
             {                
-                Mapper.CreateMap(map.Source, map.Destination);
-                Mapper.CreateMap(map.Destination, map.Source);
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
+                mapperConfiguration.CreateMap(map.Destination, map.Source);
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types)
+        private static void LoadCustomMappings(IMapperConfiguration mapperConfiguration, IEnumerable<Type> types)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces() 
@@ -55,7 +64,7 @@ namespace Cleverest.App_Start.AutoMapper
 
             foreach(var map in maps)
             {
-                map.CreateMappings(Mapper.Configuration);
+                map.CreateMappings(mapperConfiguration);
             }
         }
 

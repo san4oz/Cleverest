@@ -20,7 +20,7 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             var games = Site.Managers.Game.All();
 
-            var list = Mapper.Map<IList<Game>, IList<GameViewModel>>(games);
+            var list = Site.Services.Mapper.Map<IList<Game>, IList<GameViewModel>>(games);
 
             return View(list);
         }
@@ -40,7 +40,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
 
-            var game = Mapper.Map<GameViewModel, Game>(gameModel);
+            var game = Site.Services.Mapper.Map<GameViewModel, Game>(gameModel);
             Site.Managers.Game.Create(game);
 
             return RedirectToAction("List", "Game");
@@ -56,7 +56,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (game == null)
                 return HttpNotFound();
 
-            var gameModel = Mapper.Map<Game, GameViewModel>(game);
+            var gameModel = Site.Services.Mapper.Map<Game, GameViewModel>(game);
 
             return View(gameModel);
         }
@@ -69,7 +69,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
 
-            var game = Mapper.Map<GameViewModel, Game>(gameModel);
+            var game = Site.Services.Mapper.Map<GameViewModel, Game>(gameModel);
             Site.Managers.Game.Update(game);
 
             return RedirectToAction("List", "Game");

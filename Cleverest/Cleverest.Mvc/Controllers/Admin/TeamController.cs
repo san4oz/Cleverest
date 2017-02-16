@@ -18,7 +18,7 @@ namespace Cleverest.Mvc.Controllers.Admin
         {
             var team = Site.Managers.Team.All().ToList();
 
-            var viewModel = Mapper.Map<List<Team>, List<TeamViewModel>>(team);
+            var viewModel = Site.Services.Mapper.Map<List<Team>, List<TeamViewModel>>(team);
 
             return View(viewModel);
         }
@@ -35,7 +35,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            var model = Mapper.Map<TeamViewModel, Team>(viewModel);
+            var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
 
 #warning danger. I'm not sure this functionality is the right choise
             model.OwnerId = WebSecurity.User.Id;
@@ -55,7 +55,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (team == null)
                 return HttpNotFound();
 
-            var viewModel = Mapper.Map<Team, TeamViewModel>(team);
+            var viewModel = Site.Services.Mapper.Map<Team, TeamViewModel>(team);
 
             return View(viewModel);
         }
@@ -66,7 +66,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            var model = Mapper.Map<TeamViewModel, Team>(viewModel);
+            var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
 
             Site.Managers.Team.Update(model);
 
