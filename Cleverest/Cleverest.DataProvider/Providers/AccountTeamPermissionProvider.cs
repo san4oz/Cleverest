@@ -10,5 +10,6 @@ namespace Cleverest.DataProvider.Providers
 {
     public class AccountTeamPermissionProvider : BaseProvider<AccountTeamPermission>, IAccountTeamPermissionProvider
     {
+       
     }
 }

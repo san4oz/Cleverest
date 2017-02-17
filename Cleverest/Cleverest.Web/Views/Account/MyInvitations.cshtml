@@ -1,4 +1,47 @@
-﻿@{ 
+﻿@model IList<Cleverest.Mvc.ViewModels.AccountTeamRequestViewModel>
+@{
     Layout = "../Shared/_ProfileLayout.cshtml";
+
+    var joinRequests = Model.Where(x => x.Type == Cleverest.Business.Entities.AccountTeamRequestType.Join);
+    var inviteRequests = Model.Where(x => x.Type == Cleverest.Business.Entities.AccountTeamRequestType.Invite);
 }
+
+
+
+<div id="#myRequestsPage">
+    @foreach (var request in joinRequests)
+    {
+        <article class="media request" data-id="@request.Id" data-url="@Url.Action("ProcessRequest", "Account")">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>@request.FromAccount.Name</strong>
+                        <br>
+                        Привіт. Я хочу приєднатись до твоєї команди(<strong>@request.Team.Name</strong>)
+                    </p>
+                </div>
+            </div>
+            <div class="media-right request-action">
+                <button class="button is-success approve">
+                    <span class="icon">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </button>
+                <button class="button is-danger">
+                    <span class="icon">
+                        <i class="fa fa-ban"></i>
+                    </span>
+                </button>
+            </div>
+        </article>
+    }
+</div>
+
+
+
 

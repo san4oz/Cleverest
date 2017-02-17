@@ -2,7 +2,7 @@
 
 
 <div class="box">
-    <article class="media">
+    <article class="media suggestion-details">
         <div class="media-left">
             <figure class="image is-64x64">
                 <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
@@ -14,10 +14,13 @@
                     <strong>@Model.Name</strong>
                     <br>
                     <p class="control">
-                        <a class="button is-info" href="@Url.Action("AddTeam")">Надіслати запит на вступ</a>
+                        <a class="button is-info" data-id="@Model.Id" data-url="@Url.Action("SendJoinRequest", "Account")" id="sendJoinRequest" href="@Url.Action("AddTeam")">Надіслати запит на вступ</a>
                     </p>
-                </p>
+                </p>               
             </div>
         </div>
+    </article>
+    <article class="suggestion-sent" style="display: none;">
+            Запит на вступ до команди був відправлений.
     </article>
 </div>

@@ -68,6 +68,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();
             builder.RegisterType<AccountTeamPermissionProvider>().As<IAccountTeamPermissionProvider>();
+            builder.RegisterType<AccountTeamRequestProvider>().As<IAccountTeamRequestProvider>();
         }
 
         private static void RegisterApis(ContainerBuilder builder)
@@ -82,6 +83,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<TeamManager>().As<ITeamManager>();
             builder.RegisterType<AccountManager>().As<IAccountManager>();
             builder.RegisterType<AccountTeamPermissionManager>().As<IAccountTeamPermissionManager>();
+            builder.RegisterType<AccountTeamRequestManager>().As<IAccountTeamRequestManager>();
         }
 
         private static void RegisterSearchManagers(ContainerBuilder builder)

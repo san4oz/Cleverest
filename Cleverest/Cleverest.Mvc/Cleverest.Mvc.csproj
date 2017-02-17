@@ -121,6 +121,7 @@
     <Compile Include="Security\ExtendedPrincipalSerializedModel.cs" />
     <Compile Include="Security\IExtendedPrincipal.cs" />
     <Compile Include="ViewModels\AccountRegisterViewModel.cs" />
+    <Compile Include="ViewModels\AccountTeamRequestViewModel.cs" />
     <Compile Include="ViewModels\Admin\AccountListViewModel.cs" />
     <Compile Include="Controllers\Admin\GalleryController.cs" />
     <Compile Include="Controllers\Admin\GameController.cs" />

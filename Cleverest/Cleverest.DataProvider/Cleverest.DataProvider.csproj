@@ -55,6 +55,7 @@
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="Providers\GameProvider.cs" />
     <Compile Include="Providers\TeamProvider.cs" />
+    <Compile Include="Providers\AccountTeamRequestProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

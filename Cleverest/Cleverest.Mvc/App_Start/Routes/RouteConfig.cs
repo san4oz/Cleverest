@@ -14,6 +14,20 @@ namespace Cleverest.App_Start
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             AreaRegistration.RegisterAllAreas();
 
+            
+
+                 routes.MapRoute(
+name: "ProcessRequest",
+url: "account/teams/processrequest",
+defaults: new { controller = "Account", action = "ProcessRequest" }
+);
+
+            routes.MapRoute(
+name: "SendJoinRequest",
+url: "account/teams/sendjoinrequest",
+defaults: new { controller = "Account", action = "SendJoinRequest" }
+);
+
             routes.MapRoute(
 name: "SuggestionDetails",
 url: "account/teams/suggestiondetails",

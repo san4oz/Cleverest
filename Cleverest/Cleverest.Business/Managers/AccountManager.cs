@@ -71,6 +71,6 @@ namespace Cleverest.Business.Managers
             }
 
             return true;
-        }       
+        }
     }
 }

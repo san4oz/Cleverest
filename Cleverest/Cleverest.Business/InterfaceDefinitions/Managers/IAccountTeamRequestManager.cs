@@ -7,12 +7,10 @@ using Cleverest.Business.Entities;
 
 namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
-    public interface ITeamManager : IBaseManager<Team>
+    public interface IAccountTeamRequestManager : IBaseManager<AccountTeamRequest>
     {
-        IList<Team> GetTeamsByAccountId(string accountId);
+        IList<AccountTeamRequest> GetRequestsByReceiverId(string receiverId);
 
-        Team GetTeamByName(string teamName);
-
-        IList<Team> Search(string query); 
+        void ProcessRequest(string requestId, bool isApproved);
     }
 }

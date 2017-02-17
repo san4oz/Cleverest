@@ -136,6 +136,7 @@
     <Content Include="Content\Scripts\Libs\jquery-3.1.1.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.fileupload.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.unobstrusive.js" />
+    <Content Include="Content\Scripts\page.account.requests.js" />
     <Content Include="Content\Scripts\page.account.teams.js" />
     <Content Include="Content\Scripts\Popup.js" />
     <Content Include="Content\Scripts\Site.js" />

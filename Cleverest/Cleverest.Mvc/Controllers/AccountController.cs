@@ -95,7 +95,28 @@ namespace Cleverest.Mvc.Controllers
         [HttpGet]
         public ActionResult MyInvitations()
         {
-            return View();
+            var result = new List<AccountTeamRequestViewModel>();
+
+            var requests = Site.Managers.AccountTeamRequest.GetRequestsByReceiverId(WebSecurity.User.Id).ToList();
+            requests.ForEach(request =>
+            {
+                var viewModel = new AccountTeamRequestViewModel();
+                viewModel.FromAccount = Site.Services.Mapper.Map<Account, ProfileViewModel>(Site.Managers.Account.Get(request.FromId));
+                viewModel.Team = Site.Services.Mapper.Map<Team, ViewModels.TeamViewModel>(Site.Managers.Team.Get(request.TeamId));
+                viewModel.Type = request.RequestType;
+                viewModel.Id = request.Id;
+
+                result.Add(viewModel);
+            });
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult ProcessRequest(string requestId, bool approved)
+        {
+            Site.Managers.AccountTeamRequest.ProcessRequest(requestId, approved);
+            return Json(true);
         }
 
         [HttpGet]
@@ -191,6 +212,30 @@ namespace Cleverest.Mvc.Controllers
             }
 
             return PartialView("_SuggestionDetails", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SendJoinRequest(string teamId)
+        {
+            if (string.IsNullOrEmpty(teamId))
+                return Json(false);
+
+
+            var teamToJoin = Site.Managers.Team.Get(teamId);
+            if (teamToJoin == null)
+                return Json(false);
+
+            var request = new AccountTeamRequest() { FromId = WebSecurity.User.Id, ToId = teamToJoin.OwnerId, RequestType = AccountTeamRequestType.Join, TeamId = teamToJoin.Id };
+
+            Site.Managers.AccountTeamRequest.Create(request);
+
+            return Json(true);
+        }
+
+        [HttpPost]
+        public ActionResult SendInviteRequest()
+        {
+            return View();
         }
     }
 }

@@ -30,4 +30,12 @@
     <property name="TeamId" type="string"/>
     <property name="AccountId" type="string"/>
   </class>
+
+  <class name="AccountTeamRequest" table="AccountTeamRequests">
+    <id name="Id" type="string"></id>
+    <property type="string" name="FromId"/>
+    <property type="string" name="ToId"/>
+    <property type="string" name="TeamId"/>
+    <property type="int" name="RequestType"/>
+  </class>
 </hibernate-mapping>

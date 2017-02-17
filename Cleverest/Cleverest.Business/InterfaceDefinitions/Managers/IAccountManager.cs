@@ -11,6 +11,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
     {
         Account GetByEmail(string email);
 
-        IList<Account> GetAccountsByTeamId(string teamId);       
+        IList<Account> GetAccountsByTeamId(string teamId);      
     }
 }
