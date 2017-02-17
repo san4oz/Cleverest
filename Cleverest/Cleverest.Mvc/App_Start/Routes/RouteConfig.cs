@@ -15,6 +15,12 @@ namespace Cleverest.App_Start
             AreaRegistration.RegisterAllAreas();
 
             routes.MapRoute(
+name: "SuggestionDetails",
+url: "account/teams/suggestiondetails",
+defaults: new { controller = "Account", action = "SuggestionDetails" }
+);
+
+            routes.MapRoute(
 name: "TeamSearch",
 url: "account/teams/search",
 defaults: new { controller = "Account", action = "Search" }

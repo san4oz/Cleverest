@@ -210,6 +210,8 @@
     <Content Include="Views\Account\MyTeams.cshtml" />
     <Content Include="Views\Account\CreateTeam.cshtml" />
     <Content Include="Views\Account\MyInvitations.cshtml" />
+    <Content Include="Views\Account\_TeamSuggestions.cshtml" />
+    <Content Include="Views\Account\_SuggestionDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

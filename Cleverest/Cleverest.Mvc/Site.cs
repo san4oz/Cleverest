@@ -53,7 +53,7 @@ namespace Cleverest
         {
             public static IMapper Mapper
             {
-                get { return DependencyResolver.Current.GetService<IMapper>(); }
+                get { return Get<IMapper>(); }
             }
         }
 

@@ -169,7 +169,28 @@ namespace Cleverest.Mvc.Controllers
         {
             var teams = Site.Managers.Team.Search(query);
 
-            return Json(teams);
+            var myTeams = Site.Managers.Team.GetTeamsByAccountId(WebSecurity.User.Id);
+
+            var result = teams.Except(myTeams).ToList();
+
+            var viewModel = Site.Services.Mapper.Map<IList<Team>, IList<TeamViewModel>>(result);
+
+            return PartialView("_TeamSuggestions", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SuggestionDetails(string id)
+        {
+            var team = Site.Managers.Team.Get(id);
+
+            TeamViewModel viewModel = null;
+
+            if(team != null)
+            {
+                viewModel = Site.Services.Mapper.Map<Team, TeamViewModel>(team);
+            }
+
+            return PartialView("_SuggestionDetails", viewModel);
         }
     }
 }

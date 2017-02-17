@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.Entities;
+using Cleverest.Business.Entities.Search;
 
 namespace Cleverest.Business.InterfaceDefinitions.Search
 {
@@ -14,6 +15,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Search
 
         void AddToIndex(IList<T> entities);
 
-        List<T> Search(string query);
+        SearchResponse Search(SearchRequest request);
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.Business.Entities;
+using Cleverest.Business.Entities.Search;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Business.InterfaceDefinitions.Providers;
 using Cleverest.Business.InterfaceDefinitions.Search;
@@ -51,7 +52,14 @@ namespace Cleverest.Business.Managers
 
         public IList<Team> Search(string query)
         {
-            return TeamSearchManager.Search(query);    
+            var request = new SearchRequest();
+            request.Keywords = query;
+
+            var response = TeamSearchManager.Search(request);
+
+            var ids = response.Results.Select(r => r.Id).ToList();
+
+            return GetByIdList(ids);
         }
     }
 }

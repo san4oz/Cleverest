@@ -10,7 +10,7 @@ using Cleverest.ViewModels;
 
 namespace Cleverest.Mvc.ViewModels
 {
-    public class TeamViewModel : BaseViewModel
+    public class TeamViewModel : BaseViewModel, IMapFrom<Team>
     {
         [Display(Name = "Назва")]
         public string Name { get; set; }

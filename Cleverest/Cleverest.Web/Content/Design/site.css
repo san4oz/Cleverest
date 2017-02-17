@@ -14,3 +14,23 @@ body > .container{
 .ui-dialog-titlebar{
     display: none;
 }
+
+.suggestion{
+    height: 40px;
+    line-height: 40px;
+    box-shadow: 0 0px 0px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1);
+    max-height: 40px;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+}
+
+.suggestion:hover{
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
+.suggestion-wrapper{
+    border: 1px solid lightgrey;
+}

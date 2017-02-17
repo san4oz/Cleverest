@@ -45,6 +45,11 @@
     <Compile Include="Entities\AccountTeamPermission.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\Search\IndexConstants.cs" />
+    <Compile Include="Entities\Search\IndexInfo.cs" />
+    <Compile Include="Entities\Search\SearchRequest.cs" />
+    <Compile Include="Entities\Search\SearchResponse.cs" />
+    <Compile Include="Entities\Search\SearchResult.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountTeamPermissionManager.cs" />

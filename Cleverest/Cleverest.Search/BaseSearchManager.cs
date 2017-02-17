@@ -13,16 +13,17 @@ using Lucene.Net.Index;
 using Lucene.Net.Store;
 using Lucene.Net.Search;
 using Lucene.Net.QueryParsers;
+using Lucene.Net.Analysis;
+using Cleverest.Business.Entities.Search;
+using Cleverest.Search.Persisters;
 
 namespace Cleverest.Search
 {
     public abstract class BaseSearchManager<T> : IBaseSearchManager<T>
-        where T : Entity
+        where T : Entity, new()
     {
         private string _luceneDir = Path.Combine(HttpContext.Current.Request.PhysicalApplicationPath, "../index");
         private FSDirectory DirectoryTemp;
-
-        public abstract List<string> SearchableFields { get; }
 
         private Lucene.Net.Util.Version Version = Lucene.Net.Util.Version.LUCENE_30;
 
@@ -30,22 +31,26 @@ namespace Cleverest.Search
         {
             get
             {
-                if (DirectoryTemp == null) DirectoryTemp = FSDirectory.Open(new DirectoryInfo(_luceneDir));
+                if (DirectoryTemp == null)
+                    DirectoryTemp = FSDirectory.Open(new DirectoryInfo(_luceneDir));
+
                 if (IndexWriter.IsLocked(DirectoryTemp))
                     IndexWriter.Unlock(DirectoryTemp);
+
                 var lockFilePath = Path.Combine(_luceneDir, "write.lock");
                 if (File.Exists(lockFilePath))
                     File.Delete(lockFilePath);
+
                 return DirectoryTemp;
             }
         }
 
-        public void AddToIndex(T entity)
+        public virtual void AddToIndex(T entity)
         {
             AddToIndex(new[] { entity });
         }
 
-        public void AddToIndex(IList<T> entities)
+        public virtual void AddToIndex(IList<T> entities)
         {
             using (var analyzer = new StandardAnalyzer(Version))
             {
@@ -63,32 +68,117 @@ namespace Cleverest.Search
             }
         }
 
-        public abstract Document CreateDocument(T entity);
-
-        public abstract T GetData(Document doc);
-
-        public virtual List<T> Search(string term)
+        protected virtual Document CreateDocument(T entity)
         {
+            var document = new Document();
+            document.Add(new Field(IndexConstants.Id, entity.Id, Field.Store.YES, Field.Index.NO));
+
+            var keywords = ExtractKeywords(entity, GetIndexInfo());
+            document.Add(new Field(IndexConstants.Keywords, keywords, Field.Store.YES, Field.Index.ANALYZED));
+
+            return document;
+        }
+
+        protected virtual string ExtractKeywords(T entity, IndexInfo info)
+        {
+            var sb = new StringBuilder();
+            var persister = new IndexFieldPersisterBase();
+
+            foreach(var field in info.KeywordFields)
+            {
+                var value = persister.ExtractKeywords(entity, field);
+                sb.Append(value);
+                sb.Append(' ');
+            }
+
+            return sb.ToString();
+        }
+       
+        public virtual SearchResponse Search(SearchRequest request)
+        {
+            if (string.IsNullOrEmpty(request.Keywords))
+                return new SearchResponse();
+
+            var response = new SearchResponse();
+
             using (var searcher = new IndexSearcher(Directory, false))
             {
                 var hitsLimit = short.MaxValue;
 
                 using (var analyzer = new StandardAnalyzer(Version))
                 {
-                    var parser = new QueryParser(Version, SearchableFields.First(), analyzer);
-                    var query = parser.Parse(term);
-                    var hits = searcher.Search(query, hitsLimit).ScoreDocs;
+                    var searchField = request.SearchField ?? IndexConstants.Keywords;
 
-                    var result = GetList(hits.Select(h => searcher.Doc(h.Doc)).ToList());
+                    var query = ParseQuery(request.Keywords, searchField, analyzer, true);
+                    var hits = searcher.Search(query, hitsLimit).ScoreDocs.ToList();
 
-                    return result.ToList();              
+                    var searchResults = CreateSearchResults(searcher, hits, request);
+
+                    response.Results.AddRange(searchResults);
+
+                    return response;
                 }
             }
         }
 
-        public IList<T> GetList(IList<Document> hits)
+        protected virtual IList<SearchResult> CreateSearchResults(IndexSearcher searcher, List<ScoreDoc> hits, SearchRequest request)
         {
-            return hits.Select(hit => GetData(hit)).ToList();
+            var results = new List<SearchResult>();
+
+            var indexInfo = GetIndexInfo();
+
+            var persister = new IndexFieldPersisterBase();
+
+            var fieldsToRead = indexInfo.KeywordFields.Where(f => request.Fields.Contains(f)).ToList();
+            fieldsToRead.Add(IndexConstants.Id);
+
+            foreach(var hit in hits)
+            {
+                var doc = GetDocument(searcher, hit.Doc, fieldsToRead.ToArray());
+                var result = new SearchResult() { Id = doc.Get(IndexConstants.Id), Score = hit.Score };
+                result.Fields = fieldsToRead.ToDictionary(key => key, val => persister.ParseRawValue(doc.Get(val)));
+                results.Add(result);
+            }
+
+            return results;
         }
+
+        protected Document GetDocument(IndexSearcher searcher, int n)
+        {
+            return GetDocument(searcher, n, new string[] { IndexConstants.Id });
+        }
+
+        protected Document GetDocument(IndexSearcher searcher, int n, string[] fields)
+        {
+            return searcher.Doc(n, new MapFieldSelector(fields));
+        }
+
+        protected virtual Query ParseQuery(string query, string searchField, Analyzer analyzer, bool matchAllKeywords = false)
+        {
+            if (string.IsNullOrEmpty(query))
+                return null;
+
+            var parser = new QueryParser(Version, searchField, analyzer);
+            InitQueryParserOperator(parser, true);
+            query = AddWildCards(parser, query, matchAllKeywords);
+
+            return parser.Parse(query);
+        }
+
+        protected virtual string AddWildCards(QueryParser parser, string query, bool matchAllKeywords)
+        {
+            query = matchAllKeywords ? SearchUtils.MakeFullWildcardQuery(query) : SearchUtils.MakeTrailingWildCardQuery(query);
+            query = SearchUtils.MakeTrailingWildCardQuery(query);
+            parser.AllowLeadingWildcard = true;
+            return query;
+        }
+
+        protected virtual void InitQueryParserOperator(QueryParser queryParser, bool matchAllKeywords)
+        {
+            var op = matchAllKeywords ? QueryParser.Operator.OR : QueryParser.Operator.AND;
+            queryParser.DefaultOperator = op;
+        }     
+
+        protected abstract IndexInfo GetIndexInfo();
     }
 }

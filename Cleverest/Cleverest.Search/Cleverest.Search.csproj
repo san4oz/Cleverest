@@ -50,9 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IndexConstants.cs" />
+    <Compile Include="Persisters\IndexFieldPersisterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseSearchManager.cs" />
+    <Compile Include="QueryParserbool.cs" />
+    <Compile Include="SearchTokenizer.cs" />
+    <Compile Include="SearchUtils.cs" />
     <Compile Include="TeamSearchManager.cs" />
   </ItemGroup>
   <ItemGroup>
