@@ -12,6 +12,8 @@ namespace Cleverest.Business.Entities
 
         public virtual string OwnerId { get; set; }
 
+        public virtual string Description { get; set; }
+
         public override bool Equals(object obj)
         {
             var team = obj as Team;

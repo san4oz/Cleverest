@@ -14,80 +14,84 @@ namespace Cleverest.App_Start
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             AreaRegistration.RegisterAllAreas();
 
-            
-
-                 routes.MapRoute(
-name: "ProcessRequest",
-url: "account/teams/processrequest",
-defaults: new { controller = "Account", action = "ProcessRequest" }
-);
+                routes.MapRoute(
+            name: "teamDetails",
+            url: "team/{id}",
+            defaults: new { controller = "Team", action = "Details" }
+            );
 
             routes.MapRoute(
-name: "SendJoinRequest",
-url: "account/teams/sendjoinrequest",
-defaults: new { controller = "Account", action = "SendJoinRequest" }
-);
+            name: "ProcessRequest",
+            url: "account/teams/processrequest",
+            defaults: new { controller = "Team", action = "ProcessRequest" }
+            );
 
-            routes.MapRoute(
-name: "SuggestionDetails",
-url: "account/teams/suggestiondetails",
-defaults: new { controller = "Account", action = "SuggestionDetails" }
-);
+                        routes.MapRoute(
+            name: "SendJoinRequest",
+            url: "account/teams/sendjoinrequest",
+            defaults: new { controller = "Team", action = "SendJoinRequest" }
+            );
 
-            routes.MapRoute(
-name: "TeamSearch",
-url: "account/teams/search",
-defaults: new { controller = "Account", action = "Search" }
-);
+                        routes.MapRoute(
+            name: "SuggestionDetails",
+            url: "account/teams/suggestiondetails",
+            defaults: new { controller = "Team", action = "SuggestionDetails" }
+            );
 
-            routes.MapRoute(
-name: "MyInvitations",
-url: "account/invitations",
-defaults: new { controller = "Account", action = "MyInvitations" }
-);
+                        routes.MapRoute(
+            name: "TeamSearch",
+            url: "account/teams/search",
+            defaults: new { controller = "Team", action = "Search" }
+            );
 
-            routes.MapRoute(
-name: "AccountCreateTeam",
-url: "account/team/create",
-defaults: new { controller = "Account", action = "CreateTeam" }
-);
+                        routes.MapRoute(
+            name: "MyInvitations",
+            url: "account/invitations",
+            defaults: new { controller = "Team", action = "MyInvitations" }
+            );
 
-            routes.MapRoute(
-name: "MyTeams",
-url: "account/teams",
-defaults: new { controller = "Account", action = "MyTeams" }
-);
+                        routes.MapRoute(
+            name: "AccountCreateTeam",
+            url: "account/team/create",
+            defaults: new { controller = "Team", action = "CreateTeam" }
+            );
 
-            routes.MapRoute(
-name: "MyProfile",
-url: "account/profile",
-defaults: new { controller = "Account", action = "MyProfile" }
-);
+                        routes.MapRoute(
+            name: "MyTeams",
+            url: "account/teams",
+            defaults: new { controller = "Team", action = "MyTeams" }
+            );
 
-            routes.MapRoute(
-    name: "GameDetails",
-    url: "game/details/{id}",
-    defaults: new { controller = "Game", action = "Details" }
-  );
+                        routes.MapRoute(
+            name: "MyProfile",
+            url: "account/profile",
+            defaults: new { controller = "Account", action = "MyProfile" }
+            );
 
-            routes.MapRoute(
-      name: "Logout",
-      url: "account/logout",
-      defaults: new { controller = "Account", action = "Logout" }
-    );
+                    routes.MapRoute(
+            name: "GameDetails",
+            url: "game/details/{id}",
+            defaults: new { controller = "Game", action = "Details" }
+          );
 
-            routes.MapRoute(
-       name: "Login",
-       url: "account/login",
-       defaults: new { controller = "Account", action = "Login" }
-     );
+                routes.MapRoute(
+            name: "Logout",
+            url: "account/logout",
+            defaults: new { controller = "Account", action = "Logout" }
+          );
+
+                routes.MapRoute(
+           name: "Login",
+           url: "account/login",
+           defaults: new { controller = "Account", action = "Login" }
+         );
 
 
-            routes.MapRoute(
-         name: "Registration",
-         url: "account/register",
-         defaults: new { controller = "Account", action = "Register" }
-       );
+                routes.MapRoute(
+             name: "Registration",
+             url: "account/register",
+             defaults: new { controller = "Account", action = "Register" }
+           );
 
             routes.MapRoute(
             name: "Rules",

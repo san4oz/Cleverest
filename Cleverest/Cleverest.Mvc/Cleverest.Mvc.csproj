@@ -116,6 +116,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Helpers\WebSecurity.cs" />
     <Compile Include="Security\ExtendedPrincipal.cs" />
     <Compile Include="Security\ExtendedPrincipalSerializedModel.cs" />
@@ -145,6 +146,8 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopupModel.cs" />
+    <Compile Include="ViewModels\TeamDetailsInfoViewModel.cs" />
+    <Compile Include="ViewModels\TeamDetailsViewModel.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

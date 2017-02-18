@@ -162,6 +162,11 @@
     <None Include="Content\Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -208,11 +213,12 @@
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Account\MyProfile.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
-    <Content Include="Views\Account\MyTeams.cshtml" />
-    <Content Include="Views\Account\CreateTeam.cshtml" />
-    <Content Include="Views\Account\MyInvitations.cshtml" />
-    <Content Include="Views\Account\_TeamSuggestions.cshtml" />
-    <Content Include="Views\Account\_SuggestionDetails.cshtml" />
+    <Content Include="Views\Team\MyTeams.cshtml" />
+    <Content Include="Views\Team\CreateTeam.cshtml" />
+    <Content Include="Views\Team\MyInvitations.cshtml" />
+    <Content Include="Views\Team\_TeamSuggestions.cshtml" />
+    <Content Include="Views\Team\_SuggestionDetails.cshtml" />
+    <Content Include="Views\Team\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

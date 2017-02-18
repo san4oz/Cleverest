@@ -13,12 +13,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SocialNetworkLink)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
             <th></th>
         </tr>
 
@@ -26,14 +21,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(m => item.Name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SocialNetworkLink)
-                </td>
+                <td>@Html.DisplayFor(m => item.Description)</td>
                 <td>
                     <a href="@Url.Action("Edit", new { id = item.Id })" class="button is-info">Редагувати</a> |
                     <a href="#" data-id="@item.Id" data-url="@Url.Action("Delete")" class="delete-btn button is-danger">Видалити</a>
