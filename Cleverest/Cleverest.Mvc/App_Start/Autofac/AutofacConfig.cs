@@ -64,6 +64,7 @@ namespace Cleverest.App_Start.Autofac
 
         private static void RegisterProviders(ContainerBuilder builder)
         {
+            builder.RegisterType<IDatabaseUnitOfWorkProvider>().As<DatabaseUnitOfWorkProvider>();
             builder.RegisterType<GameProvider>().As<IGameProvider>();
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();

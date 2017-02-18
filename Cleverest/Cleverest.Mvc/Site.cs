@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using AutoMapper;
 using Cleverest.Mvc.Api;
+using Cleverest.Business.InterfaceDefinitions.Providers;
 
 namespace Cleverest
 {
@@ -38,6 +39,14 @@ namespace Cleverest
             public static IAccountTeamRequestManager AccountTeamRequest
             {
                 get { return Get<IAccountTeamRequestManager>(); }
+            }
+        }
+
+        public static class Providers
+        {
+            public static IDatabaseUnitOfWorkProvider DatabaseUnitOfWorkProvider
+            {
+                get { return Get<IDatabaseUnitOfWorkProvider>(); }
             }
         }
 
