@@ -17,7 +17,7 @@ namespace Cleverest.DataProvider
         static NhibernateSessionHelper()
         {
             var configuration = new Configuration().Configure();
-            var sessionFactory = configuration.BuildSessionFactory();
+            sessionFactory = configuration.BuildSessionFactory();
         }
 
         public static ISession OpenSession()
