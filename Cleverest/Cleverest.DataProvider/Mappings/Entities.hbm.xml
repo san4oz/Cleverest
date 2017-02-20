@@ -5,7 +5,6 @@
     <property name="Title" type="string"/>
     <property name="GameDate" type="System.DateTime"/>
     <property name="Location" type="string"/>
-    <property name="ImageUrl" type="string"/>
   </class>
 
   <class name="Team" table="Teams">

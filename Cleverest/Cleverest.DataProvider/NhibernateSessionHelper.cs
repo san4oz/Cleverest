@@ -40,12 +40,5 @@ namespace Cleverest.DataProvider
         {
             CurrentSessionContext.Unbind(sessionFactory);
         }
-
-        //public static ISession OpenSession()
-        //{
-        //    var configuration = new Configuration().Configure();
-        //    var sessionFactory = configuration.BuildSessionFactory();
-        //    return sessionFactory.OpenSession();
-        //}
     }
 }
