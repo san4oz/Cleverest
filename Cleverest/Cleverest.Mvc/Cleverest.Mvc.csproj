@@ -102,8 +102,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\AccountApi.cs" />
-    <Compile Include="Api\TeamApi.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="App_Start\Autofac\AutofacConfig.cs" />
     <Compile Include="App_Start\AutoMapper\AutoMapperConfig.cs" />
@@ -117,7 +115,7 @@
     <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="Helpers\WebSecurity.cs" />
+    <Compile Include="Security\WebSecurity.cs" />
     <Compile Include="Security\ExtendedPrincipal.cs" />
     <Compile Include="Security\ExtendedPrincipalSerializedModel.cs" />
     <Compile Include="Security\IExtendedPrincipal.cs" />
@@ -130,7 +128,6 @@
     <Compile Include="Controllers\Admin\TeamController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Helpers\GameImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.cs" />
     <Compile Include="SiteConstants.cs" />
@@ -150,9 +147,7 @@
     <Compile Include="ViewModels\TeamDetailsViewModel.cs" />
     <Compile Include="ViewModels\TeamViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

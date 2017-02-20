@@ -8,7 +8,7 @@ using AutoMapper;
 using Cleverest.Mvc.ViewModels;
 using Cleverest.Business.Entities;
 using System.Web.Security;
-using Cleverest.Mvc.Helpers;
+using Cleverest.Mvc.Security;
 
 namespace Cleverest.Mvc.Controllers
 {
@@ -36,7 +36,7 @@ namespace Cleverest.Mvc.Controllers
                 return View(viewModel);
 
 
-            if(!viewModel.Email.Equals(WebSecurity.User.Email) && Site.Api.Account.AccountExists(viewModel.Email))
+            if(!viewModel.Email.Equals(WebSecurity.User.Email) && WebSecurity.AccountExists(viewModel.Email))
             {
                 ModelState.AddModelError("Email", "Пробачте. Користувач з такою поштою вже існує.");
                 return View(viewModel);
@@ -66,7 +66,7 @@ namespace Cleverest.Mvc.Controllers
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            if(Site.Api.Account.AccountExists(viewModel.Email))
+            if(WebSecurity.AccountExists(viewModel.Email))
             {
                 ModelState.AddModelError("Email", "Користувач з такою поштою вже існує.");
                 return View(viewModel);
@@ -75,7 +75,7 @@ namespace Cleverest.Mvc.Controllers
             var model = Site.Services.Mapper.Map<AccountRegisterViewModel, Account>(viewModel);
 
             Site.Managers.Account.Create(model);
-            Site.Api.Account.SetAuthenticationCookie(model.Email, false);
+            WebSecurity.SetAuthenticationCookie(model.Email, false);
 
             return RedirectToAction("List", "Game");
         }
@@ -95,14 +95,14 @@ namespace Cleverest.Mvc.Controllers
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            var account = Site.Api.Account.Authenticate(viewModel.Email, viewModel.Password);
+            var account = WebSecurity.Authenticate(viewModel.Email, viewModel.Password);
             if (account == null)
             {
                 ModelState.AddModelError("", "Пробачте. Наша система не змогла знайти вашу електронну адресу або пароль не вірний.");
                 return View(viewModel);
             }
 
-            Site.Api.Account.SetAuthenticationCookie(account.Email, viewModel.RememberMe);
+            WebSecurity.SetAuthenticationCookie(account.Email, viewModel.RememberMe);
 
             return RedirectToAction("List", "Game");
         }

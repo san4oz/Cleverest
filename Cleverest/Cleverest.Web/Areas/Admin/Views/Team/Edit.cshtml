@@ -29,6 +29,15 @@
                             @Html.ValidationMessageFor(x => x.Description)
                         </div>
                     </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Image, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Image, htmlAttributes: new { @type = "file" })
+                            @Html.ValidationMessageFor(x => x.Image)
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
                     <p class="control">

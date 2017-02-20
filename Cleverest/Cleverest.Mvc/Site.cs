@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using AutoMapper;
-using Cleverest.Mvc.Api;
 using Cleverest.Business.InterfaceDefinitions.Providers;
 
 namespace Cleverest
@@ -47,19 +46,6 @@ namespace Cleverest
             public static IDatabaseUnitOfWorkProvider DatabaseUnitOfWorkProvider
             {
                 get { return Get<IDatabaseUnitOfWorkProvider>(); }
-            }
-        }
-
-        public static class Api
-        {
-            public static AccountApi Account
-            {
-                get { return Get<AccountApi>(); }
-            }
-
-            public static TeamApi Team
-            {
-                get { return Get<TeamApi>(); }
             }
         }
 

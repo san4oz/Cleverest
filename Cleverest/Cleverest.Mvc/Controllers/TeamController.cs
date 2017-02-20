@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.Business.Entities;
-using Cleverest.Mvc.Helpers;
+using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels;
 
 namespace Cleverest.Mvc.Controllers
@@ -107,7 +107,7 @@ namespace Cleverest.Mvc.Controllers
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            if (Site.Api.Team.TeamExists(viewModel.Name))
+            if (Site.Managers.Team.GetTeamByName(viewModel.Name) != null)
             {
                 ModelState.AddModelError("Name", "Пробачте. Команда з такою назвою вже існує.");
                 return View(viewModel);

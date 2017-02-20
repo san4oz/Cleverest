@@ -9,7 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.Mvc.Helpers;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
 
 namespace Cleverest.Mvc.Controllers.Admin
@@ -38,7 +39,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(gameModel);
 
-            GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
+            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
+                .SaveLogo(gameModel.Image.InputStream, gameModel.Id, Path.GetExtension(gameModel.Image.FileName));
 
             var game = Site.Services.Mapper.Map<GameViewModel, Game>(gameModel);
             Site.Managers.Game.Create(game);
@@ -67,7 +69,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(gameModel);
 
-            GameGalleryHelper.SaveLogo(gameModel.Id, gameModel.Image);
+            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
+               .SaveLogo(gameModel.Image.InputStream, gameModel.Id, Path.GetExtension(gameModel.Image.FileName));
 
             var game = Site.Services.Mapper.Map<GameViewModel, Game>(gameModel);
             Site.Managers.Game.Update(game);

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Cleverest.Mvc.Helpers;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
 using static Cleverest.Mvc.SiteConstants;
 
@@ -29,7 +30,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (Request.IsAjaxRequest())
             {
                 if (!string.IsNullOrEmpty(gameId))
-                    viewModel.Photos = GameGalleryHelper.GetGalleryPhotoPathes(gameId);
+                    viewModel.Photos = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
+                                            .GetImages(gameId).Select(ic => ic.ApplicationRelativePath).ToList();
 
                 return PartialView("_Photos", viewModel);
             }
@@ -37,7 +39,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             var defaultGame = games.FirstOrDefault();
             if(defaultGame != null)
             {
-                viewModel.Photos = GameGalleryHelper.GetGalleryPhotoPathes(defaultGame.Id);
+                viewModel.Photos = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
+                                            .GetImages(defaultGame.Id).Select(ic => ic.ApplicationRelativePath).ToList();
             }
 
             return View(viewModel);
@@ -52,7 +55,8 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             foreach(var file in files)
             {
-                GameGalleryHelper.SavePhoto(gameId, file);
+                ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
+                    .SaveImage(file.InputStream, gameId, file.FileName);
             }
 
             return Json(true);

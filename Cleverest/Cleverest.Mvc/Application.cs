@@ -13,6 +13,7 @@ using Cleverest.Mvc.App_Start;
 using System.Web.Optimization;
 using Cleverest.Business.Helpers.ImageStorageFactory;
 using Cleverest.Business.Helpers.ImageStorageFactory.Storages;
+using Cleverest.Mvc.Security;
 
 namespace Cleverest.Mvc
 {
@@ -31,14 +32,14 @@ namespace Cleverest.Mvc
         {
             var factory = ImageStorageFactory.Current;
 
-            factory.Register(TeamImageStorage.Name, new TeamImageStorage());
-            factory.Register(GameImageStorage.Name, new GameImageStorage());
-            factory.Register(ProfileImageStorage.Name, new ProfileImageStorage());
+            factory.Register(SiteConstants.ImageStorages.Team, new TeamImageStorage());
+            factory.Register(SiteConstants.ImageStorages.Game, new GameImageStorage());
+            factory.Register(SiteConstants.ImageStorages.Profile, new ProfileImageStorage());
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
         {
-            Cleverest.Site.Api.Account.ProcessPostAuthenticateRequest();
+            WebSecurity.ProcessPostAuthenticateRequest();
         }
     }
 }

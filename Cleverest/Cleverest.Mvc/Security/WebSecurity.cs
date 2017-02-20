@@ -10,11 +10,32 @@ using Cleverest.Business.Entities;
 using Cleverest.Core.Security;
 using Cleverest.Mvc.Security;
 
-namespace Cleverest.Mvc.Api
+namespace Cleverest.Mvc.Security
 {
-    public class AccountApi
+    public static class WebSecurity
     {
-        public Account Authenticate(string email, string password)
+        public static HttpContext Context
+        {
+            get { return HttpContext.Current; }
+        }
+
+        public static bool IsUserContextAvailable()
+        {
+            return Context != null &&
+                    Context.User != null &&
+                    Context.User.Identity != null &&
+                    Context.User.Identity.IsAuthenticated;              
+        }
+
+        public static ExtendedPrincipal User
+        {
+            get
+            {
+                return IsUserContextAvailable() ? (ExtendedPrincipal)Context.User : null;
+            }
+        }
+
+        public static Account Authenticate(string email, string password)
         {
             var account = Site.Managers.Account.GetByEmail(email);
             if (account == null)
@@ -28,12 +49,12 @@ namespace Cleverest.Mvc.Api
             return account;
         }
 
-        public bool AccountExists(string email)
+        public static bool AccountExists(string email)
         {
             return Site.Managers.Account.GetByEmail(email) != null;
         }
 
-        public bool SetAuthenticationCookie(string email, bool isPersisted)
+        public static bool SetAuthenticationCookie(string email, bool isPersisted)
         {
             if (string.IsNullOrEmpty(email))
                 return false;
@@ -66,7 +87,7 @@ namespace Cleverest.Mvc.Api
             }
         }
 
-        public void ProcessPostAuthenticateRequest()
+        public static void ProcessPostAuthenticateRequest()
         {
             var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (authCookie == null)

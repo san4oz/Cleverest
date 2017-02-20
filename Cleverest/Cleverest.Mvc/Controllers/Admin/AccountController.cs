@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
+using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
 
 namespace Cleverest.Mvc.Controllers.Admin
@@ -56,7 +57,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View(viewModel);
 
-            if (Site.Api.Account.AccountExists(viewModel.Email))
+            if (WebSecurity.AccountExists(viewModel.Email))
             {
                 ModelState.AddModelError("Email", "Користувач з такою поштою вже існує.");
                 return View(viewModel);

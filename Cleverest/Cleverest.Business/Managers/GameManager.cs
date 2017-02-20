@@ -15,8 +15,6 @@ namespace Cleverest.Business.Managers
         {
             Provider.Update(entity.Id, entityToUpdate =>
             {
-                entityToUpdate.ImageUrl = entity.ImageUrl;
-                entityToUpdate.Location = entityToUpdate.Location;
                 entityToUpdate.Title = entity.Title;
                 entityToUpdate.GameDate = entity.GameDate;
             });

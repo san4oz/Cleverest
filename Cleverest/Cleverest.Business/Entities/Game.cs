@@ -13,7 +13,5 @@ namespace Cleverest.Business.Entities
         public virtual DateTime GameDate { get; set; }
 
         public virtual string Location { get; set; }
-
-        public virtual string ImageUrl { get; set; }
     }
 }

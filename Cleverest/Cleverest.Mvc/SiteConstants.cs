@@ -34,5 +34,14 @@ namespace Cleverest.Mvc
                 public static string Content = "/Content/";
             }
         }  
+
+        public static class ImageStorages
+        {
+            public const string Game = "GameStorage";
+
+            public const string Team = "TeamStorage";
+
+            public const string Profile = "ProfileStorage";
+        }
     }
 }

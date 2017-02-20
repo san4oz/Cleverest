@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.Mvc.Helpers;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
 
 namespace Cleverest.Mvc.Controllers.Admin
@@ -36,10 +38,11 @@ namespace Cleverest.Mvc.Controllers.Admin
                 return View(viewModel);
 
             var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
+           
+            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team)
+                .SaveLogo(viewModel.Image.InputStream, viewModel.Id, Path.GetExtension(viewModel.Image.FileName));
 
-#warning danger. I'm not sure this functionality is the right choise
             model.OwnerId = WebSecurity.User.Id;
-
             Site.Managers.Team.Create(model);
 
             return RedirectToAction("Index");
@@ -67,6 +70,9 @@ namespace Cleverest.Mvc.Controllers.Admin
                 return View(viewModel);
 
             var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
+
+            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team)
+              .SaveLogo(viewModel.Image.InputStream, viewModel.Id, Path.GetExtension(viewModel.Image.FileName));
 
             Site.Managers.Team.Update(model);
 

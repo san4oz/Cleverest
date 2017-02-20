@@ -34,9 +34,9 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
             }
         }
 
-        private string GetImageRelativePath(string name)
+        private string GetImageRelativePath(string id, string name)
         {
-            return string.Format("{0}/{1}", ContentFolderRelativePath, name);
+            return string.Format("/{0}/{1}/{2}", ContentFolderRelativePath, id, name);
         }
 
         protected DirectoryInfo GetInstanceDirectory(string id)
@@ -61,8 +61,22 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
             return new ImageContainer()
             {
                 Data = fileInfo,
-                ApplicationRelativePath = GetImageRelativePath(name)
+                ApplicationRelativePath = GetImageRelativePath(entityId, fileInfo.Name)
             };
+        }
+
+        public virtual void SaveImage(Stream stream, string entityId, string name)
+        {
+            using (var destinationFile = File.Create(Path.Combine(GetInstanceDirectory(entityId).FullName, name)))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                stream.CopyTo(destinationFile);
+            }
+        }
+
+        public virtual void SaveLogo(Stream stream, string entityId, string extension)
+        {
+            SaveImage(stream, entityId, string.Format("Logo{0}", extension));
         }
 
         public virtual IList<ImageContainer> GetImages(string entityId)
@@ -72,7 +86,7 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
             return fileInfos.Select(fileInfo => new ImageContainer()
             {
                 Data = fileInfo,
-                ApplicationRelativePath = GetImageRelativePath(fileInfo.Name)
+                ApplicationRelativePath = GetImageRelativePath(entityId, fileInfo.Name)
             }).ToList();
         }
 
