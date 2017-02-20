@@ -5,6 +5,5 @@ create table Teams(
 	OwnerId nvarchar(100) not null
 )
 
-
-  alter table Teams
-  add [Description] nvarchar(500) null  	
+alter table Teams
+  add [Description] nvarchar(500) null  
