@@ -61,11 +61,14 @@
     <Compile Include="InterfaceDefinitions\Providers\IAccountProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IAccountTeamPermissionProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Providers\IDatabaseUnitOfWorkProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\ITeamProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IAccountTeamRequestProvider.cs" />
     <Compile Include="InterfaceDefinitions\Search\IBaseSearchManager.cs" />
     <Compile Include="InterfaceDefinitions\Search\ITeamSearchManager.cs" />
+    <Compile Include="InterfaceDefinitions\UnitOfWorks\IDatabaseUnitOfWork.cs" />
+    <Compile Include="InterfaceDefinitions\UnitOfWorks\IUnitOfWork.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\AccountTeamPermissionManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />

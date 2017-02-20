@@ -53,6 +53,8 @@
     <Compile Include="Providers\AccountProvider.cs" />
     <Compile Include="Providers\AccountTeamPermissionProvider.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
+    <Compile Include="Providers\DatabaseUnitOfWorkProvider.cs" />
+    <Compile Include="UnitOfWorks\DatabaseUnitOfWork.cs" />
     <Compile Include="Providers\GameProvider.cs" />
     <Compile Include="Providers\TeamProvider.cs" />
     <Compile Include="Providers\AccountTeamRequestProvider.cs" />
