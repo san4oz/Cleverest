@@ -1,23 +1,21 @@
-﻿@model IEnumerable<Cleverest.Mvc.ViewModels.Admin.TeamViewModel>
+﻿@model EntityListViewModel<Team>
 
-@{
-    ViewBag.Title = "List";
-}
-
-<div id="gameListPage">
+<div id="teamListPage">
     <p>
         <a href="@Url.Action("Create")" class="button is-success">Створити нову команду</a>
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+               Ім'я
             </th>
-            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>
+                Про команду
+            </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Entities)
         {
             <tr>
                 <td>

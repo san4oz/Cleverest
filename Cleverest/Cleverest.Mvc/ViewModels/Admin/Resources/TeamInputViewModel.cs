@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 using System.Web;
 using Cleverest.App_Start.AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.ViewModels;
 
-namespace Cleverest.Mvc.ViewModels.Admin
+namespace Cleverest.Mvc.ViewModels.Admin.Resources
 {
-    public class TeamViewModel : BaseViewModel, IMapFrom<Team>
+    public class TeamInputViewModel : BaseInputViewModel, IMapFrom<Team>
     {
         [Required]
         [MaxLength(250)]
@@ -22,7 +21,9 @@ namespace Cleverest.Mvc.ViewModels.Admin
         [Display(Name = "Про команду")]
         public string Description { get; set; }
 
-        [Display(Name = "Лого")]
+        [Display(Name = "Фото")]
         public HttpPostedFileBase Image { get; set; }
+
+        public string OwnerId { get; set; }
     }
 }

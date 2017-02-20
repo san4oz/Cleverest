@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.App_Start.AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.ViewModels;
 
-namespace Cleverest.Mvc.ViewModels.Admin
+namespace Cleverest.Mvc.ViewModels.Admin.Resources
 {
-    public class AccountViewModel : BaseViewModel, IMapFrom<Account>
+    public class AccountInputViewModel : BaseInputViewModel, IMapFrom<Account>
     {
         [Required]
         [Display(Name = "Ім'я")]
@@ -31,11 +30,16 @@ namespace Cleverest.Mvc.ViewModels.Admin
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
 
-        public List<SelectListItem> TeamsIds { get; set; }
+        public List<SelectListItem> AllTeamsSelectList { get; set; }
 
-        public AccountViewModel()
+        public AccountInputViewModel()
         {
-            TeamsIds = new List<SelectListItem>();
+            AllTeamsSelectList = Site.Managers.Team.All()
+                .Select(team => new SelectListItem()
+                {
+                    Text = team.Name,
+                    Value = team.Id
+                }).ToList();
         }
     }
 }

@@ -107,7 +107,7 @@ namespace Cleverest.Mvc.App_Start.Routes
             MapRoute(
               name: "GameList",
               url: "games",
-              defaults: new { controller = "Game", action = "List" }
+              defaults: new { controller = "Game", action = "Index" }
           );
 
             MapRoute(

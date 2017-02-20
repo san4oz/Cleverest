@@ -25,7 +25,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             var viewModel = new GalleryViewModel();
 
             var gamesIds = games.Select(game => new { id = game.Id, title = game.Title }).ToList();
-            viewModel.GamesIds = gamesIds.Select(game => new SelectListItem() { Text = game.title, Value = game.id }).ToList();
+            viewModel.AllGameSelectList = gamesIds.Select(game => new SelectListItem() { Text = game.title, Value = game.id }).ToList();
 
             if (Request.IsAjaxRequest())
             {

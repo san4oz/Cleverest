@@ -1,9 +1,4 @@
-﻿@model Cleverest.Mvc.ViewModels.Admin.AccountViewModel
-
-@{
-    ViewBag.Title = "Create";
-}
-
+﻿@model AccountInputViewModel
 
 <p class="content">
     <h1 class="title has-text-centered">Редагування аккаунту</h1>
@@ -11,8 +6,10 @@
 
 <section class="section" id="createAccountPage">
     <div class="container">
-        @using (Html.BeginForm("Edit", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data", autocomplete = "false" }))
+        @using (Html.BeginForm(Model.IsCreateModel ? "Create" : "Edit", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data", autocomplete = "false" }))
         {
+            @Html.HiddenFor(x => x.Id)
+            @Html.AntiForgeryToken()
             <div class="columns">
                 <div class="column is-10">
                     <div class="control is-horizontal">
@@ -48,7 +45,7 @@
                         </div>
                         <div class="control">
                             <span class="select">
-                                @Html.DropDownListFor(x => x.TeamId, Model.TeamsIds)
+                                @Html.DropDownListFor(x => x.TeamId, Model.AllTeamsSelectList)
                             </span>
                             @Html.ValidationMessageFor(x => x.TeamId)
                         </div>

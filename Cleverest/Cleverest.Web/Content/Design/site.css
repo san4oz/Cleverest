@@ -35,3 +35,9 @@ body > .container{
     border: 1px solid lightgrey;
 }
 
+.media-block{
+    /*border: 1px solid red;*/
+    /*background-color: lightgray;*/
+    width: 100%;
+    max-width: 100%;
+}

@@ -14,7 +14,7 @@ namespace Cleverest.Mvc.ViewModels.Admin
         [Display(Name = "Гра:")]
         public string SelectedGameId { get; set; }
 
-        public List<SelectListItem> GamesIds { get; set; }
+        public List<SelectListItem> AllGameSelectList { get; set; }
 
         public List<string> Photos { get; set; }
 

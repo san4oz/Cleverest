@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 using System.Web;
 using Cleverest.App_Start.AutoMapper;
 using Cleverest.Business.Entities;
-using Cleverest.ViewModels;
 
-namespace Cleverest.Mvc.ViewModels.Admin
+namespace Cleverest.Mvc.ViewModels.Admin.Resources
 {
-    public class GameViewModel : BaseViewModel, IMapFrom<Game>
+    public class GameInputViewModel : BaseInputViewModel, IMapFrom<Game>
     {
         [MaxLength(150)]
         [Required]
@@ -31,5 +30,10 @@ namespace Cleverest.Mvc.ViewModels.Admin
         [Required]
         [Display(Name = "Баннер")]
         public HttpPostedFileBase Image { get; set; }
+
+        public GameInputViewModel()
+        {
+            IsMediaContentPresent = true;
+        }
     }
 }

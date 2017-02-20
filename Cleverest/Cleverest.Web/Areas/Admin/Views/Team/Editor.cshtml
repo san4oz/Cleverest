@@ -1,4 +1,4 @@
-﻿@model Cleverest.Mvc.ViewModels.Admin.TeamViewModel
+﻿@model TeamInputViewModel
 
 <p class="content">
     <h1 class="title has-text-centered">Редагування команди</h1>
@@ -6,9 +6,10 @@
 
 <section class="section" id="editTeamPage">
     <div class="container">
-        @using (Html.BeginForm("Edit", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+        @using (Html.BeginForm(Model.IsCreateModel ? "Create" : "Edit", "Team", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data" }))
         {
             @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
             <div class="columns">
                 <div class="column is-10">
                     <div class="control is-horizontal">

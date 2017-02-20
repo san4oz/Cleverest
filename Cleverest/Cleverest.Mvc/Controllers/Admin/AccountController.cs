@@ -6,120 +6,29 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Mvc.Security;
-using Cleverest.Mvc.ViewModels.Admin;
+using Cleverest.Mvc.ViewModels.Admin.Resources;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
-    public class AccountController : Controller
+    public class AccountController : AdminEntityEditorController<Account, AccountInputViewModel>
     {
-        [HttpGet]
-        public ActionResult Index()
+        protected override ImageStorage ContentStorage
         {
-            var accounts = Site.Managers.Account.All().ToList();
-
-            var teamIds = accounts.Select(ac => ac.TeamId).ToList();
-
-            var teams = Site.Managers.Team.GetByIdList(teamIds);
-
-            var viewModelList = accounts.Select(account =>
+            get
             {
-                return new AccountListViewModel()
-                {
-                    Id = account.Id,
-                    Email = account.Email,
-                    Name = account.Name,
-                    TeamName = teams.FirstOrDefault(t => t.Id.Equals(account.TeamId)) != null ? teams.FirstOrDefault(t => t.Id.Equals(account.TeamId)).Name : string.Empty
-                };
-            }).ToList();
-
-            return View(viewModelList);
-        }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            var viewModel = new AccountViewModel();
-
-            var teams = Site.Managers.Team.All().ToList();
-
-            teams.ForEach(t =>
-            {
-                viewModel.TeamsIds.Add(new SelectListItem() {  Text = t.Name, Value = t.Id });
-            });
-
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Create(AccountViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-                return View(viewModel);
-
-            if (WebSecurity.AccountExists(viewModel.Email))
-            {
-                ModelState.AddModelError("Email", "Користувач з такою поштою вже існує.");
-                return View(viewModel);
+                return ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Profile);
             }
-
-            var model = Site.Services.Mapper.Map<AccountViewModel, Account>(viewModel);
-           
-            Site.Managers.Account.Create(model);
-
-            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public ActionResult Edit(string id)
+        protected override IBaseManager<Account> DataManager
         {
-            if (string.IsNullOrEmpty(id))
-                return HttpNotFound();
-
-            var account = Site.Managers.Account.Get(id);
-            if (account == null)
-                return HttpNotFound();
-
-            var viewModel = Site.Services.Mapper.Map<Account, AccountViewModel>(account);
-
-            var teams = Site.Managers.Team.All().ToList();
-
-            teams.ForEach(t =>
+            get
             {
-                viewModel.TeamsIds.Add(new SelectListItem() { Text = t.Name, Value = t.Id });
-            });
-
-            return View(viewModel);
+                return Site.Managers.Account;
+            }
         }
-
-        [HttpPost]
-        public ActionResult Edit(AccountViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-                return View(viewModel);
-
-            var model = Site.Services.Mapper.Map<AccountViewModel, Account>(viewModel);
-
-            Site.Managers.Account.Update(model);
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Delete(string id)
-        {
-            if (string.IsNullOrEmpty(id))
-                return Json(false);
-
-            var account = Site.Managers.Account.Get(id);
-            if (account == null)
-                return Json(false);
-
-            Site.Managers.Account.Delete(id);
-
-            return Json(true);
-        }
-
-
     }
 }

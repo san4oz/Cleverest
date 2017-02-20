@@ -8,91 +8,44 @@ using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
 using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
+using Cleverest.Mvc.ViewModels.Admin.Resources;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
-    public class TeamController : Controller
+    public class TeamController : AdminEntityEditorController<Team, TeamInputViewModel>
     {
-        [HttpGet]
-        public ActionResult Index()
+        protected override ImageStorage ContentStorage
         {
-            var team = Site.Managers.Team.All().ToList();
-
-            var viewModel = Site.Services.Mapper.Map<List<Team>, List<TeamViewModel>>(team);
-
-            return View(viewModel);
+            get
+            {
+                return ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team);
+            }
         }
 
-        [HttpGet]
-        public ActionResult Create()
+        protected override IBaseManager<Team> DataManager
         {
-            return View(new TeamViewModel());
+            get
+            {
+                return Site.Managers.Team;
+            }
         }
 
-        [HttpPost]
-        public ActionResult Create(TeamViewModel viewModel)
+        public override ActionResult Create(TeamInputViewModel model)
         {
-            if (!ModelState.IsValid)
-                return View(viewModel);
-
-            var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
-           
-            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team)
-                .SaveLogo(viewModel.Image.InputStream, viewModel.Id, Path.GetExtension(viewModel.Image.FileName));
-
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
             model.OwnerId = WebSecurity.User.Id;
-            Site.Managers.Team.Create(model);
 
-            return RedirectToAction("Index");
+            return base.Create(model);
         }
 
-        [HttpGet]
-        public ActionResult Edit(string id)
+        public override ActionResult Edit(TeamInputViewModel model)
         {
-            if (string.IsNullOrEmpty(id))
-                return HttpNotFound();
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
 
-            var team = Site.Managers.Team.Get(id);
-            if (team == null)
-                return HttpNotFound();
-
-            var viewModel = Site.Services.Mapper.Map<Team, TeamViewModel>(team);
-
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(TeamViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-                return View(viewModel);
-
-            var model = Site.Services.Mapper.Map<TeamViewModel, Team>(viewModel);
-
-            ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team)
-              .SaveLogo(viewModel.Image.InputStream, viewModel.Id, Path.GetExtension(viewModel.Image.FileName));
-
-            Site.Managers.Team.Update(model);
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Delete(string id)
-        {
-            if (string.IsNullOrEmpty(id))
-                return Json(false);
-
-
-            var team = Site.Managers.Team.Get(id);
-            if (team == null)
-                return Json(false);
-
-            Site.Managers.Team.Delete(id);
-
-            return Json(true);
+            return base.Edit(model);
         }
     }
 }

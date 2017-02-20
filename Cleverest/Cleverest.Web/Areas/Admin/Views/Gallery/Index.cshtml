@@ -9,7 +9,7 @@
                 @Html.LabelFor(x => x.SelectedGameId, htmlAttributes: new { @class = "label" })
             </div>
             <span class="select">
-                @Html.DropDownListFor(model => model.SelectedGameId, Model.GamesIds, htmlAttributes: new { id = "gameSelector" })
+                @Html.DropDownListFor(model => model.SelectedGameId, Model.AllGameSelectList, htmlAttributes: new { id = "gameSelector" })
             </span>
         </p>
 

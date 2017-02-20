@@ -1,0 +1,55 @@
+﻿<section class="section">
+    <h1 class="title">Фото</h1>
+    <div class="container">
+        <div class="columns">
+            <div class="column media-block-selector">
+                <form id="fileupload" method="POST" enctype="multipart/form-data">
+                    <div class="fileupload-buttonbar">
+                        <div class="control">
+                            <span class="button is-success is-large">
+                                <input type="file" name="files[]" multiple />
+                            </span>
+                        </div>
+                    </div>
+                    <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                </form>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column media-block-presentation">
+
+            </div>
+        </div>      
+    </div>
+</section>
+
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="button is-success start" disabled>
+                <span>Почати</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="button is-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Відмінити</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>

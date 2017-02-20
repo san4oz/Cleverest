@@ -1,14 +1,15 @@
-﻿@model Cleverest.Mvc.ViewModels.Admin.GameViewModel
+﻿@model GameInputViewModel
 
 <p class="content">
-    <h1 class="title has-text-centered">Створення гри</h1>
+    <h1 class="title has-text-centered">Редагування гри</h1>
 </p>
 
-<section class="section" id="createGamePage">
-
+<section class="section" id="editGamePage">
     <div class="container">
-        @using (Html.BeginForm("Create", "Game", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal form", enctype = "multipart/form-data" }))
-            {
+        @using (Html.BeginForm(Model.IsCreateModel ? "Create" : "Edit", "Game", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal form", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
             <div class="columns">
                 <div class="column is-10">
                     <div class="control is-horizontal">
@@ -36,7 +37,7 @@
                             @Html.LabelFor(x => x.GameDate, htmlAttributes: new { @class = "label" })
                         </div>
                         <div class="control">
-                            @Html.TextBoxFor(x => x.GameDate, htmlAttributes: new { @class = "input datepicker", @type = "text" })
+                            @Html.TextBoxFor(x => x.GameDate, "{0:MM/dd/yyyy}", htmlAttributes: new { @class = "input datepicker", @type = "text" })
                             @Html.ValidationMessageFor(x => x.GameDate)
                         </div>
                     </div>
@@ -53,7 +54,7 @@
                 </div>
                 <div class="column is-2">
                     <p class="control">
-                        <button class="button is-success is-large" type="submit">Створити</button>
+                        <button class="button is-success is-large" type="submit">Зберегти</button>
                     </p>
                     <p class="control">
                         <a href="@Url.Action("List")" class="button is-warning is-large">Відмініти</a>
@@ -62,5 +63,16 @@
             </div>
         }
     </div>
+    <div class="container">
+        @if(Model.IsMediaContentPresent)
+        {
+                @Html.Partial("_MediaContent")
+        }
+    </div>
 
 </section>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery.fileupload");
+}
