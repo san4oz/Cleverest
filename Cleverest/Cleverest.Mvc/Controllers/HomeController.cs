@@ -19,7 +19,7 @@ namespace Cleverest.Mvc.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var team = Site.Managers.Team.All().First();
+            var team = Site.Managers.Team.All().FirstOrDefault();
 
             var images = ImageStorageFactory.Current.GetStorage(TeamImageStorage.Name).GetLogo(team.Id);
 

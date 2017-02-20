@@ -24,7 +24,11 @@ namespace Cleverest.DataProvider
         {
             if (CurrentSessionContext.HasBind(sessionFactory))
             {
-                return sessionFactory.GetCurrentSession();
+                var result = sessionFactory.GetCurrentSession();
+                if (result.IsOpen)
+                    return result;
+
+                Unbind();
             }
 
             var session = sessionFactory.OpenSession();
