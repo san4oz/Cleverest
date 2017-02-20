@@ -29,6 +29,7 @@ namespace Cleverest.Business.Managers
             Provider.Update(entity.Id, entityToUpdate =>
             {
                 entityToUpdate.Name = entity.Name;
+                entityToUpdate.Description = entity.Description;
             });
         }
 

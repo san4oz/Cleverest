@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cleverest.DataProvider.Providers;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Business.Helpers.ImageStorageFactory.Storages;
 
 namespace Cleverest.Mvc.Controllers
 {
@@ -17,6 +19,10 @@ namespace Cleverest.Mvc.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var team = Site.Managers.Team.All().First();
+
+            var images = ImageStorageFactory.Current.GetStorage(TeamImageStorage.Name).GetLogo(team.Id);
+
             return View();
         }
 

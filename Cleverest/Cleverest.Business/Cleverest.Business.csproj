@@ -52,6 +52,14 @@
     <Compile Include="Entities\Search\SearchResult.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="Entities\AccountTeamRequest.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\ImageContainer.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\ImageStorage.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\ImageStorageFactory.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\ImageType.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\Storages\GameImageStorage.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\Storages\ProfileImageStorage.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\Storages\TeamImageStorage.cs" />
+    <Compile Include="Helpers\ImageStorageFactory\StorageTypes.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountTeamPermissionManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />

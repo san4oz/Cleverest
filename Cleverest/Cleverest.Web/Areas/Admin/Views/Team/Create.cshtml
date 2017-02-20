@@ -21,20 +21,11 @@
                 </div>
                 <div class="control is-horizontal">
                     <div class="control-label">
-                        @Html.LabelFor(x => x.PhoneNumber, htmlAttributes: new { @class = "label" })
+                        @Html.LabelFor(x => x.Description, htmlAttributes: new { @class = "label" })
                     </div>
                     <div class="control">
-                        @Html.TextBoxFor(x => x.PhoneNumber, htmlAttributes: new { @class = "input" })
-                        @Html.ValidationMessageFor(x => x.PhoneNumber)
-                    </div>
-                </div>
-                <div class="control is-horizontal">
-                    <div class="control-label">
-                        @Html.LabelFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "label" })
-                    </div>
-                    <div class="control">
-                        @Html.TextBoxFor(x => x.SocialNetworkLink, htmlAttributes: new { @class = "input" })
-                        @Html.ValidationMessageFor(x => x.SocialNetworkLink)
+                        @Html.TextBoxFor(x => x.Description, htmlAttributes: new { @class = "input" })
+                        @Html.ValidationMessageFor(x => x.Description)
                     </div>
                 </div>
             </div>

@@ -6056,4 +6056,8 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+a.is-right{
+    float: right !important;
+}
+
 /*# sourceMappingURL=bulma.css.map */

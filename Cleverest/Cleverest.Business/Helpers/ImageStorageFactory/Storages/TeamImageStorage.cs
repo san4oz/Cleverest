@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cleverest.Business.Helpers.ImageStorageFactory.Storages
+{
+    public class TeamImageStorage : ImageStorage
+    {
+        public const string Name = "Team";
+
+        protected override string ContentFolderRelativePath
+        {
+            get { return "Content/Images/Teams"; }
+        }
+    }
+}
