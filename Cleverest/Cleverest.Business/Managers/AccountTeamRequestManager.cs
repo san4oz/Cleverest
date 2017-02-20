@@ -11,7 +11,7 @@ namespace Cleverest.Business.Managers
 {
     public class AccountTeamRequestManager : BaseManager<AccountTeamRequest, IAccountTeamRequestProvider>, IAccountTeamRequestManager
     {
-        protected IAccountTeamPermissionManager AccountTeamPermissionManager { get; }
+        protected IAccountTeamPermissionManager AccountTeamPermissionManager { get; private set; }
 
         public AccountTeamRequestManager(IAccountTeamPermissionManager accountTeamPermissionsManager)
         {
