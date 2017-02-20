@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using Cleverest.Business.Helpers.ImageStorageFactory;
 using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels.Admin;
-using static Cleverest.Mvc.SiteConstants;
+//using static Cleverest.Mvc.SiteConstants;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {

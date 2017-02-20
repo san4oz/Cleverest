@@ -29,8 +29,8 @@ namespace Cleverest.Mvc.Controllers
 
             viewModel.Games.ToList().ForEach(game =>
             {
-                game.ImageUrl = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game)
-                                    .GetLogo(game.Id)?.ApplicationRelativePath;
+                var imgUrl = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game).GetLogo(game.Id);
+                game.ImageUrl = imgUrl == null ? null : imgUrl.ApplicationRelativePath;
             });
                             
             return View(viewModel);
@@ -47,13 +47,14 @@ namespace Cleverest.Mvc.Controllers
                 return HttpNotFound();
 
             var storage = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game);
+            var logo = storage.GetLogo(id);
 
             var viewModel = new GameDetailsViewModel()
             {
                 Title = game.Title,
                 Location = game.Location,
                 GameDate = game.GameDate,
-                ImageUrl = storage.GetLogo(id)?.ApplicationRelativePath
+                ImageUrl = logo == null ? null : logo.ApplicationRelativePath
             };
 
             viewModel.GalleryPhotos = storage.GetImages(id).Select(x => x.ApplicationRelativePath).ToList();
