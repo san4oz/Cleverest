@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Entities;
@@ -84,6 +85,7 @@ namespace Cleverest.Mvc.Controllers.Admin
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public virtual ActionResult Delete(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -95,18 +97,21 @@ namespace Cleverest.Mvc.Controllers.Admin
         }
 
         [HttpPost]
-        public ActionResult Upload(string gameId = null)
+        public ActionResult Upload(HttpPostedFileBase[] files, string entityId)
         {
-            var files = Request.Files.Cast<string>()
-                .Select(f => Request.Files[f])
-                .ToArray();
-
-            foreach (var file in files)
+            foreach(var file in files)
             {
-                ContentStorage.SaveImage(file.InputStream, gameId, file.FileName);
+                ContentStorage.SaveImage(file.InputStream, entityId, file.FileName);
             }
 
-            return Json(true);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Media(string entityId)
+        {
+            var images = ContentStorage.GetImages(entityId).Select(x => x.ApplicationRelativePath).ToList();
+            return View(images);
         }
     }
 }
