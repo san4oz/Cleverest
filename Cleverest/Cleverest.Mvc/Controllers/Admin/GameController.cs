@@ -37,14 +37,20 @@ namespace Cleverest.Mvc.Controllers.Admin
 
         public override ActionResult Create(GameInputViewModel model)
         {
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
             return base.Create(model);
         }
 
         public override ActionResult Edit(GameInputViewModel model)
         {
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
             return base.Edit(model);
         }

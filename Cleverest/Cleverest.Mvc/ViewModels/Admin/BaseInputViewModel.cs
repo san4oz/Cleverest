@@ -16,6 +16,8 @@ namespace Cleverest.Mvc.ViewModels.Admin
 
         public bool IsMediaContentPresent { get; set; }
 
+        public IList<string> MediaContent { get;set;}
+
         public BaseInputViewModel()
         {
             this.Id = Guid.NewGuid().ToString();

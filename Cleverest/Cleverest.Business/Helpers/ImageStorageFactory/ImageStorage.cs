@@ -74,9 +74,9 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
             }
         }
 
-        public virtual void SaveLogo(Stream stream, string entityId, string extension)
+        public virtual void SaveLogo(Stream stream, string entityId, string path)
         {
-            SaveImage(stream, entityId, string.Format("Logo{0}", extension));
+            SaveImage(stream, entityId, string.Format("Logo{0}", Path.GetExtension(path)));
         }
 
         public virtual IList<ImageContainer> GetImages(string entityId)

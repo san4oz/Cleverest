@@ -21,6 +21,7 @@
                     <tr>
                         <th>Назва</th>
                         <th>Кількість гравців</th>
+                        <th></th>
                     </tr>
                 </thead>
                 @foreach (var team in Model)
@@ -28,6 +29,7 @@
                     <tr>
                         <td><a href="@Url.Action("Details", "Team", new { id = team.Id })">@team.Name</a></td>
                         <td>@team.ParticipantsCount</td>
+                        <td><a class="button is-info" href="@Url.Action("Edit", new { id = team.Id })">Редагувати</a></td>
                     </tr>
                 }
             </table>

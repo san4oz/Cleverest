@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Cleverest.App_Start.AutoMapper;
 using Cleverest.Business.Entities;
@@ -30,6 +31,9 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
 
+        [Display(Name = "Фото")]
+        public HttpPostedFileBase Image { get; set; }
+
         public List<SelectListItem> AllTeamsSelectList { get; set; }
 
         public AccountInputViewModel()
@@ -40,6 +44,8 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
                     Text = team.Name,
                     Value = team.Id
                 }).ToList();
-        }
+
+            this.IsMediaContentPresent = true;
+        }     
     }
 }

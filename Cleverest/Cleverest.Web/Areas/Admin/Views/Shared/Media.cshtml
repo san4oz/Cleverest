@@ -1,0 +1,20 @@
+﻿@model IList<string>
+
+@{
+    Layout = null;
+}
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            @foreach(var item in Model)
+            {
+                <div class="column is-4">
+                    <figure class="image is-4by3">
+                        <img src="@item" alt="Image">
+                    </figure>
+                </div>
+            }
+        </div>
+    </div>
+</section>

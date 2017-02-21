@@ -50,6 +50,15 @@
                             @Html.ValidationMessageFor(x => x.TeamId)
                         </div>
                     </div>
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.Image, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.Image, htmlAttributes: new { @type = "file" })
+                            @Html.ValidationMessageFor(x => x.Image)
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
                     <p class="control">
@@ -60,6 +69,13 @@
                     </p>
                 </div>
             </div>
+        }
+    </div>
+    <div class="container">
+        @if (Model.IsMediaContentPresent)
+        {
+            @Html.Partial("_MediaContent", Model.Id)
+            @Html.Action("Media", new { entityId = Model.Id })
         }
     </div>
 </section>

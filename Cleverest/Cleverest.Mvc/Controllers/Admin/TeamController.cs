@@ -35,7 +35,10 @@ namespace Cleverest.Mvc.Controllers.Admin
 
         public override ActionResult Create(TeamInputViewModel model)
         {
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
             model.OwnerId = WebSecurity.User.Id;
 
             return base.Create(model);
@@ -43,7 +46,10 @@ namespace Cleverest.Mvc.Controllers.Admin
 
         public override ActionResult Edit(TeamInputViewModel model)
         {
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, Path.GetExtension(model.Image.FileName));
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
             return base.Edit(model);
         }

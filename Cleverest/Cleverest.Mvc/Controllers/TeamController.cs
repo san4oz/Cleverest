@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -155,6 +156,34 @@ namespace Cleverest.Mvc.Controllers
             viewModel.Participants = Site.Services.Mapper.Map<IList<Account>, IList<ProfileViewModel>>(participants);
 
             return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return HttpNotFound();
+
+            var entity = Site.Managers.Team.Get(id);
+            if (entity == null)
+                return HttpNotFound();
+
+            var model = Site.Services.Mapper.Map<Team, TeamViewModel>(entity);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(TeamViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            Site.Managers.Team.Update(Site.Services.Mapper.Map<TeamViewModel, Team>(model));
+            Site.Services.ContentStorage.Team.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
+
+            return View();
         }
     }
 }

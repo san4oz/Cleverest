@@ -4,8 +4,8 @@
 Gallery.List = (function () {
     $(function () {
 
-        var $gameGalleryPage = $("#gameGalleryPage");
-        if (!$gameGalleryPage)
+        var $mediaContentSection = $(".mediaContentSection");
+        if (!$mediaContentSection)
             return;
 
         var $gameSelector = $("#gameSelector");

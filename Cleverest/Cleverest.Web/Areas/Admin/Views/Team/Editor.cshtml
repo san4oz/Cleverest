@@ -51,4 +51,11 @@
             </div>
         }
     </div>
+    <div class="container">
+        @if (Model.IsMediaContentPresent)
+        {
+            @Html.Partial("_MediaContent", Model.Id)
+            @Html.Action("Media", new { entityId = Model.Id })
+        }
+    </div>
 </section>

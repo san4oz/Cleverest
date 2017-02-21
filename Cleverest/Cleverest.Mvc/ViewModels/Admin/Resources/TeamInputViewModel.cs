@@ -25,5 +25,10 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         public HttpPostedFileBase Image { get; set; }
 
         public string OwnerId { get; set; }
+
+        public TeamInputViewModel()
+        {
+            this.IsMediaContentPresent = true;
+        }
     }
 }

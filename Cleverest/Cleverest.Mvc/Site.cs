@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using AutoMapper;
 using Cleverest.Business.InterfaceDefinitions.Providers;
+using Cleverest.Business.Helpers.ImageStorageFactory;
+using Cleverest.Mvc;
 
 namespace Cleverest
 {
@@ -54,6 +56,24 @@ namespace Cleverest
             public static IMapper Mapper
             {
                 get { return Get<IMapper>(); }
+            }
+
+            public static class ContentStorage
+            {
+                public static ImageStorage Game
+                {
+                    get { return ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game); }
+                }
+
+                public static ImageStorage Team
+                {
+                    get { return ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Team); }
+                }
+
+                public static ImageStorage Account
+                {
+                    get { return ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Profile); }
+                }
             }
         }
 

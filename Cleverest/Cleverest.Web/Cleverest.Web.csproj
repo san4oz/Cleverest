@@ -163,6 +163,7 @@
     <Content Include="Areas\Admin\Views\Team\Editor.cshtml" />
     <Content Include="Areas\Admin\Views\Game\Editor.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MediaContent.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Media.cshtml" />
     <None Include="Content\Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.min.js" />
@@ -219,6 +220,7 @@
     <Content Include="Views\Team\_TeamSuggestions.cshtml" />
     <Content Include="Views\Team\_SuggestionDetails.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

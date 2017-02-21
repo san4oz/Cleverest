@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,26 @@ namespace Cleverest.Mvc.Controllers.Admin
             {
                 return Site.Managers.Account;
             }
+        }
+
+        public override ActionResult Create(AccountInputViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
+
+            return base.Create(model);
+        }
+
+        public override ActionResult Edit(AccountInputViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View("Editor", model);
+
+            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
+
+            return base.Edit(model);
         }
     }
 }
