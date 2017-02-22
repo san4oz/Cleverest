@@ -88,6 +88,9 @@ namespace Cleverest.Business.Managers
 
         protected bool TryAddToTeam(string accountId, string teamId)
         {
+            if (string.IsNullOrEmpty(accountId) || string.IsNullOrEmpty(teamId))
+                return false;
+
             if (TeamManager.GetTeamsByAccountId(accountId).Select(x => x.Id).Contains(teamId))
                 return false;
           

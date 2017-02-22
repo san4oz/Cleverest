@@ -4,7 +4,7 @@
             @NavigationNode("Home", "Головна")
             @NavigationNode("Games", "Ігри")
             @NavigationNode("About", "Інфо")
-            @NavigationNode("Rules", "Правила")           
+            @NavigationNode("Rules", "Правила")                    
         </div>
         @if (User.Identity.IsAuthenticated)
         {           
@@ -12,6 +12,7 @@
                 <span class="nav-item">Привіт, @WebSecurity.User.Name  :)</span>
             </div>
             <div class="nav-right">
+                @NavigationNode("AdminIndex", "Адмін панель")                
                 @NavigationNode("MyProfile", "Мій профіль")
                 @NavigationNode("Logout", "Вихід")
             </div>

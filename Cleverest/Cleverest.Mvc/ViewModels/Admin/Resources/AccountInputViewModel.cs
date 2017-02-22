@@ -31,6 +31,14 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Номер телефону")]
+        public virtual string PhoneNumber { get; set; }
+
+        [DataType(DataType.Url)]
+        [Display(Name = "Посилання на соц. мережу")]
+        public virtual string SocialNetworkLink { get; set; }
+
         [Display(Name = "Фото")]
         public HttpPostedFileBase Image { get; set; }
 

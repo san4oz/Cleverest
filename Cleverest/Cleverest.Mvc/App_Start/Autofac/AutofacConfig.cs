@@ -58,6 +58,7 @@ namespace Cleverest.App_Start.Autofac
         private static void RegisterTasks(ContainerBuilder builder)
         {
             builder.RegisterType<TeamIndexTask>().As<ITask>();
+            builder.RegisterType<ScoreImportTask>().As<ITask>();
         }
 
         private static void RegisterProviders(ContainerBuilder builder)

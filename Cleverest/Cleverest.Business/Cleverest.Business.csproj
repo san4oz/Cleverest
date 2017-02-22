@@ -45,6 +45,7 @@
     <Compile Include="Entities\AccountTeamPermission.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\Search\IndexConstants.cs" />
     <Compile Include="Entities\Search\IndexInfo.cs" />
     <Compile Include="Entities\Search\SearchRequest.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Helpers\ImageStorageFactory\Storages\GameImageStorage.cs" />
     <Compile Include="Helpers\ImageStorageFactory\Storages\ProfileImageStorage.cs" />
     <Compile Include="Helpers\ImageStorageFactory\Storages\TeamImageStorage.cs" />
+    <Compile Include="Import\ScoreImporter.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountTeamPermissionManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Managers\AccountTeamRequestManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\ScoreImportTask.cs" />
     <Compile Include="Tasks\TeamIndexTask.cs" />
   </ItemGroup>
   <ItemGroup>

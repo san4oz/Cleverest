@@ -10,15 +10,7 @@ using System.Web;
 namespace Cleverest.Mvc
 {
     public static class SiteConstants
-    {
-        public static class AppSettings
-        {
-            public static string GameImageFolderPath
-            {
-                get { return ConfigurationManager.AppSettings["ImageFolderPath"]; }
-            }
-        }    
-        
+    { 
         public static class Game
         {
             public static class Image

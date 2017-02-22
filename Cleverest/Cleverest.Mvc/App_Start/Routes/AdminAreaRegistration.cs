@@ -111,7 +111,7 @@ namespace Cleverest.Mvc.App_Start.Routes
           );
 
             MapRoute(
-               name: "Index",
+               name: "AdminIndex",
                url: "Index",
                defaults: new { controller = "Home", action = "Index" }
            );
