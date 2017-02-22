@@ -33,11 +33,12 @@ namespace Cleverest.Mvc.Controllers
         {
             var team = Site.Managers.Team.Get(id);
 
-            TeamViewModel viewModel = null;
+            TeamDetailsInfoViewModel viewModel = null;
 
             if (team != null)
             {
-                viewModel = Site.Services.Mapper.Map<Team, TeamViewModel>(team);
+                viewModel = Site.Services.Mapper.Map<Team, TeamDetailsInfoViewModel>(team);
+                viewModel.PhotoPath = Site.Services.ContentStorage.Team.GetLogo(id)?.ApplicationRelativePath;
             }
 
             return PartialView("_SuggestionDetails", viewModel);
@@ -83,10 +84,12 @@ namespace Cleverest.Mvc.Controllers
             requests.ForEach(request =>
             {
                 var viewModel = new AccountTeamRequestViewModel();
-                viewModel.FromAccount = Site.Services.Mapper.Map<Account, ProfileViewModel>(Site.Managers.Account.Get(request.FromId));
                 viewModel.Team = Site.Services.Mapper.Map<Team, ViewModels.TeamViewModel>(Site.Managers.Team.Get(request.TeamId));
                 viewModel.Type = request.RequestType;
                 viewModel.Id = request.Id;
+
+                viewModel.FromAccount = Site.Services.Mapper.Map<Account, ProfileViewModel>(Site.Managers.Account.Get(request.FromId));
+                viewModel.FromAccount.PhotoPath = Site.Services.ContentStorage.Account.GetLogo(viewModel.FromAccount.Id)?.ApplicationRelativePath;
 
                 result.Add(viewModel);
             });
@@ -151,9 +154,15 @@ namespace Cleverest.Mvc.Controllers
 
             var viewModel = new TeamDetailsViewModel();
             viewModel.Info = Site.Services.Mapper.Map<Team, TeamDetailsInfoViewModel>(team);
+            viewModel.Info.PhotoPath = Site.Services.ContentStorage.Team.GetLogo(id)?.ApplicationRelativePath;
 
             var participants = Site.Managers.Account.GetAccountsByTeamId(team.Id);
             viewModel.Participants = Site.Services.Mapper.Map<IList<Account>, IList<ProfileViewModel>>(participants);
+
+            viewModel.Participants.ToList().ForEach(participant =>
+            {
+                participant.PhotoPath = Site.Services.ContentStorage.Account.GetLogo(participant.Id)?.ApplicationRelativePath;
+            });
 
             return View(viewModel);
         }
@@ -183,7 +192,7 @@ namespace Cleverest.Mvc.Controllers
             Site.Managers.Team.Update(Site.Services.Mapper.Map<TeamViewModel, Team>(model));
             Site.Services.ContentStorage.Team.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

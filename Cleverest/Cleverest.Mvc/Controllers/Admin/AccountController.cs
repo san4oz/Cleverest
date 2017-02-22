@@ -37,7 +37,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View("Editor", model);
 
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
+            if (model.Image != null)
+                ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
             return base.Create(model);
         }
@@ -47,7 +48,8 @@ namespace Cleverest.Mvc.Controllers.Admin
             if (!ModelState.IsValid)
                 return View("Editor", model);
 
-            ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
+            if(model.Image != null)
+                ContentStorage.SaveLogo(model.Image.InputStream, model.Id, model.Image.FileName);
 
             return base.Edit(model);
         }

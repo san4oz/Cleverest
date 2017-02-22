@@ -81,7 +81,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             var entity = Site.Services.Mapper.Map<TInputModel, TEntity>(model);
             DataManager.Update(entity);
-
+                      
             return RedirectToAction("Index");
         }
 

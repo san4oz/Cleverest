@@ -13,8 +13,23 @@ namespace Cleverest.Business.Managers
 {
     public class AccountManager: BaseManager<Account, IAccountProvider>, IAccountManager
     {
+        protected ITeamManager TeamManager { get; }
+
+        protected IAccountTeamPermissionManager PermissionManager { get; set; }
+
+        public AccountManager(ITeamManager manager, IAccountTeamPermissionManager permissionManager)
+        {
+            this.TeamManager = manager;
+            this.PermissionManager = permissionManager;
+        }
+
         public override void Update(Account entity)
         {
+            var oldAccount = Provider.Get(entity.Id);
+
+            TryAddToTeam(entity.Id, entity.TeamId);
+            
+
             Provider.Update(entity.Id, entityToUpdate =>
             {
                 entityToUpdate.Email = entity.Email;
@@ -25,7 +40,7 @@ namespace Cleverest.Business.Managers
                 entityToUpdate.PhoneNumber = entity.PhoneNumber;
                 entityToUpdate.SocialNetworkLink = entity.SocialNetworkLink;
 
-                TryUpdatePassword(entityToUpdate);
+                TryUpdatePassword(entityToUpdate, oldAccount);
             });
         }
 
@@ -49,26 +64,34 @@ namespace Cleverest.Business.Managers
             base.Create(entity);
         }
 
-        protected bool TryUpdatePassword(Account accountToUpdate)
+        protected bool TryUpdatePassword(Account accountToUpdate, Account oldAccount)
         {
-            if (!string.IsNullOrEmpty(accountToUpdate.Password))
-                return false;
-
-            var oldAccount = this.Get(accountToUpdate.Id);
             if (oldAccount == null)
                 return false;
 
-            if(string.IsNullOrEmpty(accountToUpdate.Password))
+            var crypto = new CryptoHelper();
+            var cryptedNewPassword = crypto.GenerateHash(accountToUpdate.Password, oldAccount.PasswordSalt);
+
+            if (string.IsNullOrEmpty(accountToUpdate.Password))
             {
                 accountToUpdate.Password = oldAccount.Password;
                 accountToUpdate.PasswordSalt = oldAccount.PasswordSalt;
             }
-            else if(!accountToUpdate.Password.Equals(oldAccount.Password))
+            else if(!oldAccount.Password.Equals(cryptedNewPassword))
             {
-                var crypto = new CryptoHelper();
-                accountToUpdate.PasswordSalt = crypto.GenerateSalt();
-                accountToUpdate.Password = crypto.GenerateHash(accountToUpdate.Password, accountToUpdate.PasswordSalt);
+                accountToUpdate.PasswordSalt = oldAccount.PasswordSalt;
+                accountToUpdate.Password = cryptedNewPassword;
             }
+
+            return true;
+        }
+
+        protected bool TryAddToTeam(string accountId, string teamId)
+        {
+            if (TeamManager.GetTeamsByAccountId(accountId).Select(x => x.Id).Contains(teamId))
+                return false;
+          
+            PermissionManager.Create(new AccountTeamPermission() { AccountId = accountId, TeamId = teamId });
 
             return true;
         }

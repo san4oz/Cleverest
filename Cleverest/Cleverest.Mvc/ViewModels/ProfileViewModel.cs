@@ -25,5 +25,8 @@ namespace Cleverest.Mvc.ViewModels
 
         [Display(Name = "Сторінка у соц. мережі")]
         public string SocialNetworkLink { get; set; }
+
+        [Display(Name = "Фото")]
+        public string PhotoPath { get; set; }
     }
 }
