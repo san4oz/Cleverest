@@ -72,6 +72,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<AccountTeamPermissionProvider>().As<IAccountTeamPermissionProvider>();
             builder.RegisterType<AccountTeamRequestProvider>().As<IAccountTeamRequestProvider>();
             builder.RegisterType<ScoreProvider>().As<IScoreProvider>();
+            builder.RegisterType<QuestionProvider>().As<IQuestionProvider>();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)
@@ -82,6 +83,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<AccountTeamPermissionManager>().As<IAccountTeamPermissionManager>();
             builder.RegisterType<AccountTeamRequestManager>().As<IAccountTeamRequestManager>();
             builder.RegisterType<ScoreManager>().As<IScoreManager>();
+            builder.RegisterType<QuestionManager>().As<IQuestionManager>();
 
             builder.RegisterType<ExcelScoreManager>().As<IExcelScoreManager>();
         }

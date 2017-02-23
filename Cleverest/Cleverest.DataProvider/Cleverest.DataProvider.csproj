@@ -54,6 +54,7 @@
     <Compile Include="Providers\AccountTeamPermissionProvider.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="Providers\DatabaseUnitOfWorkProvider.cs" />
+    <Compile Include="Providers\QuestionProvider.cs" />
     <Compile Include="Providers\ScoreProvider.cs" />
     <Compile Include="UnitOfWorks\DatabaseUnitOfWork.cs" />
     <Compile Include="Providers\GameProvider.cs" />

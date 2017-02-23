@@ -150,6 +150,8 @@
     <Content Include="Areas\Admin\Views\Game\Editor.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MediaContent.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Media.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Types\_TextQuestionEditor.cshtml" />
     <None Include="Content\Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.min.js" />

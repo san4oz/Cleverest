@@ -44,10 +44,12 @@ body > .container{
 
 .game-list .card{
     max-height: 300px;
+    height: 300px;
     width: 100%;
 }
 
 .game-list .card img{
     max-height: 200px;
+    height: 200px;
     width: 100%;
 }

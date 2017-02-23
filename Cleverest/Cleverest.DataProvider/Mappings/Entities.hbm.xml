@@ -46,4 +46,13 @@
     <property type="int" name="RoundNo"/>
     <property type="int" name="Value"/>
   </class>
+
+  <class name="Question" table="Questions">
+    <id name="Id" type="string"></id>
+    <property type="string" name="CorrectAnswer"/>
+    <property type="string" name="GameId"/>
+    <property type="int" name="RoundNo"/>
+    <property type="int" name="OrderNo"/>
+  </class>
+  
 </hibernate-mapping>

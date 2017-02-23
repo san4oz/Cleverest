@@ -25,6 +25,11 @@ namespace Cleverest.Mvc.App_Start.Routes
         {
             base.RegisterArea(registrationContext);
 
+            MapRoute(
+             name: "QuestionIndex",
+             url: "question",
+             defaults: new { controller = "Question", action = "Index" }
+             );
 
             MapRoute(
              name: "RunTask",

@@ -22,6 +22,11 @@ namespace Cleverest
                 get { return Get<IGameManager>(); }
             }
 
+            public static IQuestionManager Question
+            {
+                get { return Get<IQuestionManager>(); }
+            }
+
             public static ITeamManager Team
             {
                 get { return Get<ITeamManager>(); }

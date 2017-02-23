@@ -114,6 +114,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AccountController.cs" />
     <Compile Include="Controllers\Admin\AdminEntityEditorController.cs" />
+    <Compile Include="Controllers\Admin\QuestionController.cs" />
     <Compile Include="Controllers\Admin\TaskController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Security\WebSecurity.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="ViewModels\Admin\EntityListViewModel.cs" />
     <Compile Include="ViewModels\Admin\Resources\GalleryViewModel.cs" />
     <Compile Include="ViewModels\Admin\Resources\GameInputViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Resources\QuestionSelectorViewModel.cs" />
     <Compile Include="ViewModels\Admin\Resources\TaskViewModel.cs" />
     <Compile Include="ViewModels\Admin\Resources\TeamInputViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

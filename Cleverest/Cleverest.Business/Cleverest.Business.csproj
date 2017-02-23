@@ -45,6 +45,10 @@
     <Compile Include="Entities\AccountTeamPermission.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\Questions\PictureQuestion.cs" />
+    <Compile Include="Entities\Questions\Question.cs" />
+    <Compile Include="Entities\Questions\SongQuestion.cs" />
+    <Compile Include="Entities\Questions\TextQuestion.cs" />
     <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\Search\IndexConstants.cs" />
     <Compile Include="Entities\Search\IndexInfo.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="InterfaceDefinitions\Managers\IAccountTeamPermissionManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IGameManager.cs" />
+    <Compile Include="InterfaceDefinitions\Managers\IQuestionManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IScoreManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\ITeamManager.cs" />
     <Compile Include="InterfaceDefinitions\Managers\IAccountTeamRequestManager.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="InterfaceDefinitions\Providers\IAccountTeamPermissionProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IDatabaseUnitOfWorkProvider.cs" />
+    <Compile Include="InterfaceDefinitions\Providers\IQuestionProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IScoreProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\ITeamProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IGameProvider.cs" />
@@ -85,6 +91,7 @@
     <Compile Include="Managers\AccountTeamPermissionManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
+    <Compile Include="Managers\QuestionManager.cs" />
     <Compile Include="Managers\ScoreManager.cs" />
     <Compile Include="Managers\TeamManager.cs" />
     <Compile Include="Managers\AccountTeamRequestManager.cs" />
