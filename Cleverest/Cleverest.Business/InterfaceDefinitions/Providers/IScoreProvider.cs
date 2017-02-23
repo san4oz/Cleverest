@@ -9,5 +9,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
 {
     public interface IScoreProvider : IBaseProvider<Score>
     {
+        IList<Score> GetGameScores(string gameId);
     }
 }

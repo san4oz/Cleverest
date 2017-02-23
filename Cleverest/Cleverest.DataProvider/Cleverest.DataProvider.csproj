@@ -71,6 +71,10 @@
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
       <Name>Cleverest.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cleverest.Core\Cleverest.Core.csproj">
+      <Project>{297bd8a9-0106-48b1-877d-189a934a5d2e}</Project>
+      <Name>Cleverest.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

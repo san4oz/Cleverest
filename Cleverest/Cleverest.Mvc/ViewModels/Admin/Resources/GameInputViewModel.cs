@@ -27,7 +27,6 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         [Display(Name = "Місце")]
         public string Location { get; set; }
 
-        [Required]
         [Display(Name = "Баннер")]
         public HttpPostedFileBase Image { get; set; }
 

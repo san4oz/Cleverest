@@ -13,6 +13,8 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
 
         Team GetTeamByName(string teamName);
 
-        IList<Team> Search(string query); 
+        IList<Team> Search(string query);
+
+        Team GetGameWinner(string gameId);
     }
 }

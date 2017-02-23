@@ -18,10 +18,16 @@ namespace Cleverest.Business.Managers
 
         protected ITeamSearchManager TeamSearchManager { get; set; }
 
-        public TeamManager(IAccountTeamPermissionManager permissionsManager, ITeamSearchManager searchManager)
+        protected IGameManager GameManager { get; set; }
+
+        protected IScoreManager ScoreManager { get; set; }
+
+        public TeamManager(IAccountTeamPermissionManager permissionsManager, ITeamSearchManager searchManager, IGameManager gameManager, IScoreManager scoreManager)
         {
             this.AccountTeamPermissionManager = permissionsManager;
             this.TeamSearchManager = searchManager;
+            this.GameManager = gameManager;
+            this.ScoreManager = scoreManager;
         }
 
         public override void Update(Team entity)
@@ -61,6 +67,29 @@ namespace Cleverest.Business.Managers
             var ids = response.Results.Select(r => r.Id).ToList();
 
             return GetByIdList(ids);
+        }
+
+        public Team GetGameWinner(string gameId)
+        {
+            if (gameId.IsEmpty())
+                return null;
+
+            var game = GameManager.Get(gameId);
+            if (game == null)
+                return null;
+
+            if (game.GameDate > DateTime.Now)
+                return null;
+
+            var scores = ScoreManager.GetGameScores(gameId);
+            if (!scores.Any())
+                return null;
+
+            var winnerTeamId = scores.GroupBy(score => score.TeamId)
+                .OrderByDescending(gr => gr.Sum(score => score.Value))
+                .First().Select(gr => gr.TeamId).First();
+
+            return Get(winnerTeamId);
         }
     }
 }

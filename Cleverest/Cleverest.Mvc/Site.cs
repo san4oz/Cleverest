@@ -32,6 +32,11 @@ namespace Cleverest
                 get { return Get<IAccountManager>(); }
             }
 
+            public static IScoreManager Score
+            {
+                get { return Get<IScoreManager>(); }
+            }
+
             public static IAccountTeamPermissionManager AccountTeamPermission
             {
                 get { return Get<IAccountTeamPermissionManager>(); }

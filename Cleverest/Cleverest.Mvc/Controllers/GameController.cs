@@ -9,6 +9,7 @@ using Cleverest.Business.Entities;
 using Cleverest.Business.Helpers.ImageStorageFactory;
 using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels;
+using Cleverest.Mvc.ViewModels.Frontend.Game;
 
 namespace Cleverest.Mvc.Controllers
 {
@@ -46,20 +47,61 @@ namespace Cleverest.Mvc.Controllers
             if (game == null)
                 return HttpNotFound();
 
+            var model = new GameDetailsViewModel()
+            {
+                Info = CreateInfoModel(game),
+                TeamScores = CreateScoresModel(game),
+                Winner = CreateWinnerModel(game)
+            };
+            
+            return View(model);
+        }
+        
+        protected GameInfoViewModel CreateInfoModel(Game game)
+        {
             var storage = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game);
-            var logo = storage.GetLogo(id);
+            var logo = storage.GetLogo(game.Id);
 
-            var viewModel = new GameDetailsViewModel()
+            var model = new GameInfoViewModel()
             {
                 Title = game.Title,
                 Location = game.Location,
                 GameDate = game.GameDate,
-                ImageUrl = logo == null ? null : logo.ApplicationRelativePath
+                ImageUrl = ImageStorageFactory.Current.GetStorage(SiteConstants.ImageStorages.Game).GetLogo(game.Id)?.ApplicationRelativePath
             };
 
-            viewModel.GalleryPhotos = storage.GetImages(id).Select(x => x.ApplicationRelativePath).ToList();
-                       
-            return View(viewModel);
-        }       
+            model.GalleryPhotos = storage.GetImages(game.Id).Select(x => x.ApplicationRelativePath).ToList();
+
+            return model;
+        }   
+        
+        protected IList<TeamScoresViewModel> CreateScoresModel(Game game)
+        {
+            var result = new List<TeamScoresViewModel>();
+
+            var scores = Site.Managers.Score.GetGameScores(game.Id).GroupBy(score => score.TeamId);
+
+            foreach(var teamScores in scores)
+            {
+                var team = Site.Managers.Team.Get(teamScores.Key);
+                var model = new TeamScoresViewModel(team, teamScores.ToList());
+
+                result.Add(model);
+            }                       
+
+            return result;
+        }    
+
+        protected TeamDetailsInfoViewModel CreateWinnerModel(Game game)
+        {
+            var entity = Site.Managers.Team.GetGameWinner(game.Id);
+            if (entity == null)
+                return null;
+
+            var model = Site.Services.Mapper.Map<Team, TeamDetailsInfoViewModel>(entity);
+            model.PhotoPath = Site.Services.ContentStorage.Team.GetLogo(entity.Id)?.ApplicationRelativePath;
+
+            return model;
+        }
     }
 }

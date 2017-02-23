@@ -1,10 +1,11 @@
-﻿@model Cleverest.Mvc.ViewModels.GameDetailsViewModel
+﻿@model Cleverest.Mvc.ViewModels.Frontend.Game.GameDetailsViewModel
 @{
-    bool isFutureGame = Model.GameDate >= DateTime.Now;
+    bool isFutureGame = Model.Info.GameDate >= DateTime.Now;
+    bool hasWinner = Model.Winner != null;
 }
 
 
-@Shared.HeroBlock(string.Format("Гра: {0}", Model.Title), css: "is-success")
+@Shared.HeroBlock(string.Format("Гра: {0}", Model.Info.Title), css: "is-success")
 
 <div class="section">
     <div class="container">
@@ -13,21 +14,25 @@
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="@Model.ImageUrl"/>
+                            <img src="@Model.Info.ImageUrl"/>
                         </figure>
                     </div>
                     <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image" style="height: 40px; width: 40px;">
-                                    <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
-                                </figure>
+                        
+                        @if(!isFutureGame && hasWinner)
+                        {
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image" style="height: 40px; width: 40px;">
+                                        <img src="@Model.Winner.PhotoPath" alt="Image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4"><strong>@Model.Winner.Name</strong></p>
+                                    <p class="subtitle is-6">Переможець</p>
+                                </div>
                             </div>
-                            <div class="media-content">
-                                <p class="title is-4">Команда переможець</p>
-                                <p class="subtitle is-6">дивіз команди(с)</p>
-                            </div>
-                        </div>
+                        }
 
                         <div class="content">
                             Найсмішнішу відповідь з гри будемо залишати тут.
@@ -38,12 +43,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Місце проведення:  <b> @Model.Location</b>
+                            Місце проведення:  <b> @Model.Info.Location</b>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Дата проведення:  <b> @Model.GameDate.ToString("dd/MM/yyyy")</b>
+                            Дата проведення:  <b> @Model.Info.GameDate.ToString("dd/MM/yyyy")</b>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -62,54 +67,61 @@
                 </div>
             </div>
             <div class="column">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Команда</th>
-                            <th>Тур 1</th>
-                            <th>Тур 2</th>
-                            <th>Тур 3</th>
-                            <th>Тур 4</th>
-                            <th>Тур 5</th>
-                            <th>Тур 6</th>
-                            <th>Тур 7</th>
-                            <th>Всього</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       @for (int i = 0; i < 25; i++)
-                       {
-                        <tr>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@i</td>
-                            <td>@(i*7)</td>
-                        </tr>
-                       }
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Команда</th>
-                            <th>Тур 1</th>
-                            <th>Тур 2</th>
-                            <th>Тур 3</th>
-                            <th>Тур 4</th>
-                            <th>Тур 5</th>
-                            <th>Тур 6</th>
-                            <th>Тур 7</th>
-                            <th>Всього</th>
-                        </tr>
-                    </tfoot>
-                </table>
+                @if (Model.TeamScores.Any())
+                {
+                    <table class="table box">
+                        <thead>
+                            <tr>
+                                <th>Команда</th>
+                                <th>Тур 1</th>
+                                <th>Тур 2</th>
+                                <th>Тур 3</th>
+                                <th>Тур 4</th>
+                                <th>Тур 5</th>
+                                <th>Тур 6</th>
+                                <th>Тур 7</th>
+                                <th>Всього</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var teamScore in Model.TeamScores.OrderByDescending(s => s.Scores.Sum(score => score.Value)))
+                            {
+                                <tr>
+                                    <td><a href="@Url.Action("Details", "Team", new { id = teamScore.Id })">@teamScore.Name</a></td>
+                                    @for (int i = 1; i <= teamScore.Scores.Count; i++)
+                                    {
+                                        <td>@teamScore.Scores[i]</td>
+                                    }
+                                    <td>@teamScore.Scores.Sum(s => s.Value)</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Команда</th>
+                                <th>Тур 1</th>
+                                <th>Тур 2</th>
+                                <th>Тур 3</th>
+                                <th>Тур 4</th>
+                                <th>Тур 5</th>
+                                <th>Тур 6</th>
+                                <th>Тур 7</th>
+                                <th>Всього</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                }
+                else
+                {
+                    <div class="box">
+                        No game
+                    </div>
+                }
             </div>        
         </div>
 
-        <section class="hero is-info">
+        @*<section class="hero is-info">
             <div class="hero-body">
                 <div class="container" style="margin-left: 20%">
                     <h1 class="title">
@@ -123,7 +135,7 @@
         </section>
 
         <div class="columns is-multiline">           
-                @foreach (var photo in Model.GalleryPhotos)
+                @foreach (var photo in Model.Info.GalleryPhotos)
                 {
                     <div class="column is-4 ">
                         <div class="card">
@@ -135,6 +147,6 @@
                         </div>
                     </div>
                 }             
-        </div>
+        </div>*@
     </div>
 </div>

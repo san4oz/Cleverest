@@ -139,19 +139,19 @@
     <Compile Include="ViewModels\Admin\Resources\TaskViewModel.cs" />
     <Compile Include="ViewModels\Admin\Resources\TeamInputViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\GameDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Game\GameInfoViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Game\TeamScoresViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Game\GameDetailsViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\Shared\PopupModel.cs" />
-    <Compile Include="ViewModels\TeamDetailsInfoViewModel.cs" />
-    <Compile Include="ViewModels\TeamDetailsViewModel.cs" />
-    <Compile Include="ViewModels\TeamViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Team\TeamDetailsInfoViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Team\TeamDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Team\TeamViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Frontend\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

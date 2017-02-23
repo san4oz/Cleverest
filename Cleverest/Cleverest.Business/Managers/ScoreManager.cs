@@ -11,6 +11,11 @@ namespace Cleverest.Business.Managers
 {
     public class ScoreManager : BaseManager<Score, IScoreProvider>, IScoreManager
     {
+        public IList<Score> GetGameScores(string gameId)
+        {
+            return Provider.GetGameScores(gameId);
+        }
+
         public override void Update(Score entity)
         {
             Provider.Update(entity.Id, entityToUpdate =>
