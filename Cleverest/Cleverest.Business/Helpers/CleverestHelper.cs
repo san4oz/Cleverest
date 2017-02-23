@@ -16,26 +16,21 @@ namespace Cleverest.Business.Helpers
 
         public static QuestionType GetQuestionType(int roundNo)
         {
-            switch(roundNo)
-            {
-                case 1:
-                    return QuestionType.Text;
-                case 4:
-                    return QuestionType.Text;
-                case 5:
-                    return QuestionType.Text;
-                case 7:
-                    return QuestionType.Text;
-                case 2:
-                    return QuestionType.Picture;
-                case 6:
-                    return QuestionType.Picture;
-                case 3:
-                    return QuestionType.Music;
-                default:
-                    return QuestionType.Text;
-            }
+            if (roundNo <= 0 || roundNo > 7)
+                throw new ArgumentException("Round number should be from 1 to 7");
 
+            var types = new Dictionary<int, QuestionType>()
+            {
+                { 1, QuestionType.Text },
+                { 4, QuestionType.Text },
+                { 5, QuestionType.Text },
+                { 7, QuestionType.Text },
+                { 2, QuestionType.Picture },
+                { 6, QuestionType.Picture },
+                { 3, QuestionType.Music }
+            };
+
+            return types[roundNo];
         }
     }
 }
