@@ -9,6 +9,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
     public interface IQuestionManager : IBaseManager<Question>
     {
-        List<Question> Get(string gameId, int roundNo)
+        List<Question> Get(string gameId, int roundNo);
     }
 }

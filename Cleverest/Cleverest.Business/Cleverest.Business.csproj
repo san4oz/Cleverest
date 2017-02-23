@@ -47,7 +47,8 @@
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Questions\PictureQuestion.cs" />
     <Compile Include="Entities\Questions\Question.cs" />
-    <Compile Include="Entities\Questions\SongQuestion.cs" />
+    <Compile Include="Entities\Questions\QuestionType.cs" />
+    <Compile Include="Entities\Questions\MusicQuestion.cs" />
     <Compile Include="Entities\Questions\TextQuestion.cs" />
     <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\Search\IndexConstants.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Entities\Search\SearchResult.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="Entities\AccountTeamRequest.cs" />
+    <Compile Include="Helpers\CleverestHelper.cs" />
     <Compile Include="Helpers\ImageStorageFactory\ImageContainer.cs" />
     <Compile Include="Helpers\ImageStorageFactory\ImageStorage.cs" />
     <Compile Include="Helpers\ImageStorageFactory\ImageStorageFactory.cs" />
