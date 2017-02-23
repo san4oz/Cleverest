@@ -21,6 +21,14 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
             }
         }
 
+        private FileInfo EmptyImage
+        {
+            get
+            {
+                return new FileInfo(Path.Combine(RootApplicationDirectory.FullName, @"Content\Images\Icons\EmptyImage.png"));
+            }
+        }
+
         private DirectoryInfo EntityDirectory
         {
             get
@@ -56,7 +64,13 @@ namespace Cleverest.Business.Helpers.ImageStorageFactory
         {
             var fileInfo = GetInstanceDirectory(entityId).GetFiles(name).SingleOrDefault();
             if (fileInfo == null)
-                return null;
+            {
+                return new ImageContainer()
+                {
+                    Data = EmptyImage,
+                    ApplicationRelativePath = "/Content/Images/Icons/EmptyImage.png"
+                };
+            }
 
             return new ImageContainer()
             {
