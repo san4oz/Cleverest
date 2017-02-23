@@ -38,4 +38,12 @@
     <property type="string" name="TeamId"/>
     <property type="int" name="RequestType"/>
   </class>
+
+  <class name="Score" table="Scores">
+    <id name="Id" type="string"></id>
+    <property type="string" name="TeamId"/>
+    <property type="string" name="GameId"/>
+    <property type="int" name="RoundNo"/>
+    <property type="int" name="Value"/>
+  </class>
 </hibernate-mapping>

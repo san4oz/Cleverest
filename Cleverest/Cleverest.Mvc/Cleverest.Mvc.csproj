@@ -169,6 +169,10 @@
       <Project>{49c087eb-cbf2-49ee-b638-4339e8b4f14c}</Project>
       <Name>Cleverest.DataProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cleverest.ExcelDataProvider\Cleverest.ExcelDataProvider.csproj">
+      <Project>{bd054fcb-4913-4c63-a85b-05eddfe62294}</Project>
+      <Name>Cleverest.ExcelDataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cleverest.Search\Cleverest.Search.csproj">
       <Project>{b04309af-7239-47ce-8fe2-69d7aef3d51e}</Project>
       <Name>Cleverest.Search</Name>

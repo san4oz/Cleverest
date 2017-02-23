@@ -3,5 +3,5 @@ CREATE TABLE Scores(
 	GameId nvarchar(100) not null,
 	TeamId nvarchar(100) not null,
 	RoundNo int not null,
-	Score decimal not null
+	Value int not null
 );	

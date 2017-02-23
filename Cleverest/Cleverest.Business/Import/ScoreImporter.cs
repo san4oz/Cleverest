@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.InterfaceDefinitions.Managers;
+using Cleverest.Business.InterfaceDefinitions.Managers.ExcelManagers;
 
 namespace Cleverest.Business.Import
 {
@@ -16,19 +17,45 @@ namespace Cleverest.Business.Import
 
         protected IGameManager GameManager;
 
-        public ScoreImporter(IGameManager manager)
+        protected IExcelScoreManager ExcelScoreManager;
+
+        protected IScoreManager ScoreManager;
+
+        protected ScoreValidator Validator;
+
+        public ScoreImporter(IGameManager manager, IExcelScoreManager excelManager, IScoreManager scoreManager)
         {
             this.GameManager = manager;
+            this.ExcelScoreManager = excelManager;
+            this.ScoreManager = scoreManager;
+
+            this.Validator = new ScoreValidator();
+        }
+
+        protected virtual void ConfigureValidationRules()
+        {
+            Validator.AddRule(score =>
+            {
+                return !score.GameId.IsEmpty() && !score.TeamId.IsEmpty()
+                        && score.Value >= 0 && score.RoundNo > 0;
+            });
         }
 
         public void Import(string importFolderPath)
         {
-            if (!PrepareImportFolder(importFolderPath))
-                return;
+            SetImportFolder(importFolderPath);
+            ConfigureValidationRules();
 
-            foreach (var file in new DirectoryInfo(ImportFolder).GetFiles("*.xlsx"))
+            try
+            { 
+                foreach (var file in new DirectoryInfo(ImportFolder).GetFiles("*.xlsx"))
+                {
+                    ProcessFile(file);
+                }
+            }
+            catch(Exception ex)
             {
-                ProcessFile(file);
+
             }
         }
 
@@ -38,42 +65,15 @@ namespace Cleverest.Business.Import
             if (!EnsureGameExist(gameId))
                 return false;
 
-            var dataSet = ExtractDataSetFromFile(file);
-
-            return true;
-        }
-
-        protected DataSet ExtractDataSetFromFile(FileInfo file)
-        {
-            DataSet result = new DataSet();
-
-            var connectionString = GetConnectionString(file.FullName);
-            using (var connection = new OleDbConnection(connectionString))
+            var scores = ExcelScoreManager.GetScores(file);
+            foreach(var score in scores)
             {
-                connection.Open();
-                var command = new OleDbCommand();
-                command.Connection = connection;
-
-                var dtSheet = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                foreach (DataRow dataRow in dtSheet.Rows)
-                {
-                    string sheetName = dataRow["TABLE_NAME"].ToString();
-                    if (!sheetName.EndsWith("$"))
-                        continue;
-
-                    command.CommandText = "SELECT * FROM [" + sheetName + "]";
-
-                    var dataTable = new DataTable();
-                    dataTable.TableName = sheetName;
-
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(command);
-                    adapter.Fill(dataTable);
-
-                    result.Tables.Add(dataTable);
-                }
+                score.GameId = gameId;
+                if (Validator.IsScoreValid(score))
+                    ScoreManager.Create(score);
             }
 
-            return result;
+            return true;
         }
 
         protected string ExtractGameId(FileInfo scoreFile)
@@ -109,21 +109,20 @@ namespace Cleverest.Business.Import
             return sb.ToString();
         }
 
-        protected virtual bool PrepareImportFolder(string relativePath)
+        protected void SetImportFolder(string path)
         {
-            try
-            { 
-                var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
-                if (!Directory.Exists(fullPath))
-                    Directory.CreateDirectory(fullPath);
+            if (Path.IsPathRooted(path))
+                this.ImportFolder = path;
+            else
+                this.ImportFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
 
-                this.ImportFolder = fullPath;
-                return true;
-            }
-            catch(Exception ex)
-            {
-                return false;
-            }
+            EnsureImportFolder();
+        }
+
+        protected virtual void EnsureImportFolder()
+        {
+            if (!Directory.Exists(ImportFolder))
+                Directory.CreateDirectory(ImportFolder);
         }
     }
 }

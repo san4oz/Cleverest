@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.Import;
 using Cleverest.Business.InterfaceDefinitions.Managers;
+using Cleverest.Business.InterfaceDefinitions.Managers.ExcelManagers;
 
 namespace Cleverest.Business.Tasks
 {
@@ -14,9 +15,9 @@ namespace Cleverest.Business.Tasks
 
         public string Name { get { return "ScoreImport"; } }
 
-        public ScoreImportTask(IGameManager manager)
+        public ScoreImportTask(IGameManager manager, IExcelScoreManager excelScoreManager, IScoreManager scoreManager)
         {
-            this.Importer = new ScoreImporter(manager); 
+            this.Importer = new ScoreImporter(manager, excelScoreManager, scoreManager); 
         }
 
         public void Run()

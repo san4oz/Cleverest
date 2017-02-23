@@ -18,6 +18,8 @@ using AutoMapper;
 using Cleverest.Search;
 using Cleverest.Business.InterfaceDefinitions.Search;
 using Cleverest.Business.Tasks;
+using Cleverest.ExcelDataProvider.Managers;
+using Cleverest.Business.InterfaceDefinitions.Managers.ExcelManagers;
 
 namespace Cleverest.App_Start.Autofac
 {
@@ -69,6 +71,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();
             builder.RegisterType<AccountTeamPermissionProvider>().As<IAccountTeamPermissionProvider>();
             builder.RegisterType<AccountTeamRequestProvider>().As<IAccountTeamRequestProvider>();
+            builder.RegisterType<ScoreProvider>().As<IScoreProvider>();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)
@@ -78,6 +81,9 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<AccountManager>().As<IAccountManager>();
             builder.RegisterType<AccountTeamPermissionManager>().As<IAccountTeamPermissionManager>();
             builder.RegisterType<AccountTeamRequestManager>().As<IAccountTeamRequestManager>();
+            builder.RegisterType<ScoreManager>().As<IScoreManager>();
+
+            builder.RegisterType<ExcelScoreManager>().As<IExcelScoreManager>();
         }
 
         private static void RegisterSearchManagers(ContainerBuilder builder)

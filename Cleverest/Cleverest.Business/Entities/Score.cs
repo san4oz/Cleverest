@@ -8,10 +8,12 @@ namespace Cleverest.Business.Entities
 {
     public class Score : Entity
     {
-        public string GameId { get; set; }
+        public virtual string GameId { get; set; }
 
-        public string TeamId { get; set; }
+        public virtual string TeamId { get; set; }
 
-        public string RoundId { get; set; }
+        public virtual int RoundNo { get; set; }
+
+        public virtual int Value { get; set; }
     }
 }
