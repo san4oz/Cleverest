@@ -4,4 +4,4 @@ create table AccountTeamPermissions(
 	AccountId nvarchar(100) not null,
 	FOREIGN KEY (TeamId) REFERENCES Teams(Id),
 	FOREIGN KEY (AccountId) REFERENCES Accounts(Id)
-)
+);

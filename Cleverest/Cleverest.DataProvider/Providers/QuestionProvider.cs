@@ -22,5 +22,17 @@ namespace Cleverest.DataProvider.Providers
                             .ToList();
             });
         }
+
+        public Question Get(string gameId, int roundNo, int orderNo)
+        {
+            return Execute(session =>
+            {
+                return session.CreateCriteria<Question>()
+                            .Add(Expression.Eq("GameId", gameId))
+                            .Add(Expression.Eq("RoundNo", roundNo))
+                            .Add(Expression.Eq("OrderNo", orderNo))
+                            .UniqueResult<Question>();
+            });
+        }
     }
 }

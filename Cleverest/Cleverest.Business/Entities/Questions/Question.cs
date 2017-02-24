@@ -15,5 +15,7 @@ namespace Cleverest.Business.Entities
         public virtual int OrderNo { get; set; }
 
         public virtual string CorrectAnswer { get; set; }
+
+        public virtual string QuestionBody { get; set; }
     }
 }

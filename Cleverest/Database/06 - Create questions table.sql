@@ -1,5 +1,6 @@
 create table Questions(
 	Id nvarchar(100) not null primary key,
+	QuestionBody nvarchar(max) not null,
 	GameId nvarchar(100) not null,
 	RoundNo int not null,
 	OrderNo int not null,

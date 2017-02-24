@@ -28,16 +28,49 @@ namespace Cleverest.Mvc.Controllers.Admin
         }
 
         [HttpPost]
-        public ActionResult Question(string gameId, int roundNo)
+        public ActionResult Questions(string gameId, int roundNo)
         {
             if (gameId.IsEmpty() || roundNo <= 0)
                 return RedirectToAction("Index");
 
+            var game = Site.Managers.Game.Get(gameId);
+            if (game == null)
+                return HttpNotFound();
+
             var questions = Site.Managers.Question.Get(gameId, roundNo);
 
-            var model = new QuestionViewModel(questions);
+            var model = new QuestionViewModel(questions) { GameId = gameId, RoundNo = roundNo };
 
-            return PartialView(string.Format("{0}QuestionEditor", GetViewSuffix(roundNo)), questions);
+            return PartialView(string.Format("Types/{0}QuestionEditor", GetViewSuffix(roundNo)), model);
+        }
+
+        [HttpPost]
+        public ActionResult Save(List<Question> questions, string gameId, int roundNo)
+        {
+            if (gameId.IsEmpty() || roundNo <= 0 || roundNo > 7)
+                return RedirectToAction("Index");
+
+            foreach(var question in questions)
+            {
+                question.GameId = gameId;
+                question.RoundNo = roundNo;
+
+                if (question.QuestionBody.IsEmpty() || question.CorrectAnswer.IsEmpty())
+                    continue;
+
+                var existingQuestion = Site.Managers.Question.Get(gameId, roundNo, question.OrderNo);
+                if(existingQuestion != null)
+                {
+                    question.Id = existingQuestion.Id;
+                    Site.Managers.Question.Update(question);
+                }
+                else
+                {
+                    Site.Managers.Question.Create(question);
+                }
+            }
+
+            return RedirectToAction("Index");
         }
 
         public string GetViewSuffix(int roundNo)

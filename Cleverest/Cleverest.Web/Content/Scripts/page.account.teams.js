@@ -23,7 +23,6 @@ Account.Team = (function () {
     });
 
     $(document).on('click', "#sendJoinRequest", null, function (e) {
-        debugger;
         e.preventDefault();
         var target = $(e.target);
         $.post(target.attr("data-url"), { teamId: target.attr("data-id") }, function(result){
