@@ -93,6 +93,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Cleverest.mdf" />
+    <Content Include="App_Data\Cleverest_log.ldf">
+      <DependentUpon>Cleverest.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Design\bulma.css" />
     <Content Include="Content\Design\datepicker.css" />
     <Content Include="Content\Design\font-awesome.css" />
@@ -124,6 +128,7 @@
     <Content Include="Content\Scripts\Libs\jquery.validate.unobstrusive.js" />
     <Content Include="Content\Scripts\page.account.requests.js" />
     <Content Include="Content\Scripts\page.account.teams.js" />
+    <Content Include="Content\Scripts\Admin\page.question.js" />
     <Content Include="Content\Scripts\Popup.js" />
     <Content Include="Content\Scripts\Site.js" />
     <Content Include="Content\Scripts\Libs\bootstrap.js" />

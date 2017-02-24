@@ -16,6 +16,11 @@ namespace Cleverest.Business.Managers
             return Provider.Get(gameId, roundNo);
         }
 
+        public Question Get(string gameId, int roundNo, int orderNo)
+        {
+            return Provider.Get(gameId, roundNo, orderNo);
+        }
+
         public override void Update(Question entity)
         {
             Provider.Update(entity.Id, question =>
@@ -24,6 +29,7 @@ namespace Cleverest.Business.Managers
                 question.OrderNo = entity.OrderNo;
                 question.RoundNo = entity.RoundNo;
                 question.CorrectAnswer = entity.CorrectAnswer;
+                question.QuestionBody = entity.QuestionBody;
             });
         }
     }

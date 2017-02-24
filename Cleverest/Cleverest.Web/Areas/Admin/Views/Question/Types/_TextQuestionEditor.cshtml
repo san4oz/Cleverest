@@ -1,10 +1,49 @@
-﻿@model List<Question>
+﻿@model QuestionViewModel
 
+@{ 
+    int index = 0;
+}
 
 <section class="section">
     <div class="container">
         @using (Html.BeginForm("Save", "Question", FormMethod.Post, htmlAttributes: "form-horizonal"))
         {
-        }
+            @Html.HiddenFor(m => Model.GameId)
+            @Html.HiddenFor(m => Model.RoundNo)
+            @Html.AntiForgeryToken()
+            <div class="columns">
+                <div class="column is-11">
+                    @foreach (var question in Model.Questions)
+                    {
+                        <input type="hidden" name="@string.Format("Questions[{0}].OrderNo", index)" value="@(question.RoundNo != 0 ? question.RoundNo : index + 1` )" />
+
+                        <div class="box">
+                            <div class="control is-horizontal">
+                                <div class="control-label">
+                                    <label name="@string.Format("Questions[{0}].QuestionBody", index)" class="label">Питання номер @(index + 1)</label>
+                                </div>
+                                <div class="control">
+                                    <textarea class="textarea" data-val="true" data-val-required="Обов'язкове поле" required="required" name="@string.Format("Questions[{0}].QuestionBody", index)">@question.QuestionBody</textarea>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="@string.Format("Questions[{0}].QuestionBody", index)" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="control is-horizontal">
+                                <div class="control-label">
+                                    <label class="label" name="@string.Format("Questions[{0}].CorrectAnswer", index)">Відповідь</label>
+                                </div>
+
+                                <div class="control">
+                                    <input type="text" data-val="true" data-val-required="Обов'язкове поле" value="@question.CorrectAnswer" required="required" class="input" name="@string.Format("Questions[{0}].CorrectAnswer", index)" />
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="@string.Format("Questions[{0}].CorrectAnswer", index++)" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    } 
+                    <p class="control">
+                        <button class="button is-success is-large" type="submit">Зберегти</button>
+                    </p>
+                </div>
+            </div>
+        }        
     </div>
 </section>

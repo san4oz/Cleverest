@@ -53,6 +53,7 @@
     <property type="string" name="GameId"/>
     <property type="int" name="RoundNo"/>
     <property type="int" name="OrderNo"/>
+    <property type="string" name="QuestionBody"/>
   </class>
   
 </hibernate-mapping>

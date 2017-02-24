@@ -8,4 +8,4 @@ create table Accounts(
 	[Password] nvarchar(250) not null,
 	[PasswordSalt] nvarchar(150) not null,
 	FOREIGN KEY (TeamId) REFERENCES Teams(Id)
-)
+);

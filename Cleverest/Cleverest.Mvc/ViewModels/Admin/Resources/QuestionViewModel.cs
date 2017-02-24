@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.Entities;
 using Cleverest.Business.Helpers;
+using Cleverest.Business.Entities.Questions;
 
 namespace Cleverest.Mvc.ViewModels.Admin.Resources
 {
@@ -14,22 +15,25 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         
         public string GameId { get; set; }
 
-        List<Question> Questions { get; set; }
+        public List<Question> Questions { get; set; }
 
         public QuestionViewModel(List<Question> questions)
         {
-            if (questions != null &&  questions.Any())
+            if (questions != null && questions.Any())
                 this.Questions = questions;
             else
-                InitializeAsEmpty();
+                this.Questions = new List<Question>();
+
+            InitializeEmptyQuestions();
         }
 
-        protected void InitializeAsEmpty()
+        protected void InitializeEmptyQuestions()
         {
-            this.Questions = new List<Question>();
-            for(int i = 1; i <= CleverestHelper.GetQuestionsCount(this.RoundNo); i++)
+            var index = this.Questions.Count();
+
+            while(this.Questions.Count() < CleverestHelper.GetQuestionsCount(this.RoundNo))
             {
-                Questions.Add(new Question() { GameId = this.GameId, RoundNo = this.RoundNo, OrderNo = i });
+                Questions.Add(new Question() { GameId = this.GameId, RoundNo = this.RoundNo, OrderNo = ++index });
             }
         }
     }
