@@ -6,3 +6,8 @@ C:\Users\Alexey\Desktop\Development\Projects\Cleverest\Cleverest\Cleverest.Core\
 C:\Users\Alexey\Desktop\Development\Projects\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pdb
 C:\Users\Alexey\Desktop\Development\Projects\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
 C:\Users\Alexey\Desktop\Development\Projects\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb
+D:\My_Development\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.dll
+D:\My_Development\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pdb
+D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache
+D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
+D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb

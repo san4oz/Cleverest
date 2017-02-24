@@ -14,9 +14,9 @@
             </div>
         </div>
     </div>
-    <div class="columns">
-        <div class="column is-12">
-            <table class="table">
+    <div class="columns" style="width: 100%;">
+        <div class="column is-8" style="margin: 0 auto">
+            <table class="table box">
                 <thead>
                     <tr>
                         <th>Назва</th>
@@ -29,7 +29,7 @@
                     <tr>
                         <td><a href="@Url.Action("Details", "Team", new { id = team.Id })">@team.Name</a></td>
                         <td>@team.ParticipantsCount</td>
-                        <td><a class="button is-info" href="@Url.Action("Edit", new { id = team.Id })">Редагувати</a></td>
+                        <td><a class="button is-success" href="@Url.Action("Edit", new { id = team.Id })">Редагувати</a></td>
                     </tr>
                 }
             </table>

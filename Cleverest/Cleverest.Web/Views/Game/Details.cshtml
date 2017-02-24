@@ -5,13 +5,13 @@
 }
 
 
-@Shared.HeroBlock(string.Format("Гра: {0}", Model.Info.Title), css: "is-success")
+@*@Shared.HeroBlock(string.Format("Гра: {0}", Model.Info.Title), css: "is-success")*@
 
 <div class="section">
     <div class="container">
         <div class="columns">
             <div class="column is-4">
-                <div class="card">
+                <div class="card cleverest">
                     <div class="card-image">
                         <figure class="image is-4by3">
                             <img src="@Model.Info.ImageUrl"/>
@@ -61,6 +61,14 @@
                         <div class="card-footer">
                             <a href="" class="is-fullwidth button is-success">
                                 Зареєструватись
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-footer">
+                            <a href="@Url.Action("Questions", new { gameId = Model.Info.Id, RoundNo = 1, OrderNo = 1 })" class="is-fullwidth button is-cleverest">
+                                Переглянути питання з гри
                             </a>
                         </div>
                     }
@@ -119,34 +127,6 @@
                     </div>
                 }
             </div>        
-        </div>
-
-        @*<section class="hero is-info">
-            <div class="hero-body">
-                <div class="container" style="margin-left: 20%">
-                    <h1 class="title">
-                        Фото з гри
-                    </h1>
-                    <h2 class="subtitle">
-                        fuck yeah
-                    </h2>
-                </div>
-            </div>
-        </section>
-
-        <div class="columns is-multiline">           
-                @foreach (var photo in Model.Info.GalleryPhotos)
-                {
-                    <div class="column is-4 ">
-                        <div class="card">
-                        <div class="card-image">
-                            <figure class="is-4by3">
-                                <img src="@photo" />
-                            </figure>
-                        </div>                                
-                        </div>
-                    </div>
-                }             
-        </div>*@
+        </div>       
     </div>
 </div>

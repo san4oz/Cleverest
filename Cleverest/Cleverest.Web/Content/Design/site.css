@@ -1,3 +1,19 @@
+@font-face{
+    font-family: Comfortaa;
+    src: url(/Content/Fonts/Comfortaa-Regular.ttf);
+}
+
+@font-face{
+    font-family: ComfortaaBold;
+    src: url(/Content/Fonts/Comfortaa-Bold.ttf);
+}
+
+@font-face{
+    font-family: ComfortaaLight;
+    src: url(/Content/Fonts/Comfortaa-Light.ttf);
+}
+
+
 body > .container{
     max-width: 100%;
 }
@@ -36,20 +52,93 @@ body > .container{
 }
 
 .media-block{
-    /*border: 1px solid red;*/
-    /*background-color: lightgray;*/
     width: 100%;
     max-width: 100%;
 }
 
-.game-list .card{
-    max-height: 300px;
-    height: 300px;
+.question-box {
+    background-color: #339900;
+    height: 500px;
+    max-height: 500px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Comfortaa;
+    text-overflow: clip;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+.question-box > p{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.box{
+    background-color: #339900;
+    color: white;
+    font-family: Comfortaa;
+    font-weight: bold;    
+}
+
+.table th{
+    color: white !important;
+    font-family: Comfortaa;
+    font-weight:bolder;
+    font-size: 14px;
+}
+
+.table td a{
+    color: white !important;    
+}
+
+.cleverest .title{
+    color: white !important;
+    font-family: Comfortaa;
+}
+
+.cleverest.card{
+    background-color: #339900;
+}
+
+.cleverest div{
+    color: white !important;
+}
+
+.is-cleverest{
+    background-color: #339900;
+    color: white;
+    font-family: Comfortaa;
+}
+body{
+    font-family: Comfortaa;
+}
+
+.is-cleverest a.nav-item{
+    color: white !important;
+}
+
+
+.game-list .card img{
+    max-height: 400px;
+    min-height: 400px;
     width: 100%;
 }
 
-.game-list .card img{
-    max-height: 200px;
-    height: 200px;
-    width: 100%;
+.cleverest-form{
+        border-radius: 10px;
+    background-color: #339900;
+}
+
+.cleverest-form label{
+    color: white;
+}
+
+.button.is-success{
+    background-color: #339900 !important;
+}
+
+.table td:hover{
+    background-color: none !important;
 }

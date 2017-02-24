@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cleverest.ViewModels;
 
 namespace Cleverest.Mvc.ViewModels.Frontend.Game
 {
-    public class GameInfoViewModel
+    public class GameInfoViewModel : BaseViewModel
     {
         public string Title { get; set; }
 

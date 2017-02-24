@@ -157,6 +157,9 @@
     <Content Include="Areas\Admin\Views\Shared\Media.cshtml" />
     <Content Include="Areas\Admin\Views\Question\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Question\Types\_TextQuestionEditor.cshtml" />
+    <Content Include="Content\Fonts\Comfortaa-Bold.ttf" />
+    <Content Include="Content\Fonts\Comfortaa-Light.ttf" />
+    <Content Include="Content\Fonts\Comfortaa-Regular.ttf" />
     <None Include="Content\Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.js" />
     <Content Include="Content\Scripts\Libs\jquery.validate.min.js" />
@@ -214,6 +217,7 @@
     <Content Include="Views\Team\_SuggestionDetails.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Game\Questions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

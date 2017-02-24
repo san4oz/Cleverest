@@ -14,6 +14,13 @@ namespace Cleverest.App_Start
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             AreaRegistration.RegisterAllAreas();
 
+            
+                 routes.MapRoute(
+           name: "Questions",
+           url: "questions/{gameId}/{roundNo}/{orderNo}",
+           defaults: new { controller = "Game", action = "Questions" }
+           );
+
             routes.MapRoute(
            name: "editTeamDetails",
            url: "team/edit/{id}",

@@ -56,6 +56,35 @@ namespace Cleverest.Mvc.Controllers
             
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Questions(string gameId, int roundNo, int orderNo)
+        {
+            if(orderNo > 7)
+            {
+                orderNo = 1;
+                roundNo++;
+            }
+            if(orderNo < 1)
+            {
+                orderNo = 7;
+                roundNo--;
+            }
+
+            var question = Site.Managers.Question.Get(gameId, roundNo, orderNo);
+            if (question == null)
+                return HttpNotFound();
+           
+            var model = Site.Services.Mapper.Map<Question, QuestionViewModel>(question);
+
+            var nextQuestion = Site.Managers.Question.Get(gameId, roundNo, orderNo + 1);
+            var previousQuestion = Site.Managers.Question.Get(gameId, roundNo, orderNo - 1);
+
+            model.NextQuestionExists = nextQuestion != null;
+            model.PreviousQuestionExists = previousQuestion != null;
+
+            return View(model);
+        }
         
         protected GameInfoViewModel CreateInfoModel(Game game)
         {
@@ -64,6 +93,7 @@ namespace Cleverest.Mvc.Controllers
 
             var model = new GameInfoViewModel()
             {
+                Id = game.Id,
                 Title = game.Title,
                 Location = game.Location,
                 GameDate = game.GameDate,

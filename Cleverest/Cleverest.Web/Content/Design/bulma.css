@@ -1574,10 +1574,6 @@ a.box:active {
   text-align: left;
 }
 
-.content table tr:hover {
-  background-color: whitesmoke;
-}
-
 .content table thead td,
 .content table thead th {
   border-width: 0 0 2px;
@@ -2558,10 +2554,6 @@ a.box:active {
   text-align: left;
 }
 
-.table tr:hover {
-  background-color: #fafafa;
-}
-
 .table thead td,
 .table thead th {
   border-width: 0 0 2px;
@@ -2592,14 +2584,6 @@ a.box:active {
 .table.is-narrow td,
 .table.is-narrow th {
   padding: 0.25em 0.5em;
-}
-
-.table.is-striped tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-.table.is-striped tbody tr:nth-child(even):hover {
-  background-color: whitesmoke;
 }
 
 .tag {

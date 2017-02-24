@@ -10,13 +10,13 @@
 }
 
 
-@Shared.HeroBlock("Ігри", css: "is-success")
+@*@Shared.HeroBlock("Ігри", css: "is-success")*@
 
 
 <section class="section game-list">
     <div class="container">
         <h1 class="title">Заплановані ігри</h1>          
-        <div class="columns is-multiline">
+        <div class="columns is-multiline ">
            
             @if (futureGames.Any())
             {
@@ -27,7 +27,7 @@
             }
         </div>
         <h1 class="title">Минулі ігри</h1>        
-        <div class="columns is-multiline">
+        <div class="columns is-multiline ">
             @foreach (var game in pastGames)
             {
                @GameCard(game)
@@ -38,7 +38,7 @@
 
 @helper GameCard(GameViewModel game)
 {
-    <div class="column is-quarter">
+    <div class="column is-half game">
         <div class="card">
             <a href="@Url.Action("Details", "Game", new { id = game.Id })">
                 <div class="card-image">
@@ -48,7 +48,7 @@
                 </div>
             </a>
             <div class="card-content">
-                <div class="content">
+                <div class="content">                  
                     <span class="tag is-small is-info">@game.Title</span>
                     <span class="tag is-small is-success">@game.Location</span>
                     <span class="tag is-small is-warning">@game.GameDate.ToString("dd/MM/yyyy")</span>

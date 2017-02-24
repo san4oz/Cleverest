@@ -143,6 +143,7 @@
     <Compile Include="ViewModels\Admin\Resources\TeamInputViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Game\GameInfoViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Game\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Game\TeamScoresViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Game\GameDetailsViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />

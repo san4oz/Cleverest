@@ -1,0 +1,29 @@
+﻿@model Cleverest.Mvc.ViewModels.Frontend.Game.QuestionViewModel
+@{
+}
+
+<div class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-2">
+               @if (Model.PreviousQuestionExists)
+               {
+                    <a class="button is-success" href="@Url.Action("Questions", new { gameId = Model.GameId, roundNo = Model.RoundNo, orderNo = Model.OrderNo - 1 })">Попередне питання</a>
+               }             
+            </div>
+            <div class="column is-8">              
+                    <div class="question-box">
+                        <p>
+                            @Model.QuestionBody
+                        </p>                                      
+                    </div>                
+            </div>
+            <div class="column is-2">
+                @if (Model.NextQuestionExists)
+                {
+                    <a class="button is-success" href="@Url.Action("Questions", new { gameId = Model.GameId, roundNo = Model.RoundNo, orderNo = Model.OrderNo + 1 })">Наступне питання</a>
+                }               
+            </div>
+        </div>
+    </div>
+</div>
