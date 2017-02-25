@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using AutoMapper;
 using Cleverest.Business.Tasks;
 using Cleverest.Mvc.ViewModels.Admin;
+using Autofac.Integration.Mvc;
+using Autofac;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
@@ -21,12 +23,16 @@ namespace Cleverest.Mvc.Controllers.Admin
             return View(viewModels);
         }
 
-        [HttpGet]
-        public ActionResult Run()
+        [HttpPost]
+        public ActionResult Run(string taskName)
         {
-            var task = DependencyResolver.Current.GetService<ITask>();
+            var task = AutofacDependencyResolver.Current.ApplicationContainer.ResolveNamed<ITask>(taskName);
+
+            if (task == null)
+                throw new KeyNotFoundException("The received key is not present in the collection.");
+
             task.Run();
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(true);
         }
     }
 }

@@ -5,7 +5,7 @@
 }
 
 <div id="taskListPage">
-<table class="table">
+<table class="table is-cleverest">
     <tr>
         <th>
             @Html.DisplayNameFor(x => x.Name)
@@ -23,10 +23,29 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a href="@Url.Action("Run")">Run</a>
+                <a class="run" data-task="@item.Name" href="@Url.Action("Run")">Run</a>
             </td>
         </tr>
     }
 
 </table>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+    $(function () {
+        $(document).on('click', '.run', function (e) {
+            e.preventDefault();
+            var $target = $(e.target);
+
+            var url = $target.attr("href");
+            var data = $target.attr("data-task");
+
+            $.post(url, { taskName: data }, function (result) {
+                if (result)
+                    alert("Task has been successfully finished");
+            });
+        });
+    });
+    </script>
+}

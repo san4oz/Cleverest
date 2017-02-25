@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleverest.Business.InterfaceDefinitions.Providers;
-using System.Web.Http.Dependencies;
 using System.Web.Mvc;
 
 namespace Cleverest.Business.Managers

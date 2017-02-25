@@ -10,7 +10,9 @@ namespace Cleverest.Business.Tasks
 {
     public class TeamIndexTask : ITask
     {
-        public string Name { get { return "TeamIndex"; } }
+        public const string TaskName = "TeamIndex";
+
+        public string Name { get { return TaskName; } }
 
         protected ITeamManager Manager;
 

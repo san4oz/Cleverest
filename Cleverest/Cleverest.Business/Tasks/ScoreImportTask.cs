@@ -13,7 +13,9 @@ namespace Cleverest.Business.Tasks
     {
         public ScoreImporter Importer;
 
-        public string Name { get { return "ScoreImport"; } }
+        public const string TaskName = "ScoreImport";
+
+        public string Name { get { return TaskName; } }
 
         public ScoreImportTask(IGameManager manager, IExcelScoreManager excelScoreManager, IScoreManager scoreManager)
         {
