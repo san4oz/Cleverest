@@ -15,12 +15,9 @@ namespace Cleverest.Business.Managers
     {
         protected ITeamManager TeamManager { get; }
 
-        protected IAccountTeamPermissionManager PermissionManager { get; set; }
-
-        public AccountManager(ITeamManager manager, IAccountTeamPermissionManager permissionManager)
+        public AccountManager(ITeamManager manager)
         {
             this.TeamManager = manager;
-            this.PermissionManager = permissionManager;
         }
 
         public override void Update(Account entity)
@@ -94,9 +91,49 @@ namespace Cleverest.Business.Managers
             if (TeamManager.GetTeamsByAccountId(accountId).Select(x => x.Id).Contains(teamId))
                 return false;
           
-            PermissionManager.Create(new AccountTeamPermission() { AccountId = accountId, TeamId = teamId });
+            Provider.CreateAccountTeamPermission(new AccountTeamPermission() { AccountId = accountId, TeamId = teamId });
 
             return true;
+        }
+
+        public void ProccessAccountTeamRequests(string requestId, bool isApproved)
+        {
+            if (string.IsNullOrEmpty(requestId))
+                return;
+
+            if (!isApproved)
+            {
+                Provider.DeleteAccountTeamRequest(requestId);
+                return;
+            }
+
+            var request = Provider.GetAccountTeamRequest(requestId);
+            if (requestId == null)
+                return;
+
+            var accountTeamPermission = new AccountTeamPermission()
+            {
+                AccountId = request.FromId,
+                TeamId = request.TeamId
+            };
+
+            Provider.CreateAccountTeamPermission(accountTeamPermission);
+            Provider.DeleteAccountTeamRequest(requestId);
+        }
+
+        public IList<AccountTeamRequest> GetRequestsByReceiverId(string receiverId)
+        {
+            return Provider.GetRequestsByReceiverId(receiverId);
+        }
+
+        public void CreateAccountTeamRequest(AccountTeamRequest request)
+        {
+            Provider.CreateAccountTeamRequest(request);
+        }
+
+        public void CreateAccountTeamPermission(AccountTeamPermission permission)
+        {
+            Provider.CreateAccountTeamPermission(permission);
         }
     }
 }

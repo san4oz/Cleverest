@@ -12,5 +12,15 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
         Account GetByEmail(string email);
 
         IList<Account> GetAccountsByTeamId(string teamId);
+
+        void CreateAccountTeamPermission(AccountTeamPermission permission);
+
+        IList<AccountTeamRequest> GetRequestsByReceiverId(string receiverId);
+
+        AccountTeamRequest GetAccountTeamRequest(string requestId);
+
+        void DeleteAccountTeamRequest(string requestId);
+
+        void CreateAccountTeamRequest(AccountTeamRequest request);
     }
 }

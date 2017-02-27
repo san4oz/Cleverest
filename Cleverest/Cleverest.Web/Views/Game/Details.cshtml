@@ -4,9 +4,6 @@
     bool hasWinner = Model.Winner != null;
 }
 
-
-@*@Shared.HeroBlock(string.Format("Гра: {0}", Model.Info.Title), css: "is-success")*@
-
 <div class="section">
     <div class="container">
         <div class="columns">
@@ -14,12 +11,12 @@
                 <div class="card cleverest">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="@Model.Info.ImageUrl"/>
+                            <img src="@Model.Info.ImageUrl" />
                         </figure>
                     </div>
                     <div class="card-content">
-                        
-                        @if(!isFutureGame && hasWinner)
+
+                        @if (!isFutureGame && hasWinner)
                         {
                             <div class="media">
                                 <div class="media-left">
@@ -34,37 +31,27 @@
                             </div>
                         }
 
-                        <div class="content">
-                            Найсмішнішу відповідь з гри будемо залишати тут.
-                            <a>#ойлолкаксмішно</a> <a>#пацталом</a>
-                            <a>#аффтаржжот</a>
-                            <br>                           
+                        <div class="title content has-text-centered">
+                            @Model.Info.Title
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Місце проведення:  <b> @Model.Info.Location</b>
+                            <span>Місце проведення: <b>@Model.Info.Location</b></span>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Дата проведення:  <b> @Model.Info.GameDate.ToString("dd/MM/yyyy")</b>
+                            <span>Дата проведення: <b> @Model.Info.GameDate.ToString("dd/MM/yyyy")</b></span>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            Час проведення:  <b> 20:00</b>
+                            <span>Час проведення: <b> 20:00</b></span> 
                         </div>
                     </div>
-                    @if (isFutureGame)
-                    {
-                        <div class="card-footer">
-                            <a href="" class="is-fullwidth button is-success">
-                                Зареєструватись
-                            </a>
-                        </div>
-                    }
-                    else
+
+                    @if(!isFutureGame)
                     {
                         <div class="card-footer">
                             <a href="@Url.Action("Questions", new { gameId = Model.Info.Id, RoundNo = 1, OrderNo = 1 })" class="is-fullwidth button is-cleverest">
@@ -75,58 +62,136 @@
                 </div>
             </div>
             <div class="column">
-                @if (Model.TeamScores.Any())
+                @if (!isFutureGame)
                 {
-                    <table class="table box">
-                        <thead>
-                            <tr>
-                                <th>Команда</th>
-                                <th>Тур 1</th>
-                                <th>Тур 2</th>
-                                <th>Тур 3</th>
-                                <th>Тур 4</th>
-                                <th>Тур 5</th>
-                                <th>Тур 6</th>
-                                <th>Тур 7</th>
-                                <th>Всього</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    if (Model.TeamScores.Any())
+                    {
 
-                            @foreach (var teamScore in Model.TeamScores.OrderByDescending(s => s.Scores.Sum(score => score.Value)))
-                            {
+
+                        <table class="table box">
+                            <thead>
                                 <tr>
-                                    <td><a href="@Url.Action("Details", "Team", new { id = teamScore.Id })">@teamScore.Name</a></td>
-                                    @for (int i = 1; i <= teamScore.Scores.Count; i++)
-                                    {
-                                        <td>@teamScore.Scores[i]</td>
-                                    }
-                                    <td>@teamScore.Scores.Sum(s => s.Value)</td>
+                                    <th>Команда</th>
+                                    <th>Тур 1</th>
+                                    <th>Тур 2</th>
+                                    <th>Тур 3</th>
+                                    <th>Тур 4</th>
+                                    <th>Тур 5</th>
+                                    <th>Тур 6</th>
+                                    <th>Тур 7</th>
+                                    <th>Всього</th>
                                 </tr>
-                            }
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Команда</th>
-                                <th>Тур 1</th>
-                                <th>Тур 2</th>
-                                <th>Тур 3</th>
-                                <th>Тур 4</th>
-                                <th>Тур 5</th>
-                                <th>Тур 6</th>
-                                <th>Тур 7</th>
-                                <th>Всього</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var teamScore in Model.TeamScores.OrderByDescending(s => s.Scores.Sum(score => score.Value)))
+                                {
+                                    <tr>
+                                        <td><a href="@Url.Action("Details", "Team", new { id = teamScore.Id })">@teamScore.Name</a></td>
+                                        @for (int i = 1; i <= teamScore.Scores.Count; i++)
+                                        {
+                                            <td>@teamScore.Scores[i]</td>
+                                        }
+                                        <td>@teamScore.Scores.Sum(s => s.Value)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Команда</th>
+                                    <th>Тур 1</th>
+                                    <th>Тур 2</th>
+                                    <th>Тур 3</th>
+                                    <th>Тур 4</th>
+                                    <th>Тур 5</th>
+                                    <th>Тур 6</th>
+                                    <th>Тур 7</th>
+                                    <th>Всього</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="box is-cleverest">
+                            <h1 class="title">Гра закінчена. Чекайте результатів.</h1>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <div class="box">
-                        No game
-                    </div>
+                    if (Model.RegistrationModel.IsRegistered || !User.Identity.IsAuthenticated)
+                    {
+                            <h1 class="title">Зареєстровані команди</h1>
+                            <table class="table box">
+                                <thead>
+                                    <tr>
+                                        <th>Команда</th>
+                                        <th>Кількість Участників</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var team in Model.RegistrationModel.RegisteredTeams)
+                                    {
+                                        <tr>
+                                            <td>@team.TeamName</td>
+                                            <td>@team.MembersCount</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>                       
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("RegisterTeam", "Game", FormMethod.Post))
+                        {
+                            <div class="box is-cleverest">
+                                <h1 class="title">Реєстрація на гру</h1>
+                                <input type="hidden" name="GameId" value="@Model.Info.Id" />
+
+                                @foreach (var account in Model.RegistrationModel.TeamMembers)
+                                {
+                                    <div class="media" style="border-bottom:1px solid white;">
+                                        <div class="media-left">
+                                            <figure class="image" style="height: 40px; width: 40px;">
+                                                <img src="@account.PhotoPath" alt="Image">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="columns">
+                                                <div class="column is-4">
+                                                    <p class="title is-4"><strong>@account.Name</strong></p>                                                    
+                                                </div>
+                                                <div class="column is-4">
+                                                    <input type="hidden" name="@string.Format("Accounts[{0}].Id", Model.RegistrationModel.TeamMembers.IndexOf(account))" value="@account.Id" />
+                                                    <input class="checkbox" type="checkbox" name="@string.Format("Accounts[{0}].Checked", Model.RegistrationModel.TeamMembers.IndexOf(account))" />
+                                                    <label>Приймає участь</label>
+                                                </div>
+                                                <div class="column is-4">
+                                                    <label>Посилання на соц. мережу</label>
+                                                    <p class="subtitle is-6">
+                                                        <a class="is-cleverest" href="@account.SocialNetworkLink"><i class="fa fa-vk"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                }
+
+                            </div>
+
+                            <button class="button is-cleverest" type="submit">Зареєструвати команду</button>
+
+                            if(Model.RegistrationModel.HasSeveralTeams)
+                            { 
+                                <a href="@Url.Action("MyTeams", "Team")" class="button">Змінити команду</a>
+                            }
+                        }
+
+
+                    }
                 }
-            </div>        
-        </div>       
+            </div>
+        </div>
     </div>
 </div>

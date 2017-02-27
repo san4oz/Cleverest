@@ -29,5 +29,7 @@ namespace Cleverest.Mvc.ViewModels
 
         [Display(Name = "Кількість гравців")]
         public int ParticipantsCount { get; set; }
+
+        public bool SelectedAsCurrent { get; set;}
     }
 }

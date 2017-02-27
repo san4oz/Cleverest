@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

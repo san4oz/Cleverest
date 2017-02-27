@@ -5,6 +5,14 @@
     <property name="Title" type="string"/>
     <property name="GameDate" type="System.DateTime"/>
     <property name="Location" type="string"/>
+    <property name="MaxTeamCount" not-null="false" type="System.Int32"/>
+  </class>
+
+  <class name="GameRegistrationRequest" table="GameRegistrationRequests">
+    <id name="Id" type="string"></id>
+    <property name="GameId" type="string"/>
+    <property name="AccountId" type="string"/>
+    <property name="Date" type="System.DateTime"/>
   </class>
 
   <class name="Team" table="Teams">

@@ -57,7 +57,7 @@ namespace Cleverest.Mvc.Controllers
 
             var request = new AccountTeamRequest() { FromId = WebSecurity.User.Id, ToId = teamToJoin.OwnerId, RequestType = AccountTeamRequestType.Join, TeamId = teamToJoin.Id };
 
-            Site.Managers.AccountTeamRequest.Create(request);
+            Site.Managers.Account.CreateAccountTeamRequest(request);
 
             return Json(true);
         }
@@ -71,7 +71,7 @@ namespace Cleverest.Mvc.Controllers
         [HttpPost]
         public ActionResult ProcessRequest(string requestId, bool approved)
         {
-            Site.Managers.AccountTeamRequest.ProcessRequest(requestId, approved);
+            Site.Managers.Account.ProccessAccountTeamRequests(requestId, approved);
             return Json(true);
         }
 
@@ -80,7 +80,7 @@ namespace Cleverest.Mvc.Controllers
         {
             var result = new List<AccountTeamRequestViewModel>();
 
-            var requests = Site.Managers.AccountTeamRequest.GetRequestsByReceiverId(WebSecurity.User.Id).ToList();
+            var requests = Site.Managers.Account.GetRequestsByReceiverId(WebSecurity.User.Id).ToList();
             requests.ForEach(request =>
             {
                 var viewModel = new AccountTeamRequestViewModel();
@@ -117,9 +117,21 @@ namespace Cleverest.Mvc.Controllers
                 return View(viewModel);
             }
 
-            var team = new Team() { Name = viewModel.Name, OwnerId = WebSecurity.User.Id };
+            var team = new Team()
+            { Name = viewModel.Name, Description = viewModel.Description, OwnerId = WebSecurity.User.Id };
 
             Site.Managers.Team.Create(team);
+            Site.Managers.Account.CreateAccountTeamPermission(new AccountTeamPermission()
+            {
+                AccountId = WebSecurity.User.Id,
+                TeamId = team.Id
+            });
+
+            var currentAccount = Site.Managers.Account.Get(WebSecurity.User.Id);
+            {
+                currentAccount.TeamId = team.Id;
+            }
+            Site.Managers.Account.Update(currentAccount);
 
             return RedirectToAction("MyTeams");
         }
@@ -132,10 +144,12 @@ namespace Cleverest.Mvc.Controllers
 
             var teamViewModels = new List<TeamViewModel>();
 
-#warning refactor this piece of shit(write something like object[] GetTeamLookups(string teamId))
+            var currentUser = Site.Managers.Account.Get(WebSecurity.User.Id);
             teams.ForEach(t =>
             {
-                teamViewModels.Add(new TeamViewModel() { Name = t.Name, ParticipantsCount = Site.Managers.Account.GetAccountsByTeamId(t.Id).Count(), Id = t.Id });
+                bool selectedAsCurrent = currentUser.TeamId.Equals(t.Id);
+
+                teamViewModels.Add(new TeamViewModel() { Name = t.Name, ParticipantsCount = Site.Managers.Account.GetAccountsByTeamId(t.Id).Count(), Id = t.Id, SelectedAsCurrent = selectedAsCurrent });
             });
 
             return View(teamViewModels);

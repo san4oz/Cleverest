@@ -17,8 +17,10 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
 
         public List<Question> Questions { get; set; }
 
-        public QuestionViewModel(List<Question> questions)
+        public QuestionViewModel(List<Question> questions, int roundNo)
         {
+            this.RoundNo = roundNo;
+
             if (questions != null && questions.Any())
                 this.Questions = questions;
             else

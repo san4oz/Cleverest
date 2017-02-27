@@ -1,8 +1,8 @@
 ﻿@model string
-<section class="section mediaContentSection">
-    <div class="container">
+<section class="mediaContentSection">
+    <div class="">
         <div class="columns">
-            <div class="column" style="border: 1px solid red; background-color: black;">
+            <div class="column is-cleverest">
                 <form enctype="multipart/form-data" action="@Url.Action("Upload")" method="post">
                     <input type="file" name="files" multiple="multiple" />
                     <input type="hidden" name="entityId" value="@Model" /> 

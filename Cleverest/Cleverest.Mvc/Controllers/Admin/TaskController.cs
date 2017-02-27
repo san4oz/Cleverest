@@ -12,11 +12,12 @@ using Autofac;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
+    [Authorize]
     public class TaskController : Controller
     {
         public ActionResult Index()
         {
-            var tasks = DependencyResolver.Current.GetServices<ITask>().ToList();
+            var tasks = AutofacDependencyResolver.Current.GetServices<ITask>().ToList();
 
             var viewModels = Site.Services.Mapper.Map<IList<ITask>, IList<TaskViewModel>>(tasks);
 

@@ -30,6 +30,9 @@ namespace Cleverest.Mvc.ViewModels.Admin.Resources
         [Display(Name = "Баннер")]
         public HttpPostedFileBase Image { get; set; }
 
+        [Display(Name = "Кількість місць")]
+        public int MaxTeamCount { get; set; }
+
         public GameInputViewModel()
         {
             IsMediaContentPresent = true;

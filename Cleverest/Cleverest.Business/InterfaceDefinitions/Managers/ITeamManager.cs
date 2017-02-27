@@ -16,5 +16,9 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
         IList<Team> Search(string query);
 
         Team GetGameWinner(string gameId);
+
+        IList<Team> GetRegisteredOnGameTeams(string gameId);
+
+        bool RegisterTeamOnGame(string gameId, IList<string> accountIds);
     }
 }

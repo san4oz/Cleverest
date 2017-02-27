@@ -1,48 +1,29 @@
 ﻿@model QuestionSelectorViewModel
-@{
+
+@using (Html.BeginForm("Questions", "Question", FormMethod.Post, htmlAttributes: new { id = "questionSelectorForm" }))
+{
+<p>
+    <div class="select">
+        @Html.DropDownListFor(x => Model.SelectedGameId, Model.Games, htmlAttributes: new { id = "GameIdSelector", @class = "is-cleverest" })
+    </div>
+    <div class="select">
+        @Html.DropDownListFor(x => Model.SelectedRoundNo, Model.Rounds, htmlAttributes: new { id = "RoundNoSelector", @class = "is-cleverest" })
+    </div>
+    <button type="submit" class="button is-cleverest">Шукати</button>
+</p>
 }
-<div id="questionListPage">
-    @using (Html.BeginForm("Questions", "Question", FormMethod.Post, htmlAttributes: new { id = "questionSelectorForm", @class = "form-horizontal", enctype = "multipart/form-data", autocomplete = "false" }))
-    {
-        <div class="columns">
-            <div class="column is-10">
-                <div class="control is-horizontal">
-                    <div class="control-label">
-                        @Html.LabelFor(x => x.SelectedGameId, htmlAttributes: new { @class = "label" })
-                    </div>
-                    <div class="control">
-                        <div class="select is-fullwidth">
-                            @Html.DropDownListFor(x => Model.SelectedGameId, Model.Games, htmlAttributes: new { id = "GameIdSelector" })
-                        </div>
+
+<section class="">
+    <div class="">
+        <div id="questionListPage">
+            <div class="columns">
+                <div class="column is-12">
+                    <div class="question-editor">
+
                     </div>
                 </div>
-                <div class="control is-horizontal">
-                    <div class="control-label">
-                        @Html.LabelFor(x => x.SelectedRoundNo, htmlAttributes: new { @class = "label" })
-                    </div>
-                    <div class="control">
-                        <div class="select is-fullwidth">
-                            @Html.DropDownListFor(x => Model.SelectedRoundNo, Model.Rounds, htmlAttributes: new { id = "RoundNoSelector" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <p class="control">
-                    <button class="button is-warning is-large" type="submit">Шукати</button>
-                </p>
-                <p class="control">
-                    <a href="@Url.Action("Index")" class="button is-success is-large">Наступний раунд</a>
-                </p>
-            </div>
-        </div>
-    }
-
-    <div class="columns">
-        <div class="column is-12">
-            <div class="question-editor">
-
             </div>
         </div>
     </div>
-</div>
+</section>
+

@@ -9,6 +9,8 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
 {
     public interface IGameProvider : IBaseProvider<Game>
     {
-        
+        void CreateRegistrationRequest(GameRegistrationRequest request);
+
+        IList<GameRegistrationRequest> GetRegistrationRequests(string gameId);
     }
 }

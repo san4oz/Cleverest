@@ -14,20 +14,20 @@ namespace Cleverest.Business.Managers
 {
     public class TeamManager : BaseManager<Team, ITeamProvider>, ITeamManager
     {
-        protected IAccountTeamPermissionManager AccountTeamPermissionManager { get; set; }
-
         protected ITeamSearchManager TeamSearchManager { get; set; }
 
-        protected IGameManager GameManager { get; set; }
+        protected IGameProvider GameProvider { get; set; }
 
         protected IScoreManager ScoreManager { get; set; }
 
-        public TeamManager(IAccountTeamPermissionManager permissionsManager, ITeamSearchManager searchManager, IGameManager gameManager, IScoreManager scoreManager)
+        protected IAccountProvider AccountProvider { get; set; }
+
+        public TeamManager(ITeamSearchManager searchManager, IGameProvider gameProvider, IScoreManager scoreManager, IAccountProvider accountProvider)
         {
-            this.AccountTeamPermissionManager = permissionsManager;
             this.TeamSearchManager = searchManager;
-            this.GameManager = gameManager;
+            this.GameProvider = gameProvider;
             this.ScoreManager = scoreManager;
+            this.AccountProvider = accountProvider;
         }
 
         public override void Update(Team entity)
@@ -54,7 +54,7 @@ namespace Cleverest.Business.Managers
         {
             base.Create(entity);
 
-            AccountTeamPermissionManager.Create(new AccountTeamPermission() { AccountId = entity.OwnerId, TeamId = entity.Id });
+            AccountProvider.CreateAccountTeamPermission(new AccountTeamPermission() { AccountId = entity.OwnerId, TeamId = entity.Id });
         }
 
         public IList<Team> Search(string query)
@@ -74,7 +74,7 @@ namespace Cleverest.Business.Managers
             if (gameId.IsEmpty())
                 return null;
 
-            var game = GameManager.Get(gameId);
+            var game = GameProvider.Get(gameId);
             if (game == null)
                 return null;
 
@@ -90,6 +90,45 @@ namespace Cleverest.Business.Managers
                 .First().Select(gr => gr.TeamId).First();
 
             return Get(winnerTeamId);
+        }
+
+        public IList<Team> GetRegisteredOnGameTeams(string gameId)
+        {
+            var game = GameProvider.Get(gameId);
+            if (game == null)
+                return new List<Team>();
+
+            var accountIds = GameProvider.GetRegistrationRequests(gameId).Select(r => r.AccountId).ToList();
+
+            var accounts = AccountProvider.GetByIdList(accountIds);
+            var teamIds = accounts.Select(x => x.TeamId).Distinct().ToList();
+            return GetByIdList(teamIds).ToList();
+        }
+
+        public bool RegisterTeamOnGame(string gameId, IList<string> accountIds)
+        {
+            if (gameId.IsEmpty() || accountIds == null || accountIds.Count() <= 0)
+                return false;
+
+            var game = GameProvider.Get(gameId);
+            if (game.MaxTeamCount < accountIds.Count())
+                return false;
+
+            foreach (var accountId in accountIds)
+            {
+                var account = AccountProvider.Get(accountId);
+                if (account == null)
+                    continue;
+
+                GameProvider.CreateRegistrationRequest(new GameRegistrationRequest()
+                {
+                    GameId = gameId,
+                    AccountId = account.Id,
+                    Date = DateTime.Now
+                });
+            }
+
+            return true;
         }
     }
 }

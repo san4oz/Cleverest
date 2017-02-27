@@ -11,7 +11,7 @@
             @Html.HiddenFor(x => x.Id)
             @Html.AntiForgeryToken()
             <div class="columns">
-                <div class="column is-10">
+                <div class="column is-10 is-cleverest">
                     <div class="control is-horizontal">
                         <div class="control-label">
                             @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "label" })
@@ -89,7 +89,7 @@
             </div>
         }
     </div>
-    <div class="container">
+    <div class="container" style="margin-top:50px;">
         @if (Model.IsMediaContentPresent)
         {
             @Html.Partial("_MediaContent", Model.Id)

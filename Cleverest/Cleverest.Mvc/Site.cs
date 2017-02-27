@@ -40,17 +40,7 @@ namespace Cleverest
             public static IScoreManager Score
             {
                 get { return Get<IScoreManager>(); }
-            }
-
-            public static IAccountTeamPermissionManager AccountTeamPermission
-            {
-                get { return Get<IAccountTeamPermissionManager>(); }
-            }
-
-            public static IAccountTeamRequestManager AccountTeamRequest
-            {
-                get { return Get<IAccountTeamRequestManager>(); }
-            }
+            }            
         }
 
         public static class Providers

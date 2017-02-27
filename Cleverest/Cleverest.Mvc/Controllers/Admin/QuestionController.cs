@@ -13,6 +13,7 @@ using Cleverest.Mvc.ViewModels.Admin.Resources;
 
 namespace Cleverest.Mvc.Controllers.Admin
 {
+    [Authorize]
     public class QuestionController : Controller
     {
         [HttpGet]
@@ -39,7 +40,7 @@ namespace Cleverest.Mvc.Controllers.Admin
 
             var questions = Site.Managers.Question.Get(gameId, roundNo);
 
-            var model = new QuestionViewModel(questions) { GameId = gameId, RoundNo = roundNo };
+            var model = new QuestionViewModel(questions, roundNo) { GameId = gameId };
 
             return PartialView(string.Format("Types/{0}QuestionEditor", GetViewSuffix(roundNo)), model);
         }

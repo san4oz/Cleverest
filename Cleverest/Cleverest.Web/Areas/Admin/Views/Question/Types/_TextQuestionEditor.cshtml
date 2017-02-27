@@ -4,8 +4,8 @@
     int index = 0;
 }
 
-<section class="section">
-    <div class="container">
+<section class="">
+    <div class="">
         @using (Html.BeginForm("Save", "Question", FormMethod.Post, htmlAttributes: "form-horizonal"))
         {
             @Html.HiddenFor(m => Model.GameId)
@@ -17,7 +17,7 @@
                     {
                         <input type="hidden" name="@string.Format("Questions[{0}].OrderNo", index)" value="@(question.RoundNo != 0 ? question.RoundNo : index + 1)" />
 
-                        <div class="box">
+                        <div class="box is-cleverest">
                             <div class="control is-horizontal">
                                 <div class="control-label">
                                     <label name="@string.Format("Questions[{0}].QuestionBody", index)" class="label">Питання номер @(index + 1)</label>

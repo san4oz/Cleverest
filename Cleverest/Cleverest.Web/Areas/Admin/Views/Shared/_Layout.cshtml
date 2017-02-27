@@ -11,10 +11,10 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-2">
+                <div class="column is-2 is-cleverest is-admin-aside-menu">
                     @AsideMenu()
                 </div>
-                <div class="column is-10">
+                <div class="column is-10 is-admin-content-block">
                     @RenderBody()                    
                 </div>
             </div>        
@@ -44,7 +44,6 @@ bool isActive = HttpContext.Current.Request.Url.AbsolutePath.Equals(url, StringC
         <ul class="menu-list">
             @NavigationNode("AdminIndex", "Головна")
             @NavigationNode("GameList", "Ігри")
-            @NavigationNode("GaleryIndex", "Фото")
             @NavigationNode("TeamIndex", "Команди")
             @NavigationNode("AccountIndex", "Аккаунти")
             @NavigationNode("QuestionIndex", "Питання")

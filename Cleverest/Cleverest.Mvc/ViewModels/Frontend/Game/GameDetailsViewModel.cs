@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleverest.ViewModels;
+using Cleverest.Business.Entities;
 
 namespace Cleverest.Mvc.ViewModels.Frontend.Game
 {
@@ -14,6 +15,8 @@ namespace Cleverest.Mvc.ViewModels.Frontend.Game
         public IList<TeamScoresViewModel> TeamScores { get; set; }
 
         public TeamDetailsInfoViewModel Winner { get; set; }
+
+        public GameRegistrationViewModel RegistrationModel { get; set; }
 
         public GameDetailsViewModel()
         {

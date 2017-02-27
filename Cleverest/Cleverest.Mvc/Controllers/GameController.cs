@@ -10,6 +10,7 @@ using Cleverest.Business.Helpers.ImageStorageFactory;
 using Cleverest.Mvc.Security;
 using Cleverest.Mvc.ViewModels;
 using Cleverest.Mvc.ViewModels.Frontend.Game;
+using static Cleverest.Mvc.ViewModels.Frontend.Game.GameRegistrationViewModel;
 
 namespace Cleverest.Mvc.Controllers
 {
@@ -51,7 +52,8 @@ namespace Cleverest.Mvc.Controllers
             {
                 Info = CreateInfoModel(game),
                 TeamScores = CreateScoresModel(game),
-                Winner = CreateWinnerModel(game)
+                Winner = CreateWinnerModel(game),
+                RegistrationModel = CreateRegistrationModel(game)
             };
             
             return View(model);
@@ -84,6 +86,20 @@ namespace Cleverest.Mvc.Controllers
             model.PreviousQuestionExists = previousQuestion != null;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult RegisterTeam(string gameId, GameRegistrationInputViewModel model)
+        {
+            var game = Site.Managers.Game.Get(gameId);
+            if (game == null)
+                return HttpNotFound();
+
+            
+
+            Site.Managers.Team.RegisterTeamOnGame(gameId, model.Accounts.Where(a => a.Checked).Select(a => a.Id).ToList());
+
+            return RedirectToAction("Details", new { Id = gameId });
         }
         
         protected GameInfoViewModel CreateInfoModel(Game game)
@@ -130,6 +146,52 @@ namespace Cleverest.Mvc.Controllers
 
             var model = Site.Services.Mapper.Map<Team, TeamDetailsInfoViewModel>(entity);
             model.PhotoPath = Site.Services.ContentStorage.Team.GetLogo(entity.Id)?.ApplicationRelativePath;
+
+            return model;
+        }        
+
+        protected GameRegistrationViewModel CreateRegistrationModel(Game game)
+        {
+            var model = new GameRegistrationViewModel();
+
+            if (!User.Identity.IsAuthenticated)
+                return model;
+
+            var currentAccount = Site.Managers.Account.GetByEmail(WebSecurity.User.Email);
+            if (currentAccount == null)
+                return model;
+
+            var accountTeams = Site.Managers.Team.GetTeamsByAccountId(currentAccount.Id);
+            if(accountTeams.Count() > 1)
+            {
+                model.HasSeveralTeams = true;
+            }
+
+            var registeredTeams = Site.Managers.Team.GetRegisteredOnGameTeams(game.Id);
+            if(registeredTeams.Select(t => t.Id).Contains(currentAccount.TeamId))
+            {
+                model.IsRegistered = true;
+
+                foreach(var team in registeredTeams)
+                {
+                    var registeredTeam = new RegisteredTeam();
+                    registeredTeam.TeamName = team.Name;
+                    registeredTeam.MembersCount = Site.Managers.Account.GetAccountsByTeamId(team.Id).Count();
+
+                    model.RegisteredTeams.Add(registeredTeam);
+                }
+
+                return model;
+            }
+
+            var teamAccounts = Site.Managers.Account.GetAccountsByTeamId(currentAccount.TeamId);
+
+            var profiles = Site.Services.Mapper.Map<IList<Account>, IList<ProfileViewModel>>(teamAccounts);
+
+            foreach (var profile in profiles)
+                profile.PhotoPath = Site.Services.ContentStorage.Account.GetLogo(profile.Id)?.ApplicationRelativePath;
+
+            model.TeamMembers = profiles;
 
             return model;
         }

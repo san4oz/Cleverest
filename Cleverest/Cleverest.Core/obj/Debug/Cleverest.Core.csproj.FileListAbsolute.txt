@@ -11,3 +11,8 @@ D:\My_Development\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pd
 D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache
 D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
 D:\My_Development\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb
+C:\Users\Alexey\SkyDrive\Документы\Visual Studio 2015\Projects\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.dll
+C:\Users\Alexey\SkyDrive\Документы\Visual Studio 2015\Projects\Cleverest\Cleverest\Cleverest.Core\bin\Debug\Cleverest.Core.pdb
+C:\Users\Alexey\SkyDrive\Документы\Visual Studio 2015\Projects\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.dll
+C:\Users\Alexey\SkyDrive\Документы\Visual Studio 2015\Projects\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.pdb
+C:\Users\Alexey\SkyDrive\Документы\Visual Studio 2015\Projects\Cleverest\Cleverest\Cleverest.Core\obj\Debug\Cleverest.Core.csprojResolveAssemblyReference.cache

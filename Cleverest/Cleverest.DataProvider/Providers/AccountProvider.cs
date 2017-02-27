@@ -21,6 +21,15 @@ namespace Cleverest.DataProvider.Providers
             });
         }
 
+        public void CreateAccountTeamPermission(AccountTeamPermission permission)
+        {
+            Execute(session =>
+            {
+                session.SaveOrUpdate(permission);
+                session.Flush();
+            });
+        }
+
         public IList<Account> GetAccountsByTeamId(string teamId)
         {
             return Execute(session =>
@@ -33,6 +42,42 @@ namespace Cleverest.DataProvider.Providers
                     .Where(atp => atp.TeamId == teamId)
                     .Select(atp => atp.AccountId))
                     .List();             
+            });
+        }
+
+        public IList<AccountTeamRequest> GetRequestsByReceiverId(string receiverId)
+        {
+            return Execute(session =>
+            {
+                var criteria = session.CreateCriteria<AccountTeamRequest>();
+                criteria.Add(Expression.Eq("ToId", receiverId));
+                return criteria.List<AccountTeamRequest>().ToList();
+            });
+        }
+
+        public AccountTeamRequest GetAccountTeamRequest(string requestId)
+        {
+            return Execute(session =>
+            {
+                return session.Get<AccountTeamRequest>(requestId);
+            });
+        }
+
+        public void DeleteAccountTeamRequest(string requestId)
+        {
+            Execute(session =>
+            {
+                var valueToRemove = session.Get<AccountTeamRequest>(requestId);
+                if (valueToRemove != null)
+                    session.Delete(valueToRemove);
+            });
+        }
+
+        public void CreateAccountTeamRequest(AccountTeamRequest request)
+        {
+            Execute(session =>
+            {
+                session.Save(request);
             });
         }
     }

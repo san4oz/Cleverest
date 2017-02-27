@@ -11,7 +11,7 @@
             @Html.HiddenFor(m => m.Id)
             @Html.AntiForgeryToken()
             <div class="columns">
-                <div class="column is-10">
+                <div class="column is-10 is-cleverest">
                     <div class="control is-horizontal">
                         <div class="control-label">
                             @Html.LabelFor(x => x.Title, htmlAttributes: new { @class = "label" })
@@ -51,6 +51,16 @@
                             @Html.ValidationMessageFor(x => x.Image)
                         </div>
                     </div>
+
+                    <div class="control is-horizontal">
+                        <div class="control-label">
+                            @Html.LabelFor(x => x.MaxTeamCount, htmlAttributes: new { @class = "label" })
+                        </div>
+                        <div class="control">
+                            @Html.TextBoxFor(x => x.MaxTeamCount, htmlAttributes: new { @class = "input" })
+                            @Html.ValidationMessageFor(x => x.MaxTeamCount)
+                        </div>
+                    </div>
                 </div>
                 <div class="column is-2">
                     <p class="control">
@@ -63,7 +73,7 @@
             </div>
         }
     </div>
-    <div class="container">
+    <div class="" style="margin-top: 50px;">
         @if(Model.IsMediaContentPresent)
         {
                 @Html.Partial("_MediaContent", Model.Id)
