@@ -109,7 +109,7 @@ namespace Cleverest.Search
                 {
                     var searchField = request.SearchField ?? IndexConstants.Keywords;
 
-                    var query = ParseQuery(request.Keywords, searchField, analyzer, true);
+                    var query = ParseQuery(request.Keywords, searchField, analyzer, false);                    
                     var hits = searcher.Search(query, hitsLimit).ScoreDocs.ToList();
 
                     var searchResults = CreateSearchResults(searcher, hits, request);
@@ -159,7 +159,7 @@ namespace Cleverest.Search
                 return null;
 
             var parser = new QueryParser(Version, searchField, analyzer);
-            InitQueryParserOperator(parser, true);
+            InitQueryParserOperator(parser, matchAllKeywords);
             query = AddWildCards(parser, query, matchAllKeywords);
 
             return parser.Parse(query);
@@ -168,8 +168,8 @@ namespace Cleverest.Search
         protected virtual string AddWildCards(QueryParser parser, string query, bool matchAllKeywords)
         {
             query = matchAllKeywords ? SearchUtils.MakeFullWildcardQuery(query) : SearchUtils.MakeTrailingWildCardQuery(query);
-            query = SearchUtils.MakeTrailingWildCardQuery(query);
             parser.AllowLeadingWildcard = true;
+            parser.DefaultOperator = QueryParser.Operator.OR;
             return query;
         }
 

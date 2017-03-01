@@ -15,10 +15,13 @@ namespace Cleverest.Business.Managers
 
         protected IAccountManager AccountManager;
 
-        public GameManager(ITeamManager teamManager, IAccountManager accountManager)
+        protected IQuestionProvider QuestionProvider;
+
+        public GameManager(ITeamManager teamManager, IAccountManager accountManager, IQuestionProvider questionProvider)
         {
             this.TeamManager = teamManager;
             this.AccountManager = accountManager;
+            this.QuestionProvider = questionProvider;
         }
 
         public override void Update(Game entity)
@@ -29,6 +32,18 @@ namespace Cleverest.Business.Managers
                 entityToUpdate.GameDate = entity.GameDate;
                 entityToUpdate.MaxTeamCount = entity.MaxTeamCount;
             });
+        }
+
+        public IList<GameRegistrationRequest> GetRegistrationRequests(string gameId)
+        {
+            return Provider.GetRegistrationRequests(gameId);
+        }
+
+        public override void Delete(string id)
+        {
+            Provider.DeleteRegistrationRequests(id);
+            QuestionProvider.DeleteGameQuestions(id);
+            base.Delete(id);
         }
     }
 }

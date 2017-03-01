@@ -136,6 +136,21 @@ namespace Cleverest.Mvc.Controllers
             return RedirectToAction("MyTeams");
         }
 
+        [HttpPost]
+        public ActionResult SetTeamAsSelected(string teamId)
+        {
+            if (teamId.IsEmpty())
+                return Json(0);
+
+            var account = Site.Managers.Account.Get(WebSecurity.User.Id);
+            if (account == null)
+                return Json(0);
+
+            account.TeamId = teamId;
+            Site.Managers.Account.Update(account);
+            return Json(1);
+        }
+
 
         [HttpGet]
         public ActionResult MyTeams()
@@ -147,7 +162,7 @@ namespace Cleverest.Mvc.Controllers
             var currentUser = Site.Managers.Account.Get(WebSecurity.User.Id);
             teams.ForEach(t =>
             {
-                bool selectedAsCurrent = currentUser.TeamId.Equals(t.Id);
+                bool selectedAsCurrent =  !currentUser.TeamId.IsEmpty() ? currentUser.TeamId.Equals(t.Id) : false;
 
                 teamViewModels.Add(new TeamViewModel() { Name = t.Name, ParticipantsCount = Site.Managers.Account.GetAccountsByTeamId(t.Id).Count(), Id = t.Id, SelectedAsCurrent = selectedAsCurrent });
             });

@@ -80,5 +80,62 @@ namespace Cleverest.DataProvider.Providers
                 session.Save(request);
             });
         }
+
+        public void ResetTeam(string accountId)
+        {
+            Execute(session =>
+            {
+                var account = session.Get<Account>(accountId);
+                account.TeamId = null;
+                session.Update(account);
+                session.Flush();
+            });
+        }
+
+        public void ResetTeam(IEnumerable<string> accountIds)
+        {
+            foreach (var account in accountIds)
+                ResetTeam(account);
+        }
+
+        public void DeleteAccountTeamPermissions(string teamId)
+        {
+            Execute(session =>
+            {
+                var permissions = session.CreateCriteria<AccountTeamPermission>().Add(Expression.Eq("TeamId", teamId)).List<AccountTeamPermission>();
+                foreach(var permission in permissions)
+                {
+                    session.Delete(permission);                    
+                }
+                session.Flush();
+            });
+        }
+
+        public void DeleteAccountTeamRequests(string teamId)
+        {
+            Execute(session =>
+            {
+                var permissions = session.CreateCriteria<AccountTeamRequest>().Add(Expression.Eq("TeamId", teamId)).List<AccountTeamRequest>();
+                foreach (var permission in permissions)
+                {
+                    session.Delete(permission);
+                }
+                session.Flush();
+            });
+        }
+
+        public bool ClearAccountEntries(string teamId)
+        {
+            try
+            {
+                var accountIds = GetAccountsByTeamId(teamId).Select(a => a.Id);
+                ResetTeam(accountIds);
+                DeleteAccountTeamPermissions(teamId);
+                DeleteAccountTeamRequests(teamId);
+            }
+            catch (Exception ex) { return false; }
+
+            return true;
+        }
     }
 }

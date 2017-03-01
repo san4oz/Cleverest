@@ -109,10 +109,12 @@
     <Content Include="Content\Images\Icons\dark_leather.png" />
     <Content Include="Content\Images\Icons\loading.gif" />
     <Content Include="Content\Images\Icons\progressbar.gif" />
+    <Content Include="Content\Images\Icons\TeamTest.jpg" />
     <Content Include="Content\Scripts\Admin\page.account.list.js" />
     <Content Include="Content\Scripts\Admin\page.game.create.js" />
     <Content Include="Content\Scripts\Admin\page.game.list.js" />
     <Content Include="Content\Scripts\Admin\page.team.list.js" />
+    <Content Include="Content\Scripts\Libs\Chart.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\canvas-to-blob.min.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.blueimp-gallery.min.js" />
     <Content Include="Content\Scripts\Libs\FileUpload\jquery.fileupload-image.js" />
@@ -218,6 +220,7 @@
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\Game\Questions.cshtml" />
+    <Content Include="Views\Statistic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

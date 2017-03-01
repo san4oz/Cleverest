@@ -94,6 +94,7 @@
     <Compile Include="Helpers\ImageStorageFactory\Storages\GameImageStorage.cs" />
     <Compile Include="Helpers\ImageStorageFactory\Storages\ProfileImageStorage.cs" />
     <Compile Include="Helpers\ImageStorageFactory\Storages\TeamImageStorage.cs" />
+    <Compile Include="Import\ImportHelper.cs" />
     <Compile Include="Import\ScoreImporter.cs" />
     <Compile Include="Import\ScoreValidator.cs" />
     <Compile Include="InterfaceDefinitions\Managers\ExcelManagers\IExcelScoreManager.cs" />

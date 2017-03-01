@@ -143,6 +143,8 @@
                     }
                     else
                     {
+                        if(Model.RegistrationModel.TeamMembers.Any())
+                        { 
                         using (Html.BeginForm("RegisterTeam", "Game", FormMethod.Post))
                         {
                             <div class="box is-cleverest">
@@ -151,7 +153,7 @@
 
                                 @foreach (var account in Model.RegistrationModel.TeamMembers)
                                 {
-                                    <div class="media" style="border-bottom:1px solid white;">
+                                    <div class="media">
                                         <div class="media-left">
                                             <figure class="image" style="height: 40px; width: 40px;">
                                                 <img src="@account.PhotoPath" alt="Image">
@@ -164,7 +166,7 @@
                                                 </div>
                                                 <div class="column is-4">
                                                     <input type="hidden" name="@string.Format("Accounts[{0}].Id", Model.RegistrationModel.TeamMembers.IndexOf(account))" value="@account.Id" />
-                                                    <input class="checkbox" type="checkbox" name="@string.Format("Accounts[{0}].Checked", Model.RegistrationModel.TeamMembers.IndexOf(account))" />
+                                                    @Html.CheckBox(string.Format("Accounts[{0}].Checked", Model.RegistrationModel.TeamMembers.IndexOf(account)), htmlAttributes: new { @class = "checkbox" })
                                                     <label>Приймає участь</label>
                                                 </div>
                                                 <div class="column is-4">
@@ -185,10 +187,13 @@
                             if(Model.RegistrationModel.HasSeveralTeams)
                             { 
                                 <a href="@Url.Action("MyTeams", "Team")" class="button">Змінити команду</a>
+                                }
                             }
                         }
-
-
+                        else
+                        {
+                            <a href="@Url.Action("CreateTeam", "Team")" class="button is-cleverest is-fullwidth">Зареєструвати команду</a>
+                        }
                     }
                 }
             </div>

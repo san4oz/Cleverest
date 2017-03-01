@@ -12,5 +12,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
         void CreateRegistrationRequest(GameRegistrationRequest request);
 
         IList<GameRegistrationRequest> GetRegistrationRequests(string gameId);
+
+        void DeleteRegistrationRequests(string gameId);
     }
 }

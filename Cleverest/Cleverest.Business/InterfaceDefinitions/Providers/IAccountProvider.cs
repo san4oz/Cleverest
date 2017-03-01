@@ -22,5 +22,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
         void DeleteAccountTeamRequest(string requestId);
 
         void CreateAccountTeamRequest(AccountTeamRequest request);
+
+        bool ClearAccountEntries(string teamId);
     }
 }

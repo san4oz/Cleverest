@@ -1,0 +1,104 @@
+﻿@model Cleverest.Mvc.ViewModels.Frontend.Statistic.StatisticViewModel
+
+
+
+<section class="statistic-section">
+    <div class="columns is-multiline" style="margin-top: 50px;">
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle">
+                <span class="info-icon">
+                    <i class="fa fa-question"></i>
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                Загальна кількість питань: @Model.GeneralCounters.TotalQuestionsCount
+            </div>
+        </div>
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle">
+                <span class="info-icon">
+                    <i class="fa fa-user"></i>
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                Загальна кількість гравців: @Model.GeneralCounters.TotalPeopleCount
+            </div>
+        </div>
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle">
+                <span class="info-icon">
+                    <i class="fa fa-gamepad"></i>
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                Загальна кількість ігор: @Model.GeneralCounters.TotalGameCount
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="box is-cleverest has-text-centered line-separator">
+    <h2 class="title">CleverRest у числах</h2>
+</div>
+
+<section class="statistic-section">
+    <div class="columns is-multiline" style="margin-top: 50px;">
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle-capture">
+                Найкращі результати
+            </div>
+            <div class="info-palaroid">
+                <span class="info-palaroid-image-wrapper">
+                   <img src="@Model.BestResults.TheMostSuccessful.ImageSrc" />
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                @Model.BestResults.TheMostSuccessful.Name
+            </div>
+            <div class="info-circle-capture info-palaroid-score">
+                @if (Model.BestResults.TheMostSuccessful.Score > 0)
+                {
+                    <span>Кількість перемог:</span> @Model.BestResults.TheMostSuccessful.Score
+                }
+            </div>
+        </div>        
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle-capture">
+                Найдосвідченіші
+            </div>
+            <div class="info-palaroid">
+                <span class="info-palaroid-image-wrapper">
+                    <img src="@Model.BestResults.TheMostRegularVisitors.ImageSrc" />
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                @(Model.BestResults.TheMostRegularVisitors != null ? Model.BestResults.TheMostRegularVisitors.Name : null)
+            </div>
+            <div class="info-circle-capture info-palaroid-score">
+                @if (Model.BestResults.TheMostRegularVisitors.Score > 0)
+                {
+                    <span>Кількість ігор:</span> @Model.BestResults.TheMostRegularVisitors.Score
+                }
+            </div>
+        </div>
+        <div class="column is-4 has-text-centered info-circle-wrapper">
+            <div class="info-circle-capture">
+                Найкреативніші
+            </div>
+            <div class="info-palaroid">
+                <span class="info-palaroid-image-wrapper">
+                    <img src="@Model.BestResults.TheFunniestOne.ImageSrc" />
+                </span>
+            </div>
+            <div class="info-circle-capture">
+                @Model.BestResults.TheFunniestOne.Name
+            </div>
+            <div class="info-circle-capture info-palaroid-score">
+                @if (Model.BestResults.TheFunniestOne.Score > 0)
+                {
+                    <span>Кількість найсмішніних відповідей:</span> @Model.BestResults.TheFunniestOne.Score
+                }
+            </div>
+        </div>
+    </div>
+</section>

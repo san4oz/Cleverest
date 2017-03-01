@@ -22,7 +22,8 @@ namespace Cleverest.Mvc.App_Start
                 .Include("~/Content/Scripts/Validation.js")
                 .Include("~/Content/Scripts/Popup.js")
                 .Include("~/Content/Scripts/page.account.teams.js")
-                .Include("~/Content/Scripts/page.account.requests.js"));
+                .Include("~/Content/Scripts/page.account.requests.js")
+                .Include("~/Content/Scripts/Libs/Chart.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery.fileupload")
                     .Include("~/Content/Scripts/Libs/FileUpload/jquery.ui.widget.js")

@@ -94,9 +94,7 @@ namespace Cleverest.Mvc.Controllers
             var game = Site.Managers.Game.Get(gameId);
             if (game == null)
                 return HttpNotFound();
-
-            
-
+           
             Site.Managers.Team.RegisterTeamOnGame(gameId, model.Accounts.Where(a => a.Checked).Select(a => a.Id).ToList());
 
             return RedirectToAction("Details", new { Id = gameId });
@@ -176,7 +174,11 @@ namespace Cleverest.Mvc.Controllers
                 {
                     var registeredTeam = new RegisteredTeam();
                     registeredTeam.TeamName = team.Name;
-                    registeredTeam.MembersCount = Site.Managers.Account.GetAccountsByTeamId(team.Id).Count();
+
+                    registeredTeam.MembersCount =  Site.Managers.Game.GetRegistrationRequests(game.Id)
+                        .Select(r => Site.Managers.Account.Get(r.AccountId))
+                        .Where(a => a.TeamId.Equals(team.Id, StringComparison.InvariantCultureIgnoreCase))
+                        .Count();
 
                     model.RegisteredTeams.Add(registeredTeam);
                 }

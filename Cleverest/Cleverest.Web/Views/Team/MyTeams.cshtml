@@ -31,7 +31,7 @@
                         <td><a href="@Url.Action("Details", "Team", new { id = team.Id })">@team.Name</a></td>
                         <td>@team.ParticipantsCount</td>
                         <td>
-                            <input data-id="@team.Id" type="checkbox" class="team-selector" @(team.SelectedAsCurrent ? "checked" : "") />
+                            <input data-url="@Url.Action("SetTeamAsSelected")" data-id="@team.Id" type="checkbox" class="team-selector" @(team.SelectedAsCurrent ? "checked" : "") />
                         </td>
                         <td><a class="button is-success" href="@Url.Action("Edit", new { id = team.Id })">Редагувати</a></td>
                     </tr>
@@ -54,10 +54,14 @@
                 var $target = $(e.target).closest("input[type='checkbox']");
 
                 var id = $target.attr("data-id");
+                var url = $target.attr("data-url");
 
-                $(".team-selector").removeAttr("checked");
-                $target.attr("checked", true)
+                $(".team-selector").prop("checked", false);
+                $target.prop("checked", true)
 
+                $.post(url, { teamId: id }, function (result) {
+                    alert(result);
+                });
             });
         });
     </script>

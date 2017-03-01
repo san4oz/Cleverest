@@ -14,6 +14,7 @@ using System.Web.Optimization;
 using Cleverest.Business.Helpers.ImageStorageFactory;
 using Cleverest.Business.Helpers.ImageStorageFactory.Storages;
 using Cleverest.Mvc.Security;
+using Cleverest.Mvc.ViewModels.Frontend.Game;
 
 namespace Cleverest.Mvc
 {

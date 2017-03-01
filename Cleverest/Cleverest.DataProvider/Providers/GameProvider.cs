@@ -30,5 +30,18 @@ namespace Cleverest.DataProvider.Providers
                             .ToList();
             });
         }
+
+        public void DeleteRegistrationRequests(string gameId)
+        {
+            Execute(session =>
+            {
+                var requests = session.CreateCriteria<GameRegistrationRequest>()
+                                    .Add(Expression.Eq("GameId", gameId)).List<GameRegistrationRequest>().ToList();            
+
+                foreach(var request in requests) session.Delete(request);
+
+                session.Flush();
+            });
+        }
     }
 }

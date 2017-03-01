@@ -22,7 +22,8 @@
     <property name="Description" type="string"/>
   </class>
 
-  <class name="Account" table="Accounts">
+  <!--check this piece(dynamic update)-->
+  <class name="Account" table="Accounts" dynamic-update="true">
     <id name="Id" type="string"></id>
     <property name="TeamId" type="string"/>
     <property name="Email" type="string"/>

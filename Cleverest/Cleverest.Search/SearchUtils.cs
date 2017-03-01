@@ -43,7 +43,7 @@ namespace Cleverest.Search
                 while (tokenizer.IncrementToken())
                 {
                     string word = termAttribute.Term;
-                    result = string.Format("{0} {1}{2}{3}", result, tokenBeginning, query, tokenBeginning);
+                    result = string.Format("{0} {1}{2}{3}", result, tokenBeginning, word, tokenEndinng);
                 }
 
                 return result.TrimStart(' ');

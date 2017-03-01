@@ -14,7 +14,7 @@ namespace Cleverest.Mvc.ViewModels.Frontend.Game
         {
             public string Id { get; set; }
 
-            public bool Checked;
+            public bool Checked { get; set; }
         }
     }    
 }

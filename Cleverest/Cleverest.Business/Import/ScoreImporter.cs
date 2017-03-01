@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cleverest.Business.Entities;
 using Cleverest.Business.InterfaceDefinitions.Managers;
 using Cleverest.Business.InterfaceDefinitions.Managers.ExcelManagers;
 
@@ -63,7 +64,10 @@ namespace Cleverest.Business.Import
         {
             var gameId = ExtractGameId(file);
             if (!EnsureGameExist(gameId))
+            {
+                ImportHelper.MoveToFailedFolder(file.FullName);
                 return false;
+            }
 
             var scores = ExcelScoreManager.GetScores(file);
             foreach(var score in scores)
@@ -72,6 +76,8 @@ namespace Cleverest.Business.Import
                 if (Validator.IsScoreValid(score))
                     ScoreManager.Create(score);
             }
+
+            ImportHelper.MoveToSuccessFolder(file.FullName);
 
             return true;
         }

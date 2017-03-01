@@ -130,5 +130,11 @@ namespace Cleverest.Business.Managers
 
             return true;
         }
+
+        public override void Delete(string id)
+        {
+            if(AccountProvider.ClearAccountEntries(id))
+                base.Delete(id);
+        }
     }
 }

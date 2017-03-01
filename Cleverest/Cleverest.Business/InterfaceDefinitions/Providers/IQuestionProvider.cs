@@ -12,5 +12,7 @@ namespace Cleverest.Business.InterfaceDefinitions.Providers
         List<Question> Get(string gameId, int roundNo);
 
         Question Get(string gameId, int roundNo, int orderNo);
+
+        void DeleteGameQuestions(string gameId);
     }
 }

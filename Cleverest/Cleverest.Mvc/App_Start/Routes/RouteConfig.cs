@@ -15,6 +15,19 @@ namespace Cleverest.App_Start
             AreaRegistration.RegisterAllAreas();
 
             routes.MapRoute(
+               name: "StatisticIndex",
+               url: "statistic/general",
+               defaults: new { controller = "Statistic", action = "Index" }
+               );
+
+            routes.MapRoute(
+                name: "SetTeamAsSelected",
+                url: "game/SetTeamAsSelected",
+                defaults: new { controller = "Team", action = "SetTeamAsSelected" }
+                );
+
+
+            routes.MapRoute(
                 name: "RegisterTeamOnGame",
                 url: "game/registerTeam",
                 defaults: new { controller = "Game", action = "RegisterTeam" }

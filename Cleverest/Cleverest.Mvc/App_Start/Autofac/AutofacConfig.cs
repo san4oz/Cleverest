@@ -70,7 +70,7 @@ namespace Cleverest.App_Start.Autofac
             builder.RegisterType<TeamProvider>().As<ITeamProvider>();
             builder.RegisterType<AccountProvider>().As<IAccountProvider>();
             builder.RegisterType<ScoreProvider>().As<IScoreProvider>();
-            builder.RegisterType<QuestionProvider>().As<IQuestionProvider>();
+            builder.RegisterType<QuestionProvider>().As<Business.InterfaceDefinitions.Providers.IQuestionProvider>();
         }
 
         private static void RegisterManagers(ContainerBuilder builder)

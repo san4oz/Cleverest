@@ -9,6 +9,6 @@ namespace Cleverest.Business.InterfaceDefinitions.Managers
 {
     public interface IGameManager : IBaseManager<Game>
     {
-        
+        IList<GameRegistrationRequest> GetRegistrationRequests(string gameId);
     }
 }

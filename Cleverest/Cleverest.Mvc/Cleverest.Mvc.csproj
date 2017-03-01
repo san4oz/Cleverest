@@ -116,6 +116,7 @@
     <Compile Include="Controllers\Admin\AdminEntityEditorController.cs" />
     <Compile Include="Controllers\Admin\QuestionController.cs" />
     <Compile Include="Controllers\Admin\TaskController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Security\WebSecurity.cs" />
     <Compile Include="Security\ExtendedPrincipal.cs" />
@@ -148,6 +149,9 @@
     <Compile Include="ViewModels\Frontend\Game\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Game\TeamScoresViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Game\GameDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Frontend\Statistic\BestResultsModel.cs" />
+    <Compile Include="ViewModels\Frontend\Statistic\GeneralCountersModel.cs" />
+    <Compile Include="ViewModels\Frontend\Statistic\StatisticViewModel.cs" />
     <Compile Include="ViewModels\GamesListViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\Frontend\Account\LoginViewModel.cs" />
